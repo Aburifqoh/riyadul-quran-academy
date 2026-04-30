@@ -1,6 +1,6 @@
-# RiyaduAlQuran Academy
+# Riyadul Quran Academy
 
-A premium, modern multi-page static website for **RiyaduAlQuran Academy**, specializing in Qur'an Memorization, Arabic, and Islamic Studies.
+A premium, modern multi-page static website for **Riyadul Quran Academy**, specializing in Qur'an Memorization, Arabic, and Islamic Studies.
 
 ## ✨ Premium Features
 - **Modern Aesthetic**: A high-end design featuring a sophisticated teal and gold color palette.
@@ -33,7 +33,7 @@ This is a static website. To deploy:
 ## 📞 Contact Information
 - **Phone/WhatsApp**: +234 810 969 0304
 - **Email**: Zakariyahuabdullateef12@gmail.com
-- **Facebook**: [RiyaduAlQuran Academy](https://www.facebook.com/profile.php?id=61551571296099)
+- **Facebook**: [Riyadul Quran Academy](https://www.facebook.com/profile.php?id=61551571296099)
 
 ---
 *Built with excellence by Antigravity.*
