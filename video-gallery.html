@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Gallery | RiyaduAlQuran Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          teal: { DEFAULT: '#0d5c75', dark: '#083f4e', light: '#12799a' },
+          gold: { DEFAULT: '#d4af37', light: '#f3e5ab' },
+          offwhite: '#faf9f6',
+          dark: '#111827'
+        },
+        fontFamily: {
+          body: ['Inter', 'sans-serif'],
+          heading: ['Playfair Display', 'serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #faf9f6; }
+  h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Playfair Display', serif; }
+  .premium-shadow { box-shadow: 0 10px 30px -10px rgba(13, 92, 117, 0.15); }
+  .glassmorphism { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); }
+
+  
+  .nav-link { color: #444; font-size: .95rem; transition: color .2s; }
+  .nav-link:hover, .nav-link.active { color: #0c5c70; }
+  .page-banner { background: linear-gradient(135deg, #0c4a3c 0%, #0c5c70 100%); }
+  .video-card { position:relative; border-radius:.75rem; overflow:hidden; box-shadow:0 2px 16px rgba(0,0,0,.12); }
+  .video-card img { width:100%; height:240px; object-fit:cover; display:block; }
+  .video-overlay { position:absolute; inset:0; background:rgba(12,92,112,.45); display:flex; align-items:center; justify-content:center; transition:background .3s; }
+  .video-card:hover .video-overlay { background:rgba(12,92,112,.25); }
+  .play-btn { width:64px; height:64px; background:rgba(255,255,255,.2); border:2px solid #fff; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.5rem; transition:all .3s; backdrop-filter:blur(4px); }
+  .video-card:hover .play-btn { background:#c9a84c; border-color:#c9a84c; color:#fff; transform:scale(1.1); }
+  .aos { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .aos.show { opacity: 1; transform: none; }
+</style>
+</head>
+<body class="text-gray-800">
+
+<!-- TOP BAR -->
+<div class="bg-teal text-white text-sm py-2">
+  <div class="max-w-6xl mx-auto px-4 flex flex-wrap gap-4 items-center justify-between">
+    <div class="flex flex-wrap gap-5 items-center">
+      <a href="tel:+2348109690304" class="flex items-center gap-1.5 hover:text-gold transition-colors"><i class="fas fa-phone text-xs"></i> +234 810 969 0304</a>
+      <a href="mailto:Zakariyahuabdullateef12@gmail.com" class="flex items-center gap-1.5 hover:text-gold transition-colors"><i class="fas fa-envelope text-xs"></i> Zakariyahuabdullateef12@gmail.com</a>
+    </div>
+    <div class="flex gap-4"><a href="https://www.facebook.com/profile.php?id=61551571296099" target="_blank" class="hover:text-gold transition-colors"><i class="fab fa-facebook-f"></i></a><a href="#" class="hover:text-gold transition-colors"><i class="fab fa-twitter"></i></a><a href="#" class="hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a></div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 flex items-center justify-between py-3">
+    <a href="index.html" class="flex items-center gap-2">
+      <img src="assets/images/logo.jpg" alt="Logo" class="h-16 w-16 rounded-full object-cover">
+      <div><div class="font-bold text-teal text-base leading-tight">RIYADUALQURAN</div><div class="text-xs text-gray-500 leading-tight tracking-wide">ACADEMY FOR QUR'AN,<br>ARABIC AND ISLAMIC STUDIES</div></div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="courses.html" class="nav-link">Courses</a>
+      <a href="video-gallery.html" class="nav-link active font-medium">Video Gallery</a>
+      <a href="achievements.html" class="nav-link">Achievements</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+    </nav>
+    <button id="mobile-toggle" class="lg:hidden text-teal text-2xl"><i class="fas fa-bars"></i></button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t px-4 pb-4">
+    <a href="index.html" class="block py-2 nav-link">Home</a><a href="about.html" class="block py-2 nav-link">About Us</a><a href="courses.html" class="block py-2 nav-link">Courses</a><a href="video-gallery.html" class="block py-2 nav-link active">Video Gallery</a><a href="achievements.html" class="block py-2 nav-link">Achievements</a><a href="blog.html" class="block py-2 nav-link">Blog</a><a href="contact.html" class="block py-2 nav-link">Contact Us</a>
+  </div>
+</header>
+
+<!-- PAGE BANNER -->
+<div class="page-banner py-16 text-center text-white">
+  <h1 class="text-4xl md:text-5xl font-bold mb-2">Video Gallery</h1>
+  <p class="text-gold tracking-widest uppercase text-sm font-medium">Visual Journey of Learning</p>
+</div>
+
+<!-- YOUTUBE CTA -->
+<section class="bg-offwhite py-12 text-center">
+  <div class="max-w-2xl mx-auto px-4 aos">
+    <i class="fab fa-youtube text-red-600 text-5xl mb-4"></i>
+    <h2 class="text-2xl font-bold text-teal mb-3">Watch Our Content on YouTube</h2>
+    <p class="text-gray-500 mb-6">Subscribe to our YouTube channel to watch student recitations, lessons, and academy events.</p>
+    <a href="https://youtube.com/@riyadhulquraan" target="_blank" class="bg-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition-colors inline-flex items-center gap-2"><i class="fab fa-youtube"></i> Visit YouTube Channel</a>
+  </div>
+</section>
+
+<!-- VIDEO GRID -->
+<section class="bg-offwhite pb-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="aos">
+        <div class="video-card">
+          <img src="https://images.unsplash.com/photo-1585079542156-2755d9c8a094?q=80&w=600" alt="Recitation">
+          <div class="video-overlay"><a href="https://youtube.com/@riyadhulquraan" target="_blank" class="play-btn"><i class="fas fa-play ml-1"></i></a></div>
+        </div>
+        <h3 class="mt-4 text-base font-semibold text-teal text-center">Student Qur'an Recitation</h3>
+      </div>
+      <div class="aos">
+        <div class="video-card">
+          <img src="https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=600" alt="Arabic Lesson">
+          <div class="video-overlay"><a href="https://youtube.com/@riyadhulquraan" target="_blank" class="play-btn"><i class="fas fa-play ml-1"></i></a></div>
+        </div>
+        <h3 class="mt-4 text-base font-semibold text-teal text-center">Interactive Arabic Lesson</h3>
+      </div>
+      <div class="aos">
+        <div class="video-card">
+          <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=600" alt="Hadith">
+          <div class="video-overlay"><a href="https://youtube.com/@riyadhulquraan" target="_blank" class="play-btn"><i class="fas fa-play ml-1"></i></a></div>
+        </div>
+        <h3 class="mt-4 text-base font-semibold text-teal text-center">Hadith Study Session</h3>
+      </div>
+      <div class="aos">
+        <div class="video-card">
+          <img src="https://images.unsplash.com/photo-1565552309831-7e87ab00b1ea?q=80&w=600" alt="Tajweed">
+          <div class="video-overlay"><a href="https://youtube.com/@riyadhulquraan" target="_blank" class="play-btn"><i class="fas fa-play ml-1"></i></a></div>
+        </div>
+        <h3 class="mt-4 text-base font-semibold text-teal text-center">Tajweed Rules Demo</h3>
+      </div>
+      <div class="aos">
+        <div class="video-card">
+          <img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=600" alt="Orientation">
+          <div class="video-overlay"><a href="https://youtube.com/@riyadhulquraan" target="_blank" class="play-btn"><i class="fas fa-play ml-1"></i></a></div>
+        </div>
+        <h3 class="mt-4 text-base font-semibold text-teal text-center">Academy Orientation</h3>
+      </div>
+      <div class="aos">
+        <div class="video-card">
+          <img src="https://images.unsplash.com/photo-1585079542156-2755d9c8a094?q=80&w=600" alt="Fiqh">
+          <div class="video-overlay"><a href="https://youtube.com/@riyadhulquraan" target="_blank" class="play-btn"><i class="fas fa-play ml-1"></i></a></div>
+        </div>
+        <h3 class="mt-4 text-base font-semibold text-teal text-center">Islamic Fiqh Lesson</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-teal text-white pt-2 pb-0">
+  <div class="border-t-4 border-gold mb-10"></div>
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-10 pb-10">
+    <div><h3 class="font-bold text-lg mb-4">RiyaduAlQuran Academy</h3><p class="text-sm leading-6 text-white/80">Our mission is to provide a nurturing and enriching educational environment that empowers students to: <strong class="text-white">Memorize the Qur'an, Master Arabic, Deepen Islamic Knowledge, Foster Character, Excel Academically and spiritually, and Cultivate Leaders.</strong></p></div>
+    <div><h3 class="font-bold text-lg mb-4">Get in Touch</h3><p class="text-sm text-white font-semibold mb-1">Tel:</p><p class="text-sm text-white/80 mb-4">+234 810 969 0304</p><p class="text-sm text-white font-semibold mb-1">Email:</p><p class="text-sm text-white/80 break-all">Zakariyahuabdullateef12@gmail.com</p></div>
+    <div><h3 class="font-bold text-lg mb-4">Quick Links</h3><ul class="text-sm space-y-2 text-white/80"><li><a href="about.html" class="hover:text-gold transition-colors">About Us</a></li><li><a href="contact.html" class="hover:text-gold transition-colors">Contact Us</a></li><li><a href="courses.html" class="hover:text-gold transition-colors">Courses</a></li><li><a href="video-gallery.html" class="hover:text-gold transition-colors">Video Gallery</a></li></ul></div>
+  </div>
+  <div class="border-t border-white/20 py-4 max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-white/60">
+    <p>© 2026. RiyaduAlQuran Academy | All Rights Reserved</p>
+    <div class="flex gap-4 text-base"><a href="https://www.facebook.com/profile.php?id=61551571296099" target="_blank" class="hover:text-gold transition-colors"><i class="fab fa-facebook-f"></i></a><a href="#" class="hover:text-gold transition-colors"><i class="fab fa-twitter"></i></a><a href="#" class="hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a></div>
+  </div>
+</footer>
+<a href="https://wa.me/2348109690304" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl shadow-xl hover:scale-110 transition-transform"><i class="fab fa-whatsapp"></i></a>
+<script>
+  document.getElementById('mobile-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }), { threshold: 0.12 });
+  document.querySelectorAll('.aos').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
