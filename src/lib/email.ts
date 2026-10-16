@@ -73,13 +73,13 @@ export async function sendPaymentReceipt(email: string, planName: string, amount
   try {
     await sendEmail(
       email,
-      'Payment Successful - Almuqri Institute',
+      'Payment Successful - Ilmvers Institute',
       `<div style="font-family: sans-serif; max-width: 600px; margin: auto;">
         <h2>Payment Received</h2>
         <p>We have successfully received your payment of <strong>$${amount}</strong> for the <strong>${planName}</strong> plan.</p>
         <p>Your subscription is now active. An admin will assign your instructor shortly.</p>
         <br/>
-        <a href="https://almuqri.com/portal" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Dashboard</a>
+        <a href="https://ilmversinstitute.com/portal" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Dashboard</a>
       </div>`
     );
   } catch (error) {
@@ -87,16 +87,23 @@ export async function sendPaymentReceipt(email: string, planName: string, amount
   }
 }
 
-export async function sendAssessmentConfirmation(email: string, name: string) {
+export async function sendAssessmentConfirmation(
+  email: string,
+  name: string,
+  extra?: { whenLabel?: string; booked?: boolean }
+) {
   try {
+    const when = extra?.whenLabel
+      ? `<p><strong>Time:</strong> ${escapeHtml(extra.whenLabel)}</p>`
+      : '';
     await sendEmail(
       email,
       'Assessment Booked Successfully',
       `<div style="font-family: sans-serif; max-width: 600px; margin: auto;">
-        <h2>Assalamu Alaikum ${name},</h2>
-        <p>Your free assessment has been successfully booked.</p>
-        <p>An instructor will meet with you shortly to evaluate your level and recommend the best plan.</p>
-        <p>Please check your calendar for the exact time and meeting link.</p>
+        <h2>Assalamu Alaikum ${escapeHtml(name)},</h2>
+        <p>Your free assessment has been received.</p>
+        ${when}
+        <p>An instructor will meet with you to evaluate your level and recommend the best plan.</p>
       </div>`
     );
   } catch (error) {
@@ -116,7 +123,7 @@ export async function sendAssessmentApproval(email: string, name: string, notes:
         <br/>
         <p>You can now proceed to select your plan and finalize your enrollment.</p>
         <br/>
-        <a href="https://almuqri.com/payment" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Complete Enrollment</a>
+        <a href="https://ilmversinstitute.com/payment" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Complete Enrollment</a>
       </div>`
     );
   } catch (error) {
@@ -134,7 +141,7 @@ export async function sendClassReminder(email: string, name: string, isTeacher: 
         <p>This is a quick reminder that your upcoming class is scheduled to begin in <strong>30 minutes</strong> (${timeStr}).</p>
         <p>Please log in to your portal and join the virtual classroom so you are ready when the session starts.</p>
         <br/>
-        <a href="https://almuqri.com/portal/classroom/session" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Join Classroom</a>
+        <a href="https://ilmversinstitute.com/portal/classroom/session" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Join Classroom</a>
       </div>`
     );
   } catch (error) {
@@ -227,7 +234,7 @@ export async function sendScheduleAssignmentEmail(email: string, studentName: st
   try {
     await sendEmail(
       email,
-      'Your Class Schedule is Confirmed! - Almuqri Institute',
+      'Your Class Schedule is Confirmed! - Ilmvers Institute',
       `<div style="font-family: sans-serif; max-width: 600px; margin: auto;">
         <h2>Assalamu Alaikum ${studentName},</h2>
         <p>Great news! Your class schedule has been officially confirmed and a teacher has been assigned to you.</p>
@@ -236,7 +243,7 @@ export async function sendScheduleAssignmentEmail(email: string, studentName: st
         <br/>
         <p>Please log in to your portal to view your full schedule and access the virtual classroom.</p>
         <br/>
-        <a href="https://almuqri.com/portal" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Go to Dashboard</a>
+        <a href="https://ilmversinstitute.com/portal" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Go to Dashboard</a>
       </div>`
     );
   } catch (error) {
@@ -248,7 +255,7 @@ export async function sendTeacherAssignmentAlert(email: string, teacherName: str
   try {
     await sendEmail(
       email,
-      'New Student Assigned! - Almuqri Institute',
+      'New Student Assigned! - Ilmvers Institute',
       `<div style="font-family: sans-serif; max-width: 600px; margin: auto;">
         <h2>Assalamu Alaikum ${teacherName},</h2>
         <p>A new student has been assigned to your class schedule.</p>
@@ -257,7 +264,7 @@ export async function sendTeacherAssignmentAlert(email: string, teacherName: str
         <br/>
         <p>Please log in to your teacher portal to view their details and prepare for your upcoming sessions.</p>
         <br/>
-        <a href="https://almuqri.com/teacher-login" style="background-color: #0b2878; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Go to Teacher Portal</a>
+        <a href="https://ilmversinstitute.com/teacher-login" style="background-color: #0b2878; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Go to Teacher Portal</a>
       </div>`
     );
   } catch (error) {
@@ -269,13 +276,13 @@ export async function sendScheduleRequestApprovedEmail(email: string, name: stri
   try {
     await sendEmail(
       email,
-      'Schedule Request Approved - Almuqri Institute',
+      'Schedule Request Approved - Ilmvers Institute',
       `<div style="font-family: sans-serif; max-width: 600px; margin: auto;">
         <h2>Assalamu Alaikum ${name},</h2>
         <p>Your schedule request has been <strong>approved</strong>.</p>
         <p>Log in to your portal to view your updated schedule.</p>
         <br/>
-        <a href="https://almuqri.com/portal" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Portal</a>
+        <a href="https://ilmversinstitute.com/portal" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Portal</a>
       </div>`
     );
   } catch (error) {
@@ -287,14 +294,14 @@ export async function sendScheduleRequestRejectedEmail(email: string, name: stri
   try {
     await sendEmail(
       email,
-      'Schedule Request Update - Almuqri Institute',
+      'Schedule Request Update - Ilmvers Institute',
       `<div style="font-family: sans-serif; max-width: 600px; margin: auto;">
         <h2>Assalamu Alaikum ${name},</h2>
         <p>Your schedule request was <strong>not approved</strong> at this time.</p>
         <p><strong>Reason:</strong><br/>${reason}</p>
         <p>You may submit a new request from your portal settings.</p>
         <br/>
-        <a href="https://almuqri.com/portal/settings" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Settings</a>
+        <a href="https://ilmversinstitute.com/portal/settings" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Settings</a>
       </div>`
     );
   } catch (error) {
@@ -312,7 +319,7 @@ export async function sendAdminScheduleRequestAlert(adminEmail: string, requeste
         <p><strong>${requesterName}</strong> submitted a <strong>${requestType}</strong> schedule request.</p>
         <p>Review it in the Super Admin Schedule Requests queue.</p>
         <br/>
-        <a href="https://almuqri.com/portal/admin" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Open Admin Portal</a>
+        <a href="https://ilmversinstitute.com/portal/admin" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Open Admin Portal</a>
       </div>`
     );
   } catch (error) {
@@ -335,12 +342,12 @@ export async function sendTeacherWelcomeEmail(email: string, name: string, passw
     const safePassword = escapeHtml(password);
     await sendEmail(
       email,
-      'Your Almuqri Faculty Account is Ready',
+      'Your Ilmvers Faculty Account is Ready',
       `<div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; color: #1f2937;">
         <h2 style="color: #0b2878;">Assalamu Alaikum ${safeName},</h2>
-        <p>Your instructor account at Almuqri Institute has been created. Please save these login details and sign in as soon as you can.</p>
+        <p>Your instructor account at Ilmvers Institute has been created. Please save these login details and sign in as soon as you can.</p>
         <div style="background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; margin: 20px 0;">
-          <p style="margin: 0 0 8px;"><strong>Faculty login:</strong> <a href="https://almuqri.com/teacher-login">https://almuqri.com/teacher-login</a></p>
+          <p style="margin: 0 0 8px;"><strong>Faculty login:</strong> <a href="https://ilmversinstitute.com/teacher-login">https://ilmversinstitute.com/teacher-login</a></p>
           <p style="margin: 0 0 8px;"><strong>Email:</strong> ${safeEmail}</p>
           <p style="margin: 0;"><strong>Temporary password:</strong> ${safePassword}</p>
         </div>
@@ -354,18 +361,18 @@ export async function sendTeacherWelcomeEmail(email: string, name: string, passw
           <li><strong>Spoken languages</strong> — e.g. English, Arabic</li>
           <li><strong>About / biography</strong> — a short instructor biography for the public site</li>
         </ul>
-        <p>You can do this from <a href="https://almuqri.com/portal/teacher/settings">Teacher Settings</a>. An administrator will review and publish your profile.</p>
+        <p>You can do this from <a href="https://ilmversinstitute.com/portal/teacher/settings">Teacher Settings</a>. An administrator will review and publish your profile.</p>
         <h3 style="color: #0b2878;">3. Get familiar with the platform</h3>
         <p>Please browse the website and try the <strong>live classroom</strong> so you are comfortable before your first student is assigned.</p>
         <p>
-          <a href="https://almuqri.com" style="color: #0b2878;">almuqri.com</a> &nbsp;·&nbsp;
-          <a href="https://almuqri.com/teachers" style="color: #0b2878;">Teachers page</a> &nbsp;·&nbsp;
-          <a href="https://almuqri.com/portal/classroom" style="color: #0b2878;">Live classroom</a>
+          <a href="https://ilmversinstitute.com" style="color: #0b2878;">ilmversinstitute.com</a> &nbsp;·&nbsp;
+          <a href="https://ilmversinstitute.com/teachers" style="color: #0b2878;">Teachers page</a> &nbsp;·&nbsp;
+          <a href="https://ilmversinstitute.com/portal/classroom" style="color: #0b2878;">Live classroom</a>
         </p>
         <br/>
-        <a href="https://almuqri.com/teacher-login" style="background-color: #0b2878; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Log in to Teacher Portal</a>
+        <a href="https://ilmversinstitute.com/teacher-login" style="background-color: #0b2878; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Log in to Teacher Portal</a>
         <br/><br/>
-        <p>JazakAllah Khair,<br/>The Almuqri Team</p>
+        <p>JazakAllah Khair,<br/>The Ilmvers Team</p>
       </div>`
     );
   } catch (error) {
@@ -386,7 +393,7 @@ export async function sendNewMessageEmail(to: string, fromName: string, preview:
         </blockquote>
         <p>Log in to your portal to read and reply.</p>
         <br/>
-        <a href="https://almuqri.com/portal/inbox" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Open Secure Inbox</a>
+        <a href="https://ilmversinstitute.com/portal/inbox" style="background-color: #F59A23; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Open Secure Inbox</a>
       </div>`
     );
   } catch (error) {
@@ -410,5 +417,53 @@ export async function sendAdminContactAlert(name: string, email: string, message
       <p><a href="https://ilmversinstitute.com/portal/admin">Open the admin hub</a> and choose Contact Messages.</p>
     </div>`,
     email
+  );
+}
+
+export async function sendAdminNewsletterAlert(subscriberEmail: string) {
+  const safe = escapeHtml(subscriberEmail);
+  return sendEmail(
+    ADMIN_ALERT_EMAIL,
+    'New newsletter subscriber',
+    `<div style="font-family:sans-serif;max-width:600px;margin:auto;padding:20px;">
+      <h2>New newsletter subscriber</h2>
+      <p><strong>${safe}</strong> asked to receive Ilmvers updates.</p>
+    </div>`
+  );
+}
+
+export async function sendNewsletterIssue(
+  to: string,
+  title: string,
+  excerpt: string,
+  link: string,
+  unsubscribeUrl: string
+) {
+  const safeTitle = escapeHtml(title);
+  const safeExcerpt = escapeHtml(excerpt);
+  return sendEmail(
+    to,
+    safeTitle || 'Update from Ilmvers Institute',
+    `<div style="font-family:sans-serif;max-width:600px;margin:auto;padding:20px;">
+      <h2 style="color:#0F3D38;">${safeTitle}</h2>
+      <p>${safeExcerpt}</p>
+      <p><a href="${escapeHtml(link)}">Read it on Ilmvers</a></p>
+      <p style="font-size:12px;color:#666;"><a href="${escapeHtml(unsubscribeUrl)}">Unsubscribe</a></p>
+    </div>`
+  );
+}
+
+export async function sendTeacherFollowUp(email: string, teacherName: string, followUp: string) {
+  const safeName = escapeHtml(teacherName || 'Instructor');
+  const safeBody = escapeHtml(followUp).replace(/\n/g, '<br/>');
+  return sendEmail(
+    email,
+    'Recommended follow-up for your class',
+    `<div style="font-family:sans-serif;max-width:600px;margin:auto;padding:20px;">
+      <h2>Assalamu Alaikum ${safeName},</h2>
+      <p>The admin team reviewed a class and sent this follow-up:</p>
+      <blockquote style="background:#fff7ed;border-left:4px solid #F59A23;padding:12px 16px;margin:16px 0;">${safeBody}</blockquote>
+      <p>JazakAllah Khair,<br/>Ilmvers Institute</p>
+    </div>`
   );
 }

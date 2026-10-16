@@ -366,7 +366,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </div>
                     <h3 className="text-3xl font-bold font-headers text-secondary mb-3">Premium Feature</h3>
                     <p className="text-gray-600 mb-8 font-medium leading-relaxed">
-                      You are previewing a locked feature. Complete your enrollment to unlock the full Riyadul Qur'an experience!
+                      You are previewing a locked feature. Complete your enrollment to unlock the full Ilmvers experience!
                     </p>
                     <Link href="/payment" className="inline-block w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-full shadow-[0_8px_30px_rgb(5,150,105,0.3)] hover:shadow-[0_8px_30px_rgb(5,150,105,0.5)] transition-all hover:-translate-y-1 text-lg">
                       Unlock Full Access

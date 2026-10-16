@@ -2,17 +2,17 @@
 // because Next.js `output: 'export'` does not support Server Actions or Node.js backends.
 
 export async function subscribeNewsletter(formData: FormData) {
-  const email = formData.get('email') as string;
-
-  if (!email) {
-    return { error: 'Email is required' };
-  }
+  const email = String(formData.get('email') || '').trim();
+  if (!email) return { error: 'Email is required' };
 
   try {
-    // Sends to Supabase or Resend API endpoint in production
-    console.log(`Simulated subscription for ${email}`);
-    // Simulate network request
-    await new Promise(resolve => setTimeout(resolve, 500));
+    const res = await fetch('/api/newsletter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return { error: typeof data.error === 'string' ? data.error : 'Failed to subscribe. Please try again later.' };
     return { success: true };
   } catch (error) {
     console.error('Newsletter subscription error:', error);

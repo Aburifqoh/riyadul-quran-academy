@@ -1,0 +1,45 @@
+name = "ilmvers-institute"
+main = "custom-worker.ts"
+compatibility_date = "2026-06-27"
+compatibility_flags = ["nodejs_compat"]
+
+# Attach the Ilmvers domain in the Cloudflare dashboard, then uncomment:
+# routes = [
+#   { pattern = "ilmversinstitute.com", custom_domain = true },
+#   { pattern = "www.ilmversinstitute.com", custom_domain = true }
+# ]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+[observability]
+enabled = true
+
+# Public values only. Secrets go in with `wrangler secret put` and are listed in .env.example.
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://ilmversinstitute.com"
+NEXT_PUBLIC_HIFZ_LAB_ENABLED = "false"
+EMAIL_FROM = "Ilmvers Institute <noreply@ilmversinstitute.com>"
+ADMIN_ALERT_EMAIL = "info@ilmversinstitute.com"
+
+# UTC. Mapped in custom-worker.ts.
+#   0 * * * * and 30 * * * *  class reminders
+#   0 23 * * *                 daily billing (midnight WAT)
+#   0 4 * * SUN                messaging assignment sync
+#   0 5 1 * *                  message purge
+[triggers]
+crons = ["0 * * * *", "30 * * * *", "0 23 * * *", "0 4 * * SUN", "0 5 1 * *"]
+
+# Create these R2 buckets, then uncomment. Do not reuse another project's buckets.
+# [[r2_buckets]]
+# binding = "BUCKET"
+# bucket_name = "ilmvers-assets"
+#
+# [[r2_buckets]]
+# binding = "HOMEWORK_AUDIO"
+# bucket_name = "ilmvers-audio"
+#
+# [[r2_buckets]]
+# binding = "ILMVERS_VAULT"
+# bucket_name = "ilmvers-vault"

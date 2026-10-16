@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-headers: var(--font-playfair), Georgia, serif;
+  --font-ar: var(--font-amiri), serif;
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-soft-gray: var(--soft-gray);
+  --color-charcoal: var(--charcoal);
+  --color-ivory: var(--ivory);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+}
+
+@layer base {
+  :root {
+    /* Brand Color System (From Ilmvers Brand Guide) */
+    --primary: #004D4A;        /* Deep Teal - Trust | Knowledge | Stability */
+    --primary-hover: #0F3D38;  /* Forest Green - Growth | Balance | Harmony */
+    --primary-light: #166B67;  /* Mid Teal */
+    --secondary: #0F3D38;      /* Forest Green */
+    --accent: #D4AF37;         /* Gold - Excellence | Success | Prestige */
+    --accent-light: #F6D77A;   /* Light Gold */
+    --soft-gray: #A7B7B5;      /* Soft Gray - Calm | Clean | Modern */
+    --charcoal: #2E2E2E;       /* Charcoal - Readability | Professionalism */
+    --ivory: #FAF9F6;          /* Ivory - Clarity | Simplicity | Focus */
+    
+    --background: #FAF9F6;     /* Ivory Background */
+    --foreground: #2E2E2E;     /* Charcoal Text */
+    
+    --muted: #F0F4F2;          /* Soft cool cream/gray */
+    --muted-foreground: #5A6E6C; /* Subtle muted teal/slate */
+    
+    --card: #FFFFFF;
+    --card-foreground: #2E2E2E;
+    
+    --border: #E2E9E7;
+    --input: #E2E9E7;
+    --ring: #004D4A;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-headers {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+  .font-sans {
+    font-family: var(--font-montserrat), system-ui, sans-serif;
+  }
+  .font-ar {
+    font-family: var(--font-amiri), serif;
+  }
+  
+  /* Brand Gradients (from brand colour.jpeg) */
+  .gradient-teal {
+    background: linear-gradient(135deg, #004D4A 0%, #0F3D38 100%);
+  }
+  .gradient-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #F6D77A 100%);
+  }
+  .gradient-dark {
+    background: linear-gradient(135deg, #2E2E2E 0%, #4B5B5A 100%);
+  }
+
+  /* Islamic Arch Frame Styles */
+  .arch-frame {
+    border-radius: 140px 140px 20px 20px;
+  }
+  .arch-window {
+    border-radius: 200px 200px 16px 16px;
+  }
+
+  /* Islamic Geometric Pattern Background */
+  .pattern-islamic-stars {
+    background-image: radial-gradient(#D4AF37 0.8px, transparent 0.8px), radial-gradient(#004D4A 0.8px, #FAF9F6 0.8px);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .glass-teal {
+    background: rgba(0, 77, 74, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #A7B7B5;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #004D4A;
+  }
+}

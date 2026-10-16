@@ -403,21 +403,25 @@ export default function AssessmentPage() {
               <p className="text-text-body mb-8">Please choose a convenient 15-minute slot. The calendar adjusts to your timezone automatically.</p>
               
               <div className="bg-white border-2 border-border-subtle rounded-2xl overflow-hidden shadow-inner mb-8 relative min-h-[600px] flex items-center justify-center">
-                {isIframeLoading && (
+                {process.env.NEXT_PUBLIC_CALENDLY_URL && isIframeLoading && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50/50 z-10">
                     <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" />
                     <p className="text-text-muted text-sm font-medium">Loading Calendar...</p>
                   </div>
                 )}
+                {process.env.NEXT_PUBLIC_CALENDLY_URL ? (
                 <iframe 
-                  src={`https://calendly.com/mustaphaluqman254/30min?hide_event_type_details=1&hide_gdpr_banner=1&name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}`}
+                  src={`${process.env.NEXT_PUBLIC_CALENDLY_URL}?hide_event_type_details=1&hide_gdpr_banner=1&name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}`}
                   width="100%"
                   height="600"
                   frameBorder="0"
-                  title="Calendly Scheduling"
+                  title="Assessment scheduling"
                   onLoad={() => setIsIframeLoading(false)}
                   className={isIframeLoading ? "opacity-0" : "opacity-100 transition-opacity duration-500"}
                 ></iframe>
+                ) : (
+                  <p className="px-6 text-center text-text-muted">Scheduling is not configured yet. You can skip this step and the team will follow up.</p>
+                )}
               </div>
 
               <div className="pt-6 border-t border-border-subtle flex flex-col sm:flex-row justify-between items-center text-sm text-text-muted gap-4">
