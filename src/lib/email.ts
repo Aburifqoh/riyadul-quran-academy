@@ -1,11 +1,12 @@
 import type { AdminRecord } from '@/types/records';
 import type { JsonValue } from '@/types/json';
+import { ADMIN_ALERT_EMAIL } from '@/lib/config';
 import { formatDayAtTime } from '@/lib/timeFormat';
 // Edge-runtime compatible email sender — uses raw fetch instead of Resend SDK
 
 const SENDER = process.env.EMAIL_FROM || 'Ilmvers Institute <noreply@ilmversinstitute.com>';
 
-async function sendEmail(to: string, subject: string, html: string): Promise<boolean> {
+async function sendEmail(to: string, subject: string, html: string, replyTo?: string): Promise<boolean> {
   // Browser bundles import this module for types/helpers; never call Resend
   // from the client — the key is server-only and fetch would be a no-op here.
   if (typeof window !== 'undefined') {
@@ -28,7 +29,13 @@ async function sendEmail(to: string, subject: string, html: string): Promise<boo
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ from: SENDER, to: [to], subject, html }),
+      body: JSON.stringify({
+        from: SENDER,
+        to: [to],
+        subject,
+        html,
+        ...(replyTo && replyTo.includes('@') ? { reply_to: replyTo } : {}),
+      }),
     });
     if (!res.ok) {
       const detail = await res.text().catch(() => '');
@@ -385,4 +392,23 @@ export async function sendNewMessageEmail(to: string, fromName: string, preview:
   } catch (error) {
     console.error('Failed to send new message email:', error);
   }
+}
+
+export async function sendAdminContactAlert(name: string, email: string, message: string) {
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message);
+  return sendEmail(
+    ADMIN_ALERT_EMAIL,
+    `New contact message from ${name}`,
+    `<div style="font-family:sans-serif;max-width:600px;margin:auto;padding:20px;border:1px solid #eee;border-radius:10px;">
+      <h2 style="color:#5D2E17;">New contact message</h2>
+      <p><strong>Name:</strong> ${safeName}</p>
+      <p><strong>Email:</strong> ${safeEmail}</p>
+      <hr style="border:0;border-top:1px solid #eee;margin:20px 0;" />
+      <p style="white-space:pre-wrap;">${safeMessage}</p>
+      <p><a href="https://ilmversinstitute.com/portal/admin">Open the admin hub</a> and choose Contact Messages.</p>
+    </div>`,
+    email
+  );
 }
