@@ -88,8 +88,8 @@ export default function AdminEmailDashboard() {
           subject,
           htmlContent: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-              <div style="background-color: #FDF8F3; padding: 20px; text-align: center; border-bottom: 3px solid #F59A23;">
-                <h2 style="color: #5D2E17; margin: 0;">Ilmvers Institute</h2>
+              <div style="background-color: #FAF9F6; padding: 20px; text-align: center; border-bottom: 3px solid #004D4A;">
+                <h2 style="color: #004D4A; margin: 0;">Ilmvers Institute</h2>
               </div>
               <div style="padding: 30px 20px; color: #333; line-height: 1.6;">
                 ${message.replace(/\n/g, '<br/>')}

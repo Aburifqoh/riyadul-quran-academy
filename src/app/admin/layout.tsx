@@ -26,14 +26,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* SIDEBAR */}
       <aside className="w-[280px] bg-white [border-right:1px_solid_var(--border-subtle)] flex">
         <div className="p-[32px]">
-           <h1 className="m-0 text-[1.5rem] text-[#5D2E17] flex items-center">
-              <span className="w-[24px] h-[24px] [background:#F59A23]"></span>
+           <h1 className="m-0 text-[1.5rem] text-[#004D4A] flex items-center">
+              <span className="w-[24px] h-[24px] [background:#004D4A]"></span>
               Ilmvers Admin
            </h1>
         </div>
         
         <nav className="p-[24px] flex-1 flex flex-col gap-[8px]">
-          <Link href="/admin" className="btn btn-outline border-0 [background:#FDE7C5] text-[#5D2E17] text-left flex items-center">
+          <Link href="/admin" className="btn btn-outline border-0 [background:#E6F3F2] text-[#004D4A] text-left flex items-center">
              📊 Dashboard
           </Link>
           <button className="btn btn-outline border-0 text-left flex items-center gap-[12px] opacity-[0.5]"disabled >
@@ -49,7 +49,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         
         <div className="p-[24px]">
            <div className="flex items-center gap-[12px]">
-              <div className="w-[40px] h-[40px] rounded-full [background:#F59A23] text-white flex items-center justify-center">
+              <div className="w-[40px] h-[40px] rounded-full [background:#004D4A] text-white flex items-center justify-center">
                  A
               </div>
               <div>

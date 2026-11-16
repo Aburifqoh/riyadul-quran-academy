@@ -52,7 +52,7 @@ export default function AcademicsPage() {
         <div className="flex-1 text-center md:text-left z-10">
           <h2 className="text-white m-0 mb-4 text-4xl font-bold font-headers">{name}</h2>
           <div className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
-            <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold flex items-center gap-2 shadow-lg shadow-orange-500/20">
+            <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#004D4A] to-[#0F3D38] text-white text-sm font-bold flex items-center gap-2 shadow-lg shadow-[#004D4A]/20">
               <Award className="w-4 h-4" /> {userData?.type === 'child' ? 'Youth Program' : 'Adult Mastery'}
             </span>
             <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-sm font-bold flex items-center gap-2 shadow-lg shadow-blue-500/20">
@@ -67,7 +67,7 @@ export default function AcademicsPage() {
          {/* Today's Schedule */}
          <motion.div variants={itemVariants} className="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 relative overflow-hidden group">
             <h3 className="flex items-center gap-3 mb-6 text-xl font-bold font-headers text-secondary">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-[#E6F3F2] text-[#004D4A] flex items-center justify-center">
                  <CalendarDays className="w-5 h-5" />
               </div>
               Today's Schedule

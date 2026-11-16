@@ -137,7 +137,7 @@ export function SearchBox({ onJump }: { onJump: (page: number, verseKey: string)
       <button
         onClick={() => setOpen(true)}
         title="Search the Qur'an by text"
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-[#F59A23]/10 transition-colors text-sm text-[#5D2E17]"
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-[#004D4A]/10 transition-colors text-sm text-[#004D4A]"
       >
         <span className="text-xs" aria-hidden>⌕</span>
         <span className="text-xs font-bold">Search</span>

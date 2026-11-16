@@ -1,7 +1,7 @@
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { sendNewsletterIssue } from '@/lib/email';
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://ilmversinstitute.com';
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://ilmvers.com';
 
 async function signEmail(email: string): Promise<string> {
   const secret = process.env.NEWSLETTER_UNSUBSCRIBE_SECRET || '';

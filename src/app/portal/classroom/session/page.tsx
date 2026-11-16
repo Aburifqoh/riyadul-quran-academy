@@ -376,15 +376,15 @@ function ClassroomSessionContent() {
       {isLoading && (
         <div className="pointer-events-auto absolute inset-0 z-[50] bg-white/90 backdrop-blur-xl flex flex-col items-center justify-center text-center transition-opacity duration-1000">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-             <div className="w-[400px] h-[400px] bg-amber-500/10 blur-[100px] rounded-full animate-pulse" />
+             <div className="w-[400px] h-[400px] bg-[#004D4A]/10 blur-[100px] rounded-full animate-pulse" />
              <div className="absolute w-[300px] h-[300px] bg-blue-500/10 blur-[80px] rounded-full animate-pulse delay-700" />
           </div>
 
           <div className="relative z-10 flex flex-col items-center">
             <div className="relative w-24 h-24 mb-8 flex items-center justify-center">
-               <div className="absolute inset-0 border-4 border-amber-200 border-t-amber-500 rounded-full animate-spin" />
+               <div className="absolute inset-0 border-4 border-[#E2E9E7] border-t-[#004D4A] rounded-full animate-spin" />
                <div className="absolute inset-2 border-4 border-blue-200 border-b-blue-500 rounded-full animate-spin-reverse" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }} />
-               <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full shadow-[0_0_30px_rgba(245,154,35,0.4)] flex items-center justify-center text-white">
+               <div className="w-12 h-12 bg-gradient-to-br from-[#004D4A] to-[#0F3D38] rounded-full shadow-[0_0_30px_rgba(0,77,74,0.4)] flex items-center justify-center text-white">
                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
                </div>
             </div>

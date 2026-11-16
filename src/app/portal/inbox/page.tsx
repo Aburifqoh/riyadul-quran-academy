@@ -104,11 +104,11 @@ export default function InboxPage() {
     else if (userData.role === 'teacher') {
       // Teachers can message Admin and their assigned students
       const students = await getTeacherStudents(userData.email);
-      const studentContacts = students.map(s => ({
+      const studentContacts: Contact[] = students.map(s => ({
         id: s.id,
-        name: s.name,
-        role: s.role,
-        email: s.email
+        name: s.name || 'Student',
+        role: s.role || 'student',
+        email: s.email || ''
       }));
       allowedContacts = [adminContact, ...studentContacts];
     }
@@ -122,9 +122,9 @@ export default function InboxPage() {
       if (data) {
         allowedContacts = data.map(d => ({
           id: d.id,
-          name: d.name,
-          role: d.role,
-          email: d.email
+          name: d.name || 'User',
+          role: d.role || 'student',
+          email: d.email || ''
         }));
       }
     }
@@ -334,7 +334,7 @@ export default function InboxPage() {
               </div>
 
               {/* Messages View */}
-              <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-[#FDF8F3]/30 min-h-0">
+              <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-[#FAF9F6]/30 min-h-0">
                 {messages.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center max-w-sm mx-auto">
                     <div className="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-4">

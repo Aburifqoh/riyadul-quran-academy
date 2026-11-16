@@ -12,8 +12,8 @@ import { cn } from '@/lib/utils';
 export default function PaymentPage() {
   return (
     <Suspense fallback={
-      <div className="bg-[#FDF8F3] flex justify-center items-center min-h-screen">
-        <div className="w-[50px] h-[50px] [border:3px_solid_var(--border-subtle)] [border-top-color:#F59A23] rounded-full"></div>
+      <div className="bg-[#FAF9F6] flex justify-center items-center min-h-screen">
+        <div className="w-[50px] h-[50px] [border:3px_solid_var(--border-subtle)] [border-top-color:#004D4A] rounded-full"></div>
       </div>
     }>
       <PaymentContent />
@@ -127,6 +127,10 @@ function PaymentContent() {
 
   const startPaymentFlow = async () => {
     if (!user) return alert("Session lost.");
+    if (isConfigurable || amount <= 0) {
+      setErrorMsg('Tuition is confirmed with you before any charge.');
+      return;
+    }
     setProcessing(true);
     setErrorMsg('');
 
@@ -223,19 +227,19 @@ function PaymentContent() {
   };
 
   return (
-    <div className="bg-[#FDF8F3] min-h-screen flex flex-col">
+    <div className="bg-[#FAF9F6] min-h-screen flex flex-col">
       <Script src="https://js.paystack.co/v1/inline.js" strategy="lazyOnload" />
       <Script src="https://checkout.flutterwave.com/v3.js" strategy="lazyOnload" />
 
       <main className="py-20 w-full max-w-[1200px] mx-auto px-6 flex items-center justify-center flex-1 relative z-10">
         
         {/* Decorative Background Elements */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-200/40 rounded-full blur-[80px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-200/40 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#D4AF37]/20 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#004D4A]/10 rounded-full blur-[80px] pointer-events-none" />
 
         <div className="bg-white/80 backdrop-blur-xl rounded-[40px] p-10 md:p-12 shadow-2xl border border-white relative overflow-hidden transition-all duration-500 max-w-[700px] w-full group">
           
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 to-orange-500" />
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#004D4A] to-[#D4AF37]" />
 
           {success ? (
             <div className="text-center animate-fade-in py-10">
@@ -245,24 +249,36 @@ function PaymentContent() {
               <h2 className="text-4xl font-black font-headers text-secondary mb-4">Enrollment Complete!</h2>
               <p className="text-gray-500 text-lg mb-8">Alhamdulillah! Your spot is secured.</p>
               
-              <div className="p-6 bg-amber-50/50 rounded-2xl border border-amber-100/50 mb-8">
-                 <p className="m-0 text-sm text-amber-800 font-medium leading-relaxed">
+              <div className="p-6 bg-[#F0F4F2]/80 rounded-2xl border border-[#E2E9E7] mb-8">
+                 <p className="m-0 text-sm text-[#004D4A] font-medium leading-relaxed">
                    Admin verification is pending. You will receive your receipt and dashboard login links shortly.
                  </p>
               </div>
 
-              <div className="flex items-center justify-center gap-3 text-amber-500 font-bold uppercase tracking-widest text-sm">
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></div>
+              <div className="flex items-center justify-center gap-3 text-[#004D4A] font-bold uppercase tracking-widest text-sm">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#F0F4F2]0 animate-pulse"></div>
                 Activating Dashboard...
               </div>
             </div>
           ) : (
             <div className="animate-fade-in relative z-10">
               <div className="text-center mb-10">
-                <h2 className="text-4xl font-black font-headers text-secondary mb-3">Secure Checkout</h2>
-                <p className="text-gray-500 text-lg">Configure your learning plan and complete your enrollment.</p>
+                <h2 className="text-4xl font-black font-headers text-secondary mb-3">{isConfigurable ? 'Enrolment' : 'Secure Checkout'}</h2>
+                <p className="text-gray-500 text-lg">{isConfigurable ? 'Fees are agreed with you after the free assessment.' : 'Complete the fee Ilmvers has confirmed with you.'}</p>
               </div>
 
+              {isConfigurable && (
+                <div className="text-center py-8">
+                  <h3 className="text-2xl font-headers font-bold text-[#004D4A] mb-3">Tuition is confirmed at enrolment</h3>
+                  <p className="text-[#5A6E6C] mb-8 max-w-lg mx-auto">This checkout opens only after Ilmvers agrees a fee with you. The site does not publish a price.</p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Link href="/admissions" className="rounded-full bg-[#004D4A] text-white px-8 py-3 font-semibold">Continue enrolment</Link>
+                    <Link href="/contact" className="rounded-full border-2 border-[#004D4A] text-[#004D4A] px-8 py-3 font-semibold">Ask a question</Link>
+                  </div>
+                </div>
+              )}
+
+              {!isConfigurable && ( <>
               {/* CONFIGURABLE SELECTORS */}
               {isConfigurable && (
                 <>
@@ -283,16 +299,16 @@ function PaymentContent() {
                           className={cn(
                             "p-4 rounded-2xl cursor-pointer transition-all duration-300 text-center border-2 flex flex-col items-center justify-center min-h-[100px]",
                             plan === p.id 
-                              ? "border-amber-400 bg-amber-50 shadow-md scale-[1.02]" 
+                              ? "border-[#004D4A] bg-[#F0F4F2] shadow-md scale-[1.02]" 
                               : "border-gray-100 bg-gray-50/50 hover:bg-gray-100 hover:border-gray-200"
                           )}
                         >
                           {plan === p.id && (
-                            <div className="absolute top-2 right-2 w-5 h-5 bg-amber-500 text-white rounded-full flex items-center justify-center shadow-sm">
+                            <div className="absolute top-2 right-2 w-5 h-5 bg-[#F0F4F2]0 text-white rounded-full flex items-center justify-center shadow-sm">
                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                             </div>
                           )}
-                          <strong className={cn("block text-sm", plan === p.id ? "text-amber-700" : "text-gray-600")}>{p.title}</strong>
+                          <strong className={cn("block text-sm", plan === p.id ? "text-[#004D4A]" : "text-gray-600")}>{p.title}</strong>
                         </div>
                       ))}
                     </div>
@@ -301,17 +317,17 @@ function PaymentContent() {
                   <div className="grid md:grid-cols-2 gap-6 mb-10">
                     <div className="bg-gray-50/50 border border-gray-100 p-6 rounded-3xl">
                       <label className="block font-bold mb-4 text-secondary text-sm">Days Per Week</label>
-                      <input type="range" min="2" max="5" value={days} onChange={(e) => setDays(parseInt(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-amber-500" />
+                      <input type="range" min="2" max="5" value={days} onChange={(e) => setDays(parseInt(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#004D4A]" />
                       <div className="flex justify-between font-bold mt-4 items-center">
                         <span className="text-xs text-gray-400">2 Days</span>
-                        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold bg-amber-100 text-amber-700">{days} Days</span>
+                        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold bg-[#E6F3F2] text-[#004D4A]">{days} Days</span>
                         <span className="text-xs text-gray-400">5 Days</span>
                       </div>
                     </div>
 
                     <div className="bg-gray-50/50 border border-gray-100 p-6 rounded-3xl">
                       <label className="block font-bold mb-4 text-secondary text-sm">Students (Family)</label>
-                      <input type="range" min="1" max="5" value={students} onChange={(e) => setStudents(parseInt(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-amber-500" />
+                      <input type="range" min="1" max="5" value={students} onChange={(e) => setStudents(parseInt(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#004D4A]" />
                       <div className="flex justify-between font-bold mt-4 items-center">
                         <span className="text-xs text-gray-400">1</span>
                         <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold bg-gray-200 text-gray-700">{students} {students === 1 ? 'Student' : 'Students'}</span>
@@ -322,9 +338,9 @@ function PaymentContent() {
                 </>
               )}
 
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50/30 rounded-[32px] p-8 border border-amber-100/50 mb-8 relative shadow-sm">
-                <h4 className="text-xs uppercase tracking-widest text-amber-800 border-b border-amber-200/50 pb-4 mb-6 flex items-center justify-between font-bold">
-                  <span className="flex items-center"><span className="w-2 h-2 rounded-full bg-amber-500 mr-2"></span> Order Summary</span>
+              <div className="bg-gradient-to-br from-[#F0F4F2] to-white rounded-[32px] p-8 border border-[#E2E9E7] mb-8 relative shadow-sm">
+                <h4 className="text-xs uppercase tracking-widest text-[#004D4A] border-b border-[#E2E9E7] pb-4 mb-6 flex items-center justify-between font-bold">
+                  <span className="flex items-center"><span className="w-2 h-2 rounded-full bg-[#F0F4F2]0 mr-2"></span> Order Summary</span>
                 </h4>
                 
                 <div className="flex justify-between items-center mb-4">
@@ -350,33 +366,33 @@ function PaymentContent() {
                 
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-gray-500 font-medium text-sm">Learning Style:</span>
-                  <strong className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-white text-amber-600 border border-amber-100 shadow-sm">Online / Zoom</strong>
+                  <strong className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-white text-[#004D4A] border border-[#E2E9E7] shadow-sm">Live online class</strong>
                 </div>
                 
                 {/* Billing Frequency Toggle */}
-                <div className="flex justify-between items-center mb-6 pt-6 border-t border-amber-200/50">
+                <div className="flex justify-between items-center mb-6 pt-6 border-t border-[#E2E9E7]">
                    <span className="text-gray-500 font-medium text-sm">Billing Frequency:</span>
-                   <div className="flex bg-amber-100/50 rounded-full p-1 border border-amber-200/50">
+                   <div className="flex bg-[#E6F3F2] rounded-full p-1 border border-[#E2E9E7]">
                      <button
                        onClick={() => setPaymentType('recurring')}
-                       className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", paymentType === 'recurring' ? 'bg-white shadow-sm text-amber-600' : 'text-amber-800/60 hover:text-amber-800')}
+                       className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", paymentType === 'recurring' ? 'bg-white shadow-sm text-[#004D4A]' : 'text-[#004D4A]/60 hover:text-[#0F3D38]')}
                      >
                        Monthly
                      </button>
                      <button
                        onClick={() => setPaymentType('onetime')}
-                       className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", paymentType === 'onetime' ? 'bg-white shadow-sm text-amber-600' : 'text-amber-800/60 hover:text-amber-800')}
+                       className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", paymentType === 'onetime' ? 'bg-white shadow-sm text-[#004D4A]' : 'text-[#004D4A]/60 hover:text-[#0F3D38]')}
                      >
                        One-Time
                      </button>
                    </div>
                 </div>
 
-                <div className="flex justify-between items-end pt-6 border-t border-amber-200/50">
+                <div className="flex justify-between items-end pt-6 border-t border-[#E2E9E7]">
                   <strong className="text-lg text-secondary">Total Amount:</strong>
                   <div className="text-right">
-                     <strong className="text-5xl font-black text-amber-500 tracking-tight">${amount}<span className="text-2xl text-amber-500/50">.00</span></strong>
-                     <span className="block text-xs uppercase tracking-widest text-amber-700/70 font-black mt-1">
+                     <strong className="text-5xl font-black text-[#004D4A] tracking-tight">${amount}<span className="text-2xl text-[#004D4A]/50">.00</span></strong>
+                     <span className="block text-xs uppercase tracking-widest text-[#0F3D38]/70 font-black mt-1">
                        {paymentType === 'recurring' ? 'Per Month' : 'One Time Payment'}
                      </span>
                   </div>
@@ -390,8 +406,8 @@ function PaymentContent() {
                 <p className="m-0 font-medium text-sm leading-relaxed pt-1">You will be redirected to our PCI-DSS compliant secure payment gateway to complete your transaction safely.</p>
               </div>
 
-              <div className={cn("p-5 rounded-2xl flex items-start gap-4 border mb-10 transition-colors", paymentType === 'recurring' ? 'bg-amber-50/30 border-amber-200 text-amber-800' : 'bg-gray-50 border-gray-200 text-gray-600')}>
-                 <div className={cn("shrink-0 p-2 rounded-full", paymentType === 'recurring' ? 'bg-amber-100 text-amber-600' : 'bg-gray-200 text-gray-500')}>
+              <div className={cn("p-5 rounded-2xl flex items-start gap-4 border mb-10 transition-colors", paymentType === 'recurring' ? 'bg-[#F0F4F2] border-[#E2E9E7] text-[#004D4A]' : 'bg-gray-50 border-gray-200 text-gray-600')}>
+                 <div className={cn("shrink-0 p-2 rounded-full", paymentType === 'recurring' ? 'bg-[#E6F3F2] text-[#004D4A]' : 'bg-gray-200 text-gray-500')}>
                    {paymentType === 'recurring' ? (
                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21.5 2v6h-6M2.13 15.57a9 9 0 0 0 15.22 3.75l4.15-4.15M2.5 22v-6h6M21.87 8.43a9 9 0 0 0-15.22-3.75L2.5 8.83"></path></svg>
                    ) : (
@@ -409,7 +425,7 @@ function PaymentContent() {
 
               {loading || authLoading ? (
                 <div className="text-center py-6">
-                  <div className="w-10 h-10 border-4 border-gray-100 border-t-amber-500 rounded-full animate-spin mx-auto mb-4"></div>
+                  <div className="w-10 h-10 border-4 border-gray-100 border-t-[#004D4A] rounded-full animate-spin mx-auto mb-4"></div>
                   <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Verifying security tokens...</p>
                 </div>
               ) : (
@@ -417,7 +433,7 @@ function PaymentContent() {
                   <button 
                     onClick={startPaymentFlow}
                     disabled={processing}
-                    className="w-full py-5 rounded-full font-black text-white bg-gradient-to-r from-amber-500 to-orange-500 shadow-[0_10px_30px_rgba(245,154,35,0.3)] hover:shadow-[0_15px_40px_rgba(245,154,35,0.5)] hover:-translate-y-1 transition-all duration-300 disabled:opacity-70 disabled:hover:translate-y-0 flex items-center justify-center gap-3 text-lg"
+                    className="w-full py-5 rounded-full font-black text-white bg-gradient-to-r from-[#004D4A] to-[#0F3D38] shadow-[0_10px_30px_rgba(0,77,74,0.3)] hover:shadow-[0_15px_40px_rgba(0,77,74,0.5)] hover:-translate-y-1 transition-all duration-300 disabled:opacity-70 disabled:hover:translate-y-0 flex items-center justify-center gap-3 text-lg"
                   >
                     {processing ? (
                       <>
@@ -434,6 +450,7 @@ function PaymentContent() {
                   {errorMsg && <p className="text-red-500 text-sm text-center mt-4 font-bold bg-red-50 p-4 rounded-xl border border-red-100">{errorMsg}</p>}
                 </div>
               )}
+              </> )}
             </div>
           )}
         </div>

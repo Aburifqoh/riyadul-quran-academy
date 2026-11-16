@@ -23,7 +23,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="bg-[#FAF9F6] min-h-screen text-[#2E2E2E] overflow-hidden pt-28 pb-20 font-sans">
+    <main className="bg-[#FAF9F6] min-h-screen text-[#2E2E2E] overflow-hidden pt-10 pb-20 font-sans">
       
       {/* Hero Section */}
       <section className="relative pt-12 pb-20 md:pb-28 px-6 md:px-12 max-w-7xl mx-auto">
@@ -53,28 +53,17 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 relative">
-            {/* Islamic Arch Window Hero Frame */}
-            <div className="aspect-[4/5] relative w-full rounded-t-[180px] rounded-b-3xl overflow-hidden shadow-2xl border-4 border-white bg-[#004D4A]">
-              <Image 
-                src="/assets/images/ilmverse.jpeg" 
-                alt="Ilmvers Institute Knowledge Sanctuary" 
-                fill 
-                className="object-cover" 
+          <div className="lg:col-span-5">
+            <div className="relative w-full max-w-[420px] mx-auto aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border border-[#E2E9E7]">
+              <Image
+                src="/assets/images/hero-student.jpg"
+                alt="A student reading with Ilmvers Institute"
+                fill
+                className="object-cover"
                 priority
+                sizes="(min-width: 1024px) 420px, 90vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#004D4A]/80 via-transparent to-transparent" />
-              
-              <div className="absolute bottom-6 left-6 right-6 text-white text-center">
-                <span className="text-xs uppercase tracking-widest font-semibold text-[#D4AF37] block">
-                  Knowledge · Faith · Excellence
-                </span>
-                <span className="text-sm font-headers font-bold">
-                  Serving Learners in 120+ Countries
-                </span>
-              </div>
             </div>
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#D4AF37]/20 rounded-full blur-2xl pointer-events-none" />
           </div>
 
         </div>
@@ -157,7 +146,7 @@ export default function AboutPage() {
                 <span className="w-6 h-6 rounded-full bg-[#004D4A]/10 text-[#004D4A] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
                 <div>
                   <h4 className="text-sm font-bold text-[#2E2E2E]">Verified Scholars & Instructors</h4>
-                  <p className="text-xs text-[#5A6E6C]">Faculty holding degrees from Al-Madinah, Al-Azhar, and traditional Ijazat chains.</p>
+                  <p className="text-xs text-[#5A6E6C]">Qualified instructors. Confirmed profiles are published on Our Scholars.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">

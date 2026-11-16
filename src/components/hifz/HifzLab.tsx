@@ -279,19 +279,18 @@ export function HifzLab({
           `absolute top-full`, and without a positioned ancestor here it resolved
           against the portal's own fixed container instead -- so the button
           toggled but the panel opened somewhere off the header entirely. */}
-      <header className="relative shrink-0 z-20 bg-white border-b border-[#F59A23]/20 shadow-sm">
+      <header className="relative shrink-0 z-20 bg-white border-b border-[#004D4A]/20 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-3">
 
-          {/* Left: page + progress. The "Hifz Lab / Al-Muqri Academy" lockup that
-              used to sit here duplicated the portal's own branding and wrapped
-              onto two lines on a phone, pushing the controls off the row. */}
+          {/* Left: page + progress. A second academy lockup used to sit here and
+              wrapped onto two lines on a phone, pushing the controls off the row. */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowPageSelector(v => !v)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-[#F59A23]/10 transition-colors text-sm"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-[#004D4A]/10 transition-colors text-sm"
             >
               <span className="text-stone-500 text-xs">Page</span>
-              <span className="font-bold text-[#5D2E17]">{currentPage}</span>
+              <span className="font-bold text-[#004D4A]">{currentPage}</span>
               <span className="text-stone-400 text-xs">▾</span>
             </button>
 
@@ -310,7 +309,7 @@ export function HifzLab({
               className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-colors ${
                 showMeaning
                   ? 'border-[#2F6F5E] bg-[#2F6F5E]/10 text-[#2F6F5E]'
-                  : 'border-stone-200 text-[#5D2E17] hover:bg-[#F59A23]/10'
+                  : 'border-stone-200 text-[#004D4A] hover:bg-[#004D4A]/10'
               }`}
             >
               Meaning
@@ -319,7 +318,7 @@ export function HifzLab({
             <button
               onClick={() => setShowHistory(true)}
               title="Your past sessions, the words you keep missing, and your weakest pages"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-[#F59A23]/10 transition-colors text-sm text-[#5D2E17]"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-[#004D4A]/10 transition-colors text-sm text-[#004D4A]"
             >
               <span className="text-xs">🕮</span>
               <span className="text-xs font-bold">History</span>
@@ -329,11 +328,11 @@ export function HifzLab({
             <div className="hidden sm:flex items-center gap-2">
               <div className="w-32 h-1.5 bg-stone-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-[#F59A23] to-[#ffb44d] rounded-full transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-[#004D4A] to-[#166B67] rounded-full transition-all duration-500"
                   style={{ width: `${overallProgress}%` }}
                 />
               </div>
-              <span className="text-xs text-[#5D2E17] opacity-80">{completedPages}/{totalAssigned} pages</span>
+              <span className="text-xs text-[#004D4A] opacity-80">{completedPages}/{totalAssigned} pages</span>
             </div>
           </div>
 
@@ -341,7 +340,7 @@ export function HifzLab({
               QuranPage took a `mode` prop and never read it. Revise now covers
               the ayahs so they have to be recited from memory, and uncovers
               them with the mistakes marked once they have been graded. */}
-          <div className="flex items-center bg-[#5D2E17]/5 rounded-lg p-0.5 shrink-0">
+          <div className="flex items-center bg-[#004D4A]/5 rounded-lg p-0.5 shrink-0">
             {mode === 'revise' && (
               <button
                 type="button"
@@ -358,8 +357,8 @@ export function HifzLab({
                 title="Hold to glance at the words, release to hide them again"
                 className={`mr-1 px-3 py-1.5 rounded-md text-xs font-bold transition-all select-none ${
                   peeking
-                    ? 'bg-[#F59A23] text-white'
-                    : 'bg-[#5D2E17]/5 text-[#5D2E17]/70 hover:text-[#5D2E17]'
+                    ? 'bg-[#004D4A] text-white'
+                    : 'bg-[#004D4A]/5 text-[#004D4A]/70 hover:text-[#004D4A]'
                 }`}
               >
                 {peeking ? '👁 Showing' : '👁 Peek'}
@@ -376,8 +375,8 @@ export function HifzLab({
                   : 'Hide the words and recite from memory'}
                 className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all capitalize ${
                   mode === m
-                    ? 'bg-white text-[#5D2E17] shadow-sm font-bold border border-[#F59A23]/20'
-                    : 'text-[#5D2E17]/60 hover:text-[#5D2E17]'
+                    ? 'bg-white text-[#004D4A] shadow-sm font-bold border border-[#004D4A]/20'
+                    : 'text-[#004D4A]/60 hover:text-[#004D4A]'
                 }`}
               >
                 {m === 'memorize' ? '🧠 Memorize' : '🙈 Revise'}
@@ -414,24 +413,24 @@ export function HifzLab({
                 stealing height from the mushaf. */}
             {/* Selected passage indicator */}
             {selection.keys.length > 0 && (
-              <div className="mb-3 flex items-center justify-between gap-3 bg-[#F59A23]/10 border border-[#F59A23]/30 rounded-xl px-4 py-2.5 shadow-sm">
+              <div className="mb-3 flex items-center justify-between gap-3 bg-[#004D4A]/10 border border-[#004D4A]/30 rounded-xl px-4 py-2.5 shadow-sm">
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="text-[#F59A23]">🎯</span>
-                  <span className="text-sm text-[#5D2E17] font-medium truncate">
+                  <span className="text-[#004D4A]">🎯</span>
+                  <span className="text-sm text-[#004D4A] font-medium truncate">
                     Practising:{' '}
                     <span className="font-mono font-bold">
                       {selection.keys.length === 1
                         ? selection.keys[0]
                         : `${selection.keys[0]} – ${selection.keys[selection.keys.length - 1]}`}
                     </span>
-                    <span className="text-[#5D2E17]/60">
+                    <span className="text-[#004D4A]/60">
                       {' '}· {selection.keys.length} {selection.keys.length === 1 ? 'ayah' : 'ayahs'}
                     </span>
                   </span>
                 </div>
                 <button
                   onClick={clearSelection}
-                  className="shrink-0 text-xs text-[#5D2E17]/60 hover:text-[#5D2E17] font-bold"
+                  className="shrink-0 text-xs text-[#004D4A]/60 hover:text-[#004D4A] font-bold"
                 >
                   Clear ✕
                 </button>
@@ -527,7 +526,7 @@ export function HifzLab({
                     Your practice
                   </h3>
                   {streak > 0 && (
-                    <span className="text-xs font-bold text-[#F59A23]">
+                    <span className="text-xs font-bold text-[#004D4A]">
                       🔥 {streak} day{streak === 1 ? '' : 's'}
                     </span>
                   )}
@@ -587,7 +586,7 @@ export function HifzLab({
                     return (
                       <div key={d.day} className="flex-1 flex flex-col items-center gap-1">
                         <div
-                          className={`w-full rounded-sm ${d.count > 0 ? 'bg-[#F59A23]' : 'bg-stone-200'}`}
+                          className={`w-full rounded-sm ${d.count > 0 ? 'bg-[#004D4A]' : 'bg-stone-200'}`}
                           style={{ height }}
                           title={`${d.day}: ${d.count} recitation${d.count === 1 ? '' : 's'}${
                             d.avgScore != null ? `, avg ${d.avgScore}` : ''
@@ -608,7 +607,7 @@ export function HifzLab({
                   <button
                     type="button"
                     onClick={() => handlePageChange(resume.page as number)}
-                    className="mt-3 w-full rounded-xl border border-[#F59A23]/30 bg-[#F59A23]/10 px-3 py-2 text-xs font-bold text-[#5D2E17] hover:bg-[#F59A23]/20"
+                    className="mt-3 w-full rounded-xl border border-[#004D4A]/30 bg-[#004D4A]/10 px-3 py-2 text-xs font-bold text-[#004D4A] hover:bg-[#004D4A]/20"
                   >
                     Resume page {resume.page}
                     {resume.verseKey ? ` · last at ${resume.verseKey.split(',')[0]}` : ''}
@@ -648,9 +647,9 @@ export function HifzLab({
             )}
 
             {/* Quick tips */}
-            <div className="bg-gradient-to-br from-[#F59A23]/10 to-[#F59A23]/5 rounded-2xl border border-[#F59A23]/20 p-4">
-              <p className="text-xs font-bold text-[#5D2E17] mb-2">📚 How to use Hifz Lab</p>
-              <ol className="text-xs text-[#5D2E17]/80 space-y-1.5 list-decimal list-inside leading-relaxed">
+            <div className="bg-gradient-to-br from-[#004D4A]/10 to-[#004D4A]/5 rounded-2xl border border-[#004D4A]/20 p-4">
+              <p className="text-xs font-bold text-[#004D4A] mb-2">📚 How to use Hifz Lab</p>
+              <ol className="text-xs text-[#004D4A]/80 space-y-1.5 list-decimal list-inside leading-relaxed">
                 <li>Tap an ayah to select it, then tap another to recite a longer passage</li>
                 <li>Tap <strong>Recite</strong> to start, and tap again when you finish</li>
                 <li><strong>🙈 Revise</strong> hides the words so you recite from memory</li>

@@ -70,7 +70,7 @@ export default function MethodologyPage() {
   return (
     <main className="bg-bg-neutral min-h-screen">
       {/* PAGE HEADER */}
-      <section className="relative pt-24 pb-20 bg-secondary overflow-hidden text-center">
+      <section className="relative pt-16 pb-20 bg-secondary overflow-hidden text-center">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-primary/10 blur-[120px] rounded-full mix-blend-screen" />
           <div className="absolute top-[20%] -right-[10%] w-[40%] h-[100%] bg-primary/20 blur-[100px] rounded-full mix-blend-screen" />

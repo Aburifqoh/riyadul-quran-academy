@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { WHATSAPP_NUMBER } from '@/lib/utils';
 
 export const FloatingButtons = () => {
   const pathname = usePathname();
@@ -13,7 +13,7 @@ export const FloatingButtons = () => {
     <>
       {/* WhatsApp Support */}
       <a
-        href="https://wa.me/2348109690304?text=Hello%20Ilmvers%20Support!%20I%20have%20a%20question."
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ilmvers%20Support!%20I%20have%20a%20question.`}
         target="_blank"
         className="fixed bottom-[15px] right-[15px] md:bottom-[20px] md:right-[20px] w-[50px] h-[50px] md:w-[55px] md:h-[55px] rounded-full bg-[#25D366] flex items-center justify-center shadow-[0_4px_15px_rgba(37,211,102,0.4)] z-[1000] transition-all duration-300 hover:scale-110"
         rel="noopener noreferrer"

@@ -4,7 +4,7 @@ import { getCommunityPosts } from '@/lib/db';
 export const revalidate = 3600; // revalidate every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://ilmversinstitute.com';
+  const baseUrl = 'https://ilmvers.com';
   const lastModified = new Date();
   
   const posts = await getCommunityPosts();
@@ -19,6 +19,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Core — Highest priority
     { url: baseUrl, lastModified, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${baseUrl}/programs`, lastModified, changeFrequency: 'monthly', priority: 0.95 },
+    { url: `${baseUrl}/programs/quran-tajweed`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/programs/islamic-studies`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/programs/hifz`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/programs/arabic`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/programs/children`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/programs/advanced`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/pricing`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/admissions`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/teachers`, lastModified, changeFrequency: 'monthly', priority: 0.85 },
@@ -29,6 +35,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/blog`, lastModified, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${baseUrl}/faq`, lastModified, changeFrequency: 'monthly', priority: 0.65 },
     { url: `${baseUrl}/contact`, lastModified, changeFrequency: 'yearly', priority: 0.6 },
+    { url: `${baseUrl}/privacy`, lastModified, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${baseUrl}/terms`, lastModified, changeFrequency: 'yearly', priority: 0.4 },
     // CTA pages
     { url: `${baseUrl}/register`, lastModified, changeFrequency: 'yearly', priority: 0.75 },
     { url: `${baseUrl}/login`, lastModified, changeFrequency: 'yearly', priority: 0.5 },

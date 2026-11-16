@@ -18,10 +18,18 @@ const CRON_ROUTES: Record<string, string> = {
   '0 5 1 * *': '/api/cron/purge-messages',
 };
 
-const ORIGIN = 'https://ilmversinstitute.com';
+const ORIGIN = 'https://ilmvers.com';
+const ADMIN_HOST = 'admin.ilmvers.com';
 
 const worker = {
-  fetch: handler.fetch,
+  async fetch(request: Request, env: unknown, ctx: unknown) {
+    const url = new URL(request.url);
+    if (url.hostname === ADMIN_HOST && url.pathname === '/') {
+      url.pathname = '/portal/admin';
+      return Response.redirect(url.toString(), 302);
+    }
+    return handler.fetch(request, env, ctx);
+  },
 
   async scheduled(controller: CronController, env: CronEnv, ctx: unknown) {
     const path = CRON_ROUTES[controller.cron];

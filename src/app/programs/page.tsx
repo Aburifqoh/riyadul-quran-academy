@@ -65,7 +65,7 @@ const programs = [
       "Customized daily memorization targets and schedules",
       "Systematic long-term revision and retention plans",
       "Real-time feedback and recitation evaluation",
-      "Preparation for formal Ijazah certification"
+      "A path toward Ijazah once a qualified teacher is assigned"
     ],
     badges: ["Structured Plans", "Progress Tracking", "Personalized Support"],
     theme: "ivory"
@@ -79,10 +79,10 @@ const programs = [
     points: [
       "Conversational fluency in modern standard Arabic",
       "Classical grammar (Nahw) and morphology (Sarf)",
-      "Vocabulary building with 1000+ Qur'anic keywords",
-      "Interactive speaking sessions with native instructors"
+      "Vocabulary drawn from the Qur'an and taught in class",
+      "Speaking practice with the instructor assigned to you"
     ],
-    badges: ["Speaking Skills", "Reading & Writing", "Native Instructors"],
+    badges: ["Speaking Skills", "Reading & Writing", "Guided Practice"],
     theme: "teal"
   },
   {
@@ -119,7 +119,7 @@ const programs = [
 
 export default function ProgramsPage() {
   return (
-    <main className="bg-[#FAF9F6] min-h-screen text-[#2E2E2E] font-sans pt-28 pb-20">
+    <main className="bg-[#FAF9F6] min-h-screen text-[#2E2E2E] font-sans pt-10 pb-20">
       
       {/* Header matching courses and program.jpeg */}
       <section className="px-6 md:px-12 max-w-7xl mx-auto mb-20 text-center">
@@ -164,7 +164,7 @@ export default function ProgramsPage() {
                     </span>
                   </div>
                   <h2 className={`text-3xl md:text-4xl font-headers font-bold ${isTeal ? 'text-white' : 'text-[#004D4A]'}`}>
-                    {program.title}
+                    <Link href={`/programs/${program.id}`} className="hover:underline">{program.title}</Link>
                   </h2>
                 </div>
 
@@ -217,23 +217,38 @@ export default function ProgramsPage() {
 
                 {/* Arch preview frame on the right */}
                 <div className="lg:col-span-5 flex justify-center">
-                  <div className="relative w-full max-w-[320px] aspect-[4/3] rounded-t-[100px] rounded-b-2xl overflow-hidden border-2 border-[#D4AF37]/40 shadow-xl bg-black/10">
+                  <div className="relative w-full max-w-[360px] aspect-[4/5] rounded-3xl overflow-hidden border border-[#E2E9E7] shadow-md">
                     <img 
-                      src="/assets/images/ilmverse.jpeg" 
+                      src="/assets/images/hero-student.jpg" 
                       alt={program.title}
                       className="w-full h-full object-cover" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-4">
-                      <span className="text-white text-xs font-bold uppercase tracking-wider">
-                        {program.title}
-                      </span>
-                    </div>
                   </div>
                 </div>
               </div>
             </motion.div>
           );
         })}
+      </section>
+
+      <section id="enrichment" className="px-6 md:px-12 max-w-7xl mx-auto mt-20">
+        <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#D4AF37] mb-2">Extra-curricular</p>
+        <h2 className="text-3xl md:text-4xl font-headers font-bold text-[#004D4A] mb-3">Circles beside the core programmes</h2>
+        <p className="text-[#5A6E6C] max-w-3xl mb-8">These are optional study circles, not separate priced courses. Your teacher confirms the outline when you enrol. Fees stay unpublished until the institute sets them.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            ['Weekend Halaqah', 'Revision, questions, and supervised practice on the weekend.'],
+            ["Qur'an Review Circle", 'Extra recitation time beside Tajweed or Hifz.'],
+            ['Adab & Character', 'Manners and how knowledge is lived at home.'],
+            ['Family Learning Circle', 'Parents and children learning in one sitting.'],
+            ["Children's Weekend Club", 'Stories, Arabic sounds, and short activities for younger learners.'],
+          ].map(([title, text]) => (
+            <div key={title} className="rounded-2xl border border-[#E2E9E7] bg-white p-5">
+              <h3 className="font-headers font-bold text-[#004D4A] mb-2">{title}</h3>
+              <p className="text-sm text-[#5A6E6C]">{text}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Trust points strip */}
@@ -244,7 +259,7 @@ export default function ProgramsPage() {
               Learn Today, Lead Tomorrow
             </h3>
             <p className="text-xs text-[#5A6E6C]">
-              All programs include live sessions, digital study notes, and accredited certificates of completion.
+              Live classes and study notes. Fees, and any certificate, are confirmed at enrolment.
             </p>
           </div>
           <Link 

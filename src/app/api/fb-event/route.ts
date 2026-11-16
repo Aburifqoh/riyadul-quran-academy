@@ -32,7 +32,7 @@ export async function POST(request: Request) {
           event_time: Math.floor(Date.now() / 1000),
           event_id: eventId || undefined,
           action_source: "website",
-          event_source_url: url || "https://ilmversinstitute.com",
+          event_source_url: url || "https://ilmvers.com",
           user_data: {
             em: hashedEmail ? [hashedEmail] : [],
             ph: hashedPhone ? [hashedPhone] : [],

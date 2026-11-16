@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 export function WhyChooseUs() {
   const reasons = [
     {
-      title: "Certified Instructors with Ijazah",
-      description: "Learn directly from native Arabic speakers and scholars holding authentic chains of transmission (Ijazah)."
+      title: "Qualified instructors",
+      description: "You are matched with an instructor for your level. Confirmed profiles are published on Our Scholars."
     },
     {
       title: "1-on-1 Personalized Learning",
@@ -17,7 +17,7 @@ export function WhyChooseUs() {
     },
     {
       title: "Flexible Scheduling",
-      description: "Book classes at times that suit you, 24/7. Reschedule easily through our interactive student portal."
+      description: "Classes are arranged at times that suit your household, and changes are made in the student portal."
     }
   ];
 

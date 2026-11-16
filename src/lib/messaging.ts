@@ -597,7 +597,7 @@ async function notifyMessageRecipient(
   const cronSecret = process.env.CRON_SECRET;
   if (cronSecret) {
     try {
-      const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://ilmversinstitute.com';
+      const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://ilmvers.com';
       await fetch(`${base}/api/push/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

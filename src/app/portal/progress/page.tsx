@@ -112,7 +112,7 @@ export default function StudentProgressPage() {
 
       {/* Print-only Header */}
       <div className="hidden print:block mb-8 border-b-2 border-slate-900 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Al-Muqri Institute</h1>
+        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Ilmvers Institute</h1>
         <h2 className="text-xl font-bold text-slate-700 mt-2">Student Progress Report</h2>
         <div className="mt-4 grid grid-cols-2 gap-4 text-sm text-slate-600">
           <p><strong>Student:</strong> {userData.name || user?.email}</p>
@@ -180,17 +180,17 @@ export default function StudentProgressPage() {
                   <path d={areaPathData} fill="url(#gradient)" className="opacity-20" />
                   <defs>
                     <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
-                      <stop offset="0%" stopColor="#f59a23" />
-                      <stop offset="100%" stopColor="#f59a23" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#004D4A" />
+                      <stop offset="100%" stopColor="#004D4A" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   
                   {/* Line */}
-                  <path d={pathData} fill="none" stroke="#f59a23" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d={pathData} fill="none" stroke="#004D4A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                   
                   {/* Points */}
                   {points.map((p, i) => (
-                    <circle key={i} cx={p.x} cy={p.y} r="4" fill="#ffffff" stroke="#f59a23" strokeWidth="2">
+                    <circle key={i} cx={p.x} cy={p.y} r="4" fill="#ffffff" stroke="#004D4A" strokeWidth="2">
                       <title>Session {i+1}: {chartSessions[i].accuracy_score}%</title>
                     </circle>
                   ))}

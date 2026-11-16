@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Calendar, FileText, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 
@@ -26,7 +26,7 @@ export function PortalPreview() {
           </span>
           <h2 className="mb-4 text-4xl font-bold font-headers">Your Ilmvers Student Portal</h2>
           <p className="mb-8 text-white/90 text-lg">
-            No more guessing what your child is learning or hunting through WhatsApp for Zoom links. Experience complete educational oversight.
+            Classes, homework, and teacher notes live in the portal. This panel is a sample of the layout, not a real student.
           </p>
 
           <TabsList className="flex flex-col !h-auto min-h-min bg-transparent items-start gap-4 mb-8 space-x-0 p-0">
@@ -79,7 +79,7 @@ export function PortalPreview() {
                   <div className="flex flex-col gap-1">
                     <strong className="text-white text-lg">Parent View & Reports</strong>
                     <span className="text-sm text-white/70 font-normal">
-                      Monitor multiple children and track monthly growth effortlessly.
+                      Attendance, homework, and teacher notes for your children.
                     </span>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export function PortalPreview() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full"
         >
-          <div className="bg-white/20 backdrop-blur-xl border border-white/30 shadow-[0_30px_60px_rgba(0,0,0,0.4)] w-full h-[450px] bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7)),url('/assets/tablet_study.png')] bg-cover bg-center rounded-2xl flex items-center justify-center p-5 relative overflow-hidden">
+          <div className="bg-white/20 backdrop-blur-xl border border-white/30 shadow-[0_30px_60px_rgba(0,0,0,0.4)] w-full h-[450px] bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7)),url('/assets/images/student%20dashboard.jpeg')] bg-cover bg-center rounded-2xl flex items-center justify-center p-5 relative overflow-hidden">
             
             {/* View 1: Schedule */}
             <TabsContent value="schedule" className="w-full h-full m-0 data-[state=inactive]:hidden">
@@ -115,12 +115,12 @@ export function PortalPreview() {
                   <strong className="text-muted-foreground text-sm">Schedule Preview</strong>
                 </div>
                 <div className="p-5 flex-1 flex flex-col">
-                  <h3 className="text-foreground text-lg font-bold mb-4">Welcome Back, Aishah</h3>
+                  <h3 className="text-foreground text-lg font-bold mb-4">Sample timetable</h3>
                   <div className="border-2 border-dashed border-primary p-4 rounded-lg text-center mb-4 bg-primary/5 flex flex-col items-center">
-                    <h4 className="text-secondary font-bold mb-2">Live Class Starts in 15 mins</h4>
-                    <Button className="rounded-full w-max">Join Live Class Now</Button>
+                    <h4 className="text-secondary font-bold mb-2">Sample class card</h4>
+                    <span className="inline-flex rounded-full bg-[#004D4A]/10 text-[#004D4A] px-4 py-2 text-sm font-semibold">Sample preview</span>
                   </div>
-                  <p className="text-muted-foreground text-sm"><strong>Upcoming:</strong> Qur'an Level 2 (Tomorrow 10:00AM)</p>
+                  <p className="text-muted-foreground text-sm">Your real timetable appears after enrolment.</p>
                 </div>
               </motion.div>
             </TabsContent>
@@ -137,11 +137,11 @@ export function PortalPreview() {
                 <div className="p-5 flex-1 flex flex-col overflow-y-auto">
                   <h3 className="text-foreground text-lg font-bold mb-4">Recent Feedback</h3>
                   <div className="border border-border rounded-lg p-3 mb-3 bg-muted/50">
-                    <strong className="text-primary block text-sm mb-1">Ustadh Tariq wrote (Today):</strong>
+                    <strong className="text-primary block text-sm mb-1">Sample note</strong>
                     <p className="text-foreground text-sm">"MashaAllah, excellent improvement on the Ikhfa. For homework, please trace Surah Al-Mulk ayat 1-5 and send voice note."</p>
                   </div>
                   <div className="border border-border rounded-lg p-3 bg-muted/50">
-                    <strong className="text-primary block text-sm mb-1">Ustadh Tariq wrote (Monday):</strong>
+                    <strong className="text-primary block text-sm mb-1">Sample note</strong>
                     <p className="text-foreground text-sm">"Focus heavily on the letter 'Kha'. Keep reading page 14."</p>
                   </div>
                 </div>
@@ -162,17 +162,14 @@ export function PortalPreview() {
                   <div className="flex gap-4 mb-5">
                     <div className="flex-1 bg-blue-50 p-3 rounded-lg border border-blue-100">
                       <span className="text-blue-600 text-xs font-bold block mb-1">ATTENDANCE</span>
-                      <strong className="text-blue-800">98% This Month</strong>
+                      <strong className="text-blue-800">Logged in class</strong>
                     </div>
                     <div className="flex-1 bg-amber-50 p-3 rounded-lg border border-amber-100">
                       <span className="text-amber-600 text-xs font-bold block mb-1">HIFZ GOAL</span>
-                      <strong className="text-amber-800">2 Juz Completed</strong>
+                      <strong className="text-amber-800">Set with the teacher</strong>
                     </div>
                   </div>
-                  <div className="w-full h-2 bg-muted rounded-full mb-2 overflow-hidden">
-                    <div className="w-[75%] h-full bg-primary rounded-full"></div>
-                  </div>
-                  <p className="text-muted-foreground text-xs text-right">Level 2 Fluency (75% Complete)</p>
+                  <p className="text-muted-foreground text-xs">Progress is recorded in class. This card is a sample.</p>
                 </div>
               </motion.div>
             </TabsContent>

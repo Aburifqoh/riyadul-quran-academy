@@ -3,10 +3,12 @@ import type { Metadata, Viewport } from "next";
 import { Amiri, Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { PwaRegister } from "@/components/PwaRegister";
 import { Footer } from "@/components/Footer";
 import { FloatingButtons } from "@/components/FloatingButtons";
 import { AuthProvider } from "@/context/AuthContext";
 import MetaPixel from "@/components/MetaPixel";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import Link from 'next/link';
 import { cn } from "@/lib/utils";
 
@@ -29,7 +31,7 @@ const amiri = Amiri({
   display: 'swap',
 });
 
-const BASE_URL = 'https://ilmversinstitute.com';
+const BASE_URL = 'https://ilmvers.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -49,12 +51,7 @@ export const metadata: Metadata = {
   creator: "Ilmvers Institute",
   publisher: "Ilmvers Institute",
   category: "Education",
-  alternates: {
-    canonical: BASE_URL,
-  },
   openGraph: {
-    title: "ILMVERS INSTITUTE | Knowledge. Faith. Excellence.",
-    description: "Authentic Islamic education, delivered by qualified scholars, with modern learning tools — anytime, anywhere in the world.",
     url: BASE_URL,
     siteName: "Ilmvers Institute",
     images: [
@@ -70,27 +67,26 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ILMVERS INSTITUTE | Knowledge. Faith. Excellence.",
-    description: "Authentic Islamic education, delivered by qualified scholars, with modern learning tools.",
     images: ["/assets/images/logo.jpeg"],
   },
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
   manifest: "/manifest.json",
-  icons: [
-    {
-      media: '(prefers-color-scheme: light)',
-      url: '/assets/images/logo.jpeg',
-      href: '/assets/images/logo.jpeg',
-    },
-    {
-      media: '(prefers-color-scheme: dark)',
-      url: '/assets/images/logo dark.jpeg',
-      href: '/assets/images/logo dark.jpeg',
-    },
-    {
-      rel: 'apple-touch-icon',
-      url: '/assets/images/logo.jpeg',
-    }
-  ],
+  appleWebApp: {
+    capable: true,
+    title: "Ilmvers",
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-ilmvers-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-ilmvers.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   formatDetection: {
     telephone: false,
   },
@@ -120,13 +116,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", playfair.variable, montserrat.variable, amiri.variable, "font-sans")}
+      className={cn("h-full", "scroll-pt-28", "antialiased", playfair.variable, montserrat.variable, amiri.variable, "font-sans")}
     >
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap"
-          rel="stylesheet"
-        />
+        <GoogleAnalytics />
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
           <noscript>
             <img
@@ -146,8 +139,8 @@ export default function RootLayout({
               "@type": "EducationalOrganization",
               "name": "ILMVERS INSTITUTE",
               "alternateName": ["Ilmvers Institute", "Ilmvers Academy"],
-              "url": "https://ilmversinstitute.com",
-              "logo": "https://ilmversinstitute.com/assets/images/logo.jpeg",
+              "url": "https://ilmvers.com",
+              "logo": "https://ilmvers.com/assets/images/logo.jpeg",
               "description": "Ilmvers Institute is a premier online Islamic institution offering structured learning in Qur'an & Tajweed, Islamic Studies, Hifz, Arabic Language, and Children's Education delivered by qualified scholars.",
               "sameAs": [
                 "https://instagram.com/ilmversinstitute",
@@ -157,7 +150,7 @@ export default function RootLayout({
                 "@type": "ContactPoint",
                 "contactType": "Customer Support",
                 "availableLanguage": ["English", "Arabic"],
-                "url": "https://ilmversinstitute.com/contact"
+                "url": "https://ilmvers.com/contact"
               },
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
@@ -180,6 +173,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <MetaPixel />
           </Suspense>
+          <PwaRegister />
           <Navbar />
           <main className="flex-1">
             {children}

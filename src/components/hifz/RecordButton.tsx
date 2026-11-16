@@ -115,10 +115,10 @@ export function RecordButton({ recorderState, waveform, duration, onStart, onSto
               : isProcessing
               ? 'bg-amber-400 cursor-wait scale-100'
               : isDone
-              ? 'bg-[#5D2E17] hover:bg-[#4a2412] active:scale-95 focus-visible:ring-[#F59A23]'
+              ? 'bg-[#004D4A] hover:bg-[#0F3D38] active:scale-95 focus-visible:ring-[#004D4A]'
               : disabled
               ? 'bg-stone-300 cursor-not-allowed'
-              : 'bg-gradient-to-br from-[#F59A23] to-[#ffb44d] hover:brightness-110 active:scale-95 shadow-lg shadow-[#F59A23]/30 focus-visible:ring-[#F59A23]'
+              : 'bg-gradient-to-br from-[#004D4A] to-[#166B67] hover:brightness-110 active:scale-95 shadow-lg shadow-[#004D4A]/30 focus-visible:ring-[#004D4A]'
             }
           `}
         >

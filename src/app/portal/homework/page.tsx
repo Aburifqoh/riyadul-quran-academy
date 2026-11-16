@@ -172,7 +172,7 @@ export default function StudentHomeworkPage() {
                   </div>
                   <button className={cn(
                     "px-6 py-2 rounded-full font-bold text-sm transition-all",
-                    selectedHw?.id === h.id ? "bg-amber-500 text-white shadow-md" : "bg-white text-secondary border border-gray-200 group-hover:border-secondary"
+                    selectedHw?.id === h.id ? "bg-[#004D4A] text-white shadow-md" : "bg-white text-secondary border border-gray-200 group-hover:border-secondary"
                   )}>
                     {selectedHw?.id === h.id ? 'Selected' : 'Complete'}
                   </button>
@@ -214,7 +214,7 @@ export default function StudentHomeworkPage() {
                      <div className="mt-4 p-4 bg-white rounded-xl border border-gray-200">
                         <div className="flex items-center justify-between mb-2">
                            <strong className="text-secondary text-sm font-bold uppercase tracking-wider">Teacher Feedback</strong>
-                           <span className="font-black text-amber-500">{h.grade}</span>
+                           <span className="font-black text-[#004D4A]">{h.grade}</span>
                         </div>
                         <p className="m-0 text-gray-600 italic">"{h.teacherFeedback}"</p>
                      </div>

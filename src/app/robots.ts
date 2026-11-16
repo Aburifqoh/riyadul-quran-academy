@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/portal/', '/api/', '/payment/', '/verify/', '/admin/', '/teacher/', '/seed-teachers/', '/parent/'],
       },
     ],
-    sitemap: 'https://ilmversinstitute.com/sitemap.xml',
+    sitemap: 'https://ilmvers.com/sitemap.xml',
   };
 }

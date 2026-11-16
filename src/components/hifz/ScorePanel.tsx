@@ -147,10 +147,10 @@ export function ScorePanel({ result, previousBest, onRetry, onNext }: Props) {
 
       {/* Teacher feedback */}
       {result.tajweedFeedback && (
-        <div className="bg-[#F59A23]/10 border border-[#F59A23]/30 rounded-xl p-3.5 text-sm text-[#5D2E17] leading-relaxed">
+        <div className="bg-[#004D4A]/10 border border-[#004D4A]/30 rounded-xl p-3.5 text-sm text-[#004D4A] leading-relaxed">
           <div className="flex items-center gap-1.5 mb-2">
             <span>🎓</span>
-            <span className="font-bold text-xs uppercase tracking-wider text-[#F59A23]">
+            <span className="font-bold text-xs uppercase tracking-wider text-[#004D4A]">
               <span className="text-sm normal-case" style={{ fontFamily: "'Amiri Quran', 'Amiri', serif" }}>مُلَاحَظَة</span>
               <span className="ml-2">Teacher&apos;s note</span>
             </span>
@@ -306,7 +306,7 @@ export function ScorePanel({ result, previousBest, onRetry, onNext }: Props) {
         </button>
         <button
           onClick={onNext}
-          className="flex-1 py-3 rounded-xl bg-gradient-to-br from-[#F59A23] to-[#ffb44d] shadow-[0_4px_15px_rgba(245,154,35,0.3)] text-white text-sm font-bold hover:shadow-[0_8px_25px_rgba(245,154,35,0.4)] active:scale-95 transition-all"
+          className="flex-1 py-3 rounded-xl bg-gradient-to-br from-[#004D4A] to-[#166B67] shadow-[0_4px_15px_rgba(0,77,74,0.3)] text-white text-sm font-bold hover:shadow-[0_8px_25px_rgba(0,77,74,0.4)] active:scale-95 transition-all"
         >
           Next Ayah →
         </button>

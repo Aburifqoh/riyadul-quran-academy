@@ -2,39 +2,26 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getLatestPosts, getTestimonials } from '@/lib/db';
+import { getLatestPosts } from '@/lib/db';
 import { HeroSection } from '@/components/homepage/HeroSection';
-import { TrustStrip } from '@/components/homepage/TrustStrip';
 import { Pathways } from '@/components/homepage/Pathways';
-import { WhoWeServe } from '@/components/homepage/WhoWeServe';
 import { HowItWorks } from '@/components/homepage/HowItWorks';
 import { PortalPreview } from '@/components/homepage/PortalPreview';
 import { WhyChooseUs } from '@/components/homepage/WhyChooseUs';
-import { PremiumFeatures } from '@/components/homepage/PremiumFeatures';
-import { Methodology } from '@/components/homepage/Methodology';
+import { StudyAssistant } from '@/components/StudyAssistant';
 import { motion } from 'framer-motion';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 
 export default function HomePage() {
   const [posts, setPosts] = useState<any[]>([]);
-  const [testimonials, setTestimonials] = useState<any[]>([]);
-  const [loadingPosts, setLoadingPosts] = useState(true);
-  const [loadingTestimonials, setLoadingTestimonials] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [postsData, testimonialsData] = await Promise.all([
-          getLatestPosts(3),
-          getTestimonials()
-        ]);
+        const postsData = await getLatestPosts(3);
         setPosts(postsData);
-        setTestimonials(testimonialsData);
       } catch (error) {
         console.error("Error fetching homepage data:", error);
-      } finally {
-        setLoadingPosts(false);
-        setLoadingTestimonials(false);
       }
     };
     fetchData();
@@ -43,17 +30,32 @@ export default function HomePage() {
   return (
     <main className="bg-background">
       <HeroSection />
-      <TrustStrip />
+      <section className="bg-[#FAF9F6] pb-6">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-[#2E2E2E] text-lg leading-relaxed">
+            Ilmvers Institute teaches Qur&apos;an, Tajweed, Hifz, Arabic, and Islamic studies in live classes. You enrol, meet a teacher, and follow a clear plan.
+          </p>
+        </div>
+      </section>
       <Pathways />
-      <WhoWeServe />
+      <WhyChooseUs />
+      <section className="py-16 bg-[#FAF9F6] border-y border-[#E2E9E7]">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#D4AF37] mb-3">Our Scholars</p>
+          <h2 className="text-3xl font-headers font-bold text-[#004D4A] mb-4">Taught by qualified instructors</h2>
+          <p className="text-[#5A6E6C] mb-6">Faculty profiles are published when the institute confirms them. Sample cards stay editable in the admin portal and are not the live faculty list.</p>
+          <Link href="/teachers" className="inline-flex rounded-full bg-[#004D4A] text-white px-6 py-3 text-sm font-semibold">Meet the scholars</Link>
+        </div>
+      </section>
       <HowItWorks />
       <PortalPreview />
-      <WhyChooseUs />
-      <div className="w-full max-w-6xl mx-auto px-8 border-t border-border"></div>
-      <PremiumFeatures />
-      <Methodology />
+      <section className="py-16 bg-[#FAF9F6]" id="study-assistant">
+        <div className="max-w-3xl mx-auto px-6">
+          <StudyAssistant />
+        </div>
+      </section>
 
-      {/* LATEST INSTITUTIONAL UPDATES */}
+      {posts.length > 0 && (
       <section className="py-20 bg-muted/30">
         <div className="w-full max-w-6xl mx-auto px-8">
           <div className="flex justify-between items-end mb-10 flex-wrap gap-5">
@@ -65,16 +67,13 @@ export default function HomePage() {
               <span className="text-primary block font-bold uppercase tracking-widest text-sm mb-2">Academy Journal</span>
               <h2 className="text-3xl font-bold font-headers text-foreground m-0">Latest Institutional Updates</h2>
             </motion.div>
-            <Link href="/community" className={buttonVariants({ variant: "outline", className: "rounded-full border-2 border-secondary text-secondary hover:bg-secondary hover:text-white" })}>
+            <Link href="/blog" className={buttonVariants({ variant: "outline", className: "rounded-full border-2 border-secondary text-secondary hover:bg-secondary hover:text-white" })}>
               View All Writeups
             </Link>
           </div>
           
           <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {loadingPosts ? (
-              <p className="text-center text-muted-foreground col-span-3">Loading latest insights...</p>
-            ) : (
-              posts.map((post, idx) => {
+            {posts.map((post, idx) => {
                 const dateStr = post.date ? new Date(post.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : '';
                 return (
                   <motion.div 
@@ -100,46 +99,11 @@ export default function HomePage() {
                     </Link>
                   </motion.div>
                 );
-              })
-            )}
+              })}
           </div>
         </div>
       </section>
-
-      {/* VERIFIED TESTIMONIALS */}
-      <section className="py-20 bg-background">
-        <div className="w-full max-w-6xl mx-auto px-8">
-          <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-          >
-            <h2 className="text-center mb-2 text-4xl font-bold font-headers text-foreground">Trusted By Families Worldwide</h2>
-            <p className="text-center text-primary text-sm mb-10">Swipe to view more &rarr;</p>
-          </motion.div>
-          
-          <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {loadingTestimonials ? (
-              <p className="text-center text-muted-foreground col-span-3">"Awaiting our newest family reviews..."</p>
-            ) : (
-              testimonials.map((t, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-card rounded-2xl p-6 shadow-sm border border-border text-center transition-all duration-300 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <p className="text-muted-foreground italic mb-6 text-sm">"{t.content}"</p>
-                  <h5 className="text-primary font-bold text-lg mb-1">{t.author}</h5>
-                  <span className="text-xs text-muted-foreground">{t.program} Student</span>
-                </motion.div>
-              ))
-            )}
-          </div>
-        </div>
-      </section>
+      )}
 
       {/* FINAL CTA SECTION */}
       <section className="py-24 bg-secondary text-white text-center relative overflow-hidden">

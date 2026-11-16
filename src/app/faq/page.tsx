@@ -21,7 +21,7 @@ export default function FaqPage() {
       items: [
         {
           q: "How do I start learning at Ilmvers?",
-          a: "Our enrollment is structured to ensure you are placed correctly. First, create a free account to access your Student Portal. From there, you will book a free 15-minute diagnostic Assessment. Once assessed, your level is set, and you can securely select a tuition plan on our Pricing page to unlock your live class schedule."
+          a: "Create an account, then book the free assessment. After that, Ilmvers confirms your level and the fee with you. Prices are not listed until the academy publishes them."
         },
         {
           q: "What happens during the Free Assessment?",
@@ -33,12 +33,12 @@ export default function FaqPage() {
       category: "Portal & Platform",
       items: [
         {
-          q: "How do the live classes work? (Where is the Zoom link?)",
-          a: "Say goodbye to hunting for Zoom links in WhatsApp! All classes are managed inside your Ilmvers Student Portal. Simply log in before class, and click the \"Join Live Class\" button on your personalized itinerary."
+          q: "How do I join a live class?",
+          a: "Classes are opened from the student portal. Log in before class and use Join Live Class on your schedule. You do not need a separate link in WhatsApp."
         },
         {
           q: "Can I track my child's progress?",
-          a: "Absolutely. Ilmvers is built on 100% Parent Transparency. The Parent Portal allows you to track Tajweed Mastery percentages, Vocabulary Retention, daily attendance, and read direct post-class feedback/homework assigned by the instructor."
+          a: "Parents can follow attendance, homework, and teacher notes for their children from the parent area."
         }
       ]
     },
@@ -47,11 +47,11 @@ export default function FaqPage() {
       items: [
         {
           q: "What programs do you actually offer?",
-          a: "Unlike basic tutoring sites, we offer 5 highly structured pathways:\n1. Qur'an Reading Foundations (For absolute beginners/kids)\n2. Tajweed & Recitation Mastery\n3. Hifz (Memorization) Academy\n4. Deep Qur'anic Arabic\n5. Essential Islamic Studies (Fiqh, Aqeedah, Seerah)"
+          a: "Six tracks: Qur'an & Tajweed, Islamic Studies, Hifz, Arabic, Children's Education, and Advanced Studies. Extra circles, such as weekend halaqah, are optional and are not separate priced courses."
         },
         {
           q: "Do you have female instructors for sisters?",
-          a: "Yes. We maintain strict Islamic boundaries. Female students and young children are assigned directly to our certified female instructors."
+          a: "Sisters and young girls can request a female instructor. Say so on the assessment form and the team will match you."
         },
         {
           q: "Do I need to speak Arabic beforehand?",
@@ -66,7 +66,7 @@ export default function FaqPage() {
   return (
     <>
       {/* HERO SECTION */}
-      <header className="py-16 bg-bg-dark text-center py-20">
+      <header className="py-20 bg-[#004D4A] text-center">
         <div className="w-full max-w-[1200px] mx-auto px-8">
           <h1 className="mb-4 text-white text-5xl">Frequently Asked Questions</h1>
           <p className="text-xl text-white/90">Everything you need to know about learning with Ilmvers.</p>
@@ -78,7 +78,7 @@ export default function FaqPage() {
         <div className="w-full max-w-[1200px] mx-auto px-8 max-w-3xl">
           {faqData.map((section, sIdx) => (
             <React.Fragment key={sIdx}>
-              <h3 className={`text-2xl font-bold text-[#F59A23] mb-6 border-b border-gray-200 pb-4 ${sIdx === 0 ? 'mt-8' : 'mt-16'}`}>
+              <h3 className={`text-2xl font-bold text-[#004D4A] mb-6 border-b border-gray-200 pb-4 ${sIdx === 0 ? 'mt-8' : 'mt-16'}`}>
                 {section.category}
               </h3>
               
@@ -95,9 +95,9 @@ export default function FaqPage() {
                         className="w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-gray-50 transition-colors"
                         onClick={() => toggleAccordion(currentIndex)}
                       >
-                        <span className="font-bold text-lg text-bg-dark">{item.q}</span>
+                        <span className="font-bold text-lg text-[#0F3D38]">{item.q}</span>
                         <span 
-                          className={`text-2xl text-[#F59A23] transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
+                          className={`text-2xl text-[#004D4A] transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
                         >
                           +
                         </span>
@@ -105,7 +105,7 @@ export default function FaqPage() {
                       <div 
                         className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
                       >
-                        <div className="p-6 pt-0 border-t border-gray-50 text-text-[#5C5148] leading-relaxed whitespace-pre-line">
+                        <div className="p-6 pt-0 border-t border-gray-50 text-[#5A6E6C] leading-relaxed whitespace-pre-line">
                           {item.a}
                         </div>
                       </div>
@@ -122,8 +122,8 @@ export default function FaqPage() {
       <section className="py-16 text-center py-24 bg-white">
         <div className="w-full max-w-[1200px] mx-auto px-8">
           <h2 className="mb-6 text-4xl font-bold">Still have questions?</h2>
-          <p className="mb-10 text-lg text-text-[#5C5148]">Our team is ready to assist you on your journey.</p>
-          <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-[#5D2E17] border-2 border-[#5D2E17] hover:bg-[#5D2E17] hover:text-white hover:-translate-y-1 transition-all duration-300 cursor-pointer bg-transparent py-4 px-10 rounded-full font-bold text-lg transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 inline-block">
+          <p className="mb-10 text-lg text-[#5A6E6C]">Our team is ready to assist you on your journey.</p>
+          <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-[#004D4A] border-2 border-[#004D4A] hover:bg-[#004D4A] hover:text-white hover:-translate-y-1 transition-all duration-300 cursor-pointer bg-transparent py-4 px-10 rounded-full font-bold text-lg transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 inline-block">
             Contact Support
           </Link>
         </div>

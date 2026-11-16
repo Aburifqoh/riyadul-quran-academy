@@ -272,7 +272,7 @@ export default function AdminLiveClasses() {
                     <div className="flex justify-between items-center mb-4">
                       <div>
                         <h3 className="text-lg font-bold font-headers text-secondary m-0 flex items-center gap-2">
-                          <Sparkles className="w-5 h-5 text-amber-500" /> AI Quality Review
+                          <Sparkles className="w-5 h-5 text-[#D4AF37]" /> AI Quality Review
                         </h3>
                         <p className="text-xs text-gray-500 m-0">
                           {aiReport?.source === 'preview'
@@ -283,7 +283,7 @@ export default function AdminLiveClasses() {
                       <button
                         onClick={runAiAnalysis}
                         disabled={analyzing || transcripts.length === 0}
-                        className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-2.5 px-5 rounded-full shadow-sm hover:shadow-md transition-all text-sm disabled:opacity-50"
+                        className="flex items-center gap-2 bg-gradient-to-r from-[#004D4A] to-[#0F3D38] hover:from-[#0F3D38] hover:to-[#004D4A] text-white font-bold py-2.5 px-5 rounded-full shadow-sm hover:shadow-md transition-all text-sm disabled:opacity-50"
                       >
                         {analyzing ? <><RefreshCw className="w-4 h-4 animate-spin" /> Analyzing...</> : <><Sparkles className="w-4 h-4" /> Analyze with AI</>}
                       </button>

@@ -18,7 +18,7 @@ const TYPE_COLORS: Record<string, string> = {
   PDF:   'bg-red-50 text-red-500',
   Audio: 'bg-blue-50 text-blue-500',
   Video: 'bg-purple-50 text-purple-500',
-  Link:  'bg-amber-50 text-amber-500',
+  Link:  'bg-[#E6F3F2] text-[#004D4A]',
 };
 
 const CATEGORIES = ['All', 'Quran', 'Tajweed', 'Arabic', 'Islamic Studies', 'Other'];
@@ -69,7 +69,7 @@ export default function LibraryPage() {
       <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h2 className="text-3xl font-bold font-headers text-secondary m-0 mb-2 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#004D4A] to-[#0F3D38] text-white flex items-center justify-center shadow-sm">
               <Library className="w-5 h-5" />
             </div>
             Learning Library
@@ -129,7 +129,7 @@ export default function LibraryPage() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:border-amber-300 hover:shadow-lg transition-all group cursor-pointer flex flex-col gap-4 relative overflow-hidden"
               >
-                <div className="absolute top-[-20%] right-[-10%] w-32 h-32 bg-amber-500/5 blur-[40px] rounded-full pointer-events-none transition-transform group-hover:scale-125 duration-1000" />
+                <div className="absolute top-[-20%] right-[-10%] w-32 h-32 bg-[#004D4A]/5 blur-[40px] rounded-full pointer-events-none transition-transform group-hover:scale-125 duration-1000" />
 
                 <div className="flex justify-between items-start relative z-10">
                   <div className={cn('w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm', TYPE_COLORS[doc.type] || 'bg-gray-50 text-gray-500')}>

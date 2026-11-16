@@ -517,7 +517,7 @@ export default function AdminCommunications() {
                     </span>
                   </div>
                 </div>
-                <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-[#FDF8F3]/20">
+                <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-[#FAF9F6]/20">
                   {conversation.map((msg, idx) => {
                     const sender = globalMessages.find(g => g.id === msg.id);
                     const fromAdmin = msg.sender_id === 'admin' || adminIds.has(msg.sender_id);
@@ -718,7 +718,7 @@ export default function AdminCommunications() {
                 </div>
 
                 {/* Messages */}
-                <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-[#FDF8F3]/20">
+                <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-[#FAF9F6]/20">
                   {conversation.length === 0 ? (
                     <div className="h-full flex flex-col items-center justify-center text-center">
                       <div className="w-14 h-14 bg-blue-50 text-blue-400 rounded-full flex items-center justify-center mb-3">
@@ -784,7 +784,7 @@ export default function AdminCommunications() {
           <div className="bg-white rounded-[32px] shadow-sm border border-gray-100 p-8">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center">
-                <Radio className="w-6 h-6 text-amber-500" />
+                <Radio className="w-6 h-6 text-[#004D4A]" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-secondary m-0">In-App Broadcast</h3>
@@ -844,7 +844,7 @@ export default function AdminCommunications() {
                             <label key={u.id} className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
                               <input
                                 type="checkbox"
-                                className="w-4 h-4 rounded text-amber-600 focus:ring-amber-500"
+                                className="w-4 h-4 rounded text-amber-600 focus:ring-[#004D4A]"
                                 checked={selectedBroadcastUsers.includes(u.id)}
                                 onChange={(e) => {
                                   if (e.target.checked) setSelectedBroadcastUsers(prev => [...prev, u.id]);
@@ -883,7 +883,7 @@ export default function AdminCommunications() {
               <button
                 type="submit"
                 disabled={isBroadcasting || !broadcastMsg.trim()}
-                className="w-full py-4 rounded-full font-bold bg-amber-500 text-white hover:bg-amber-600 shadow-md hover:shadow-lg transition-all flex justify-center items-center gap-2 disabled:opacity-50 text-base"
+                className="w-full py-4 rounded-full font-bold bg-[#004D4A] text-white hover:bg-[#0F3D38] shadow-md hover:shadow-lg transition-all flex justify-center items-center gap-2 disabled:opacity-50 text-base"
               >
                 <Radio className="w-5 h-5" />
                 {isBroadcasting ? 'Broadcasting...' : 'Send Broadcast'}

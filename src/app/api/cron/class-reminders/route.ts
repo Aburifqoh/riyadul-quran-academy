@@ -20,7 +20,7 @@ async function supabaseQuery(table: string, query: string) {
 
 async function sendEmailViaResend(to: string, name: string, isTeacher: boolean, timeStr: string) {
   const apiKey = process.env.RESEND_API_KEY || '';
-  const link = isTeacher ? 'https://ilmversinstitute.com/portal/teacher' : 'https://ilmversinstitute.com/portal/classroom/session';
+  const link = isTeacher ? 'https://ilmvers.com/portal/teacher' : 'https://ilmvers.com/portal/classroom/session';
   await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
@@ -32,7 +32,7 @@ async function sendEmailViaResend(to: string, name: string, isTeacher: boolean, 
         <h2>Assalamu Alaikum ${name},</h2>
         <p>Your upcoming class starts in <strong>30 minutes</strong> (${timeStr}).</p>
         <br/>
-        <a href="${link}" style="background:#F59A23;color:white;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold;">Join Classroom</a>
+        <a href="${link}" style="background:#004D4A;color:white;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold;">Join Classroom</a>
       </div>`,
     }),
   });
@@ -87,7 +87,7 @@ export async function GET(req: Request) {
         if (student.phone) {
           sendWhatsAppMessage(
             student.phone,
-            `Assalamu Alaikum ${student.name}, your Ilmvers class starts in 30 minutes! Log in: https://ilmversinstitute.com/portal`
+            `Assalamu Alaikum ${student.name}, your Ilmvers class starts in 30 minutes! Log in: https://ilmvers.com/portal`
           ).catch(console.error);
         }
 
@@ -104,7 +104,7 @@ export async function GET(req: Request) {
               if (teacher.phone) {
                 sendWhatsAppMessage(
                   teacher.phone,
-                  `Assalamu Alaikum ${teacher.name}, you have a class with ${student.name} in 30 minutes: https://ilmversinstitute.com/portal/teacher`
+                  `Assalamu Alaikum ${teacher.name}, you have a class with ${student.name} in 30 minutes: https://ilmvers.com/portal/teacher`
                 ).catch(console.error);
               }
             }

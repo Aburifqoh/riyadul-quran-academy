@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | Ilmvers Academy",
-  description: "Find answers to common questions about admissions, our live class portal, parent transparency, and academic programs at Ilmvers Academy.",
+  title: "Questions about Ilmvers",
+  description: "Answers about enrolment, live classes, the six programmes, and how parents follow attendance and homework at Ilmvers Institute.",
 };
 
 export default function FaqLayout({

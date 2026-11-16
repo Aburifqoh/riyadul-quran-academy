@@ -63,7 +63,7 @@ export default function AdmissionsPage() {
   return (
     <main className="bg-white min-h-screen">
       {/* PAGE HEADER */}
-      <section className="relative pt-24 pb-20 bg-bg-neutral overflow-hidden text-center border-b border-border-subtle">
+      <section className="relative pt-16 pb-20 bg-bg-neutral overflow-hidden text-center border-b border-border-subtle">
         <div className="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-[0.03] pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
         
@@ -152,7 +152,7 @@ export default function AdmissionsPage() {
                 <h3 className="text-xl font-bold text-secondary mb-3 flex items-center gap-3">
                   <ClipboardCheck className="w-6 h-6 text-primary group-hover:animate-pulse" /> Select Your Path & Assessment
                 </h3>
-                <p className="text-text-body leading-relaxed text-lg">From your dashboard, choose to book a free 1-on-1 placement diagnostic or select a tuition plan to secure your enrollment slot immediately.</p>
+                <p className="text-[#5A6E6C] leading-relaxed text-lg">Book the free placement assessment. Your level and fee are confirmed with you after that conversation.</p>
               </div>
             </motion.div>
 
@@ -270,28 +270,28 @@ export default function AdmissionsPage() {
               <h4 className="text-lg font-bold text-secondary mb-3 flex items-start gap-2">
                 <span className="text-primary mt-1">•</span> Are lessons live or pre-recorded?
               </h4>
-              <p className="text-text-body pl-4">All core classes at Ilmvers are 100% Live (interactive) via Zoom directly accessible from your Portal. We believe deeply in active teacher correction.</p>
+              <p className="text-[#5A6E6C] pl-4">Core classes are live and opened from the student portal, with the teacher correcting you in the session.</p>
             </motion.div>
             
             <motion.div variants={FADE_UP} className="border-b border-border-subtle pb-6 hover:border-primary transition-colors duration-300">
               <h4 className="text-lg font-bold text-secondary mb-3 flex items-start gap-2">
                 <span className="text-primary mt-1">•</span> Can I request a female tutor?
               </h4>
-              <p className="text-text-body pl-4">Absolutely. All sisters and young female children are automatically paired with highly qualified female instructors. This is a strict policy.</p>
+              <p className="text-[#5A6E6C] pl-4">Yes. Say so on the assessment form and the team will match a sister or a young girl with a female instructor when one is available.</p>
             </motion.div>
             
             <motion.div variants={FADE_UP} className="border-b border-border-subtle pb-6 hover:border-primary transition-colors duration-300">
               <h4 className="text-lg font-bold text-secondary mb-3 flex items-start gap-2">
                 <span className="text-primary mt-1">•</span> How do parents monitor children?
               </h4>
-              <p className="text-text-body pl-4">We provide a robust "Parent View" in the Student Portal. You can monitor attendance, teacher feedback, and monthly grade trackers for all your children under one login.</p>
+              <p className="text-[#5A6E6C] pl-4">Parents can follow attendance, homework, and teacher notes for their children from the parent area.</p>
             </motion.div>
 
             <motion.div variants={FADE_UP} className="border-b border-border-subtle pb-6 hover:border-primary transition-colors duration-300">
               <h4 className="text-lg font-bold text-secondary mb-3 flex items-start gap-2">
                 <span className="text-primary mt-1">•</span> What if my teacher is absent?
               </h4>
-              <p className="text-text-body pl-4">In the rare event a teacher has an emergency, you will be notified via email/SMS immediately, and a make-up class is strictly credited to your account.</p>
+              <p className="text-[#5A6E6C] pl-4">If a teacher cannot attend, the academy contacts you to arrange another time.</p>
             </motion.div>
           </motion.div>
           

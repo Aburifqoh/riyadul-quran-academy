@@ -11,7 +11,7 @@ export function HowItWorks() {
     {
       number: "02",
       title: "Get Custom Plan",
-      description: "Receive a personalized learning roadmap and get matched with the perfect teacher for your learning style."
+      description: "Receive a learning plan and get matched with a teacher for your level."
     },
     {
       number: "03",
@@ -21,7 +21,7 @@ export function HowItWorks() {
     {
       number: "04",
       title: "Track Progress",
-      description: "Review detailed feedback, earn certificates upon completing levels, and ultimately achieve Ijazah."
+      description: "Follow attendance, homework, and teacher notes in the portal as you move through the syllabus."
     }
   ];
 

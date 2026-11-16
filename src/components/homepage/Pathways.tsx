@@ -188,14 +188,14 @@ export function Pathways() {
                 </p>
 
                 {/* Arch-framed preview image */}
-                <div className="relative w-full h-36 rounded-t-[70px] rounded-b-2xl overflow-hidden mb-6 border-2 border-[#D4AF37]/30 bg-black/10">
+                <div className="relative w-full h-40 rounded-2xl overflow-hidden mb-6 border border-[#E2E9E7]">
                   <Image 
-                    src="/assets/images/ilmverse.jpeg" 
+                    src="/assets/images/hero-student.jpg" 
                     alt={prog.title} 
                     fill 
                     className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                    sizes="(min-width: 1024px) 360px, 100vw"
                   />
-                  <div className={`absolute inset-0 ${prog.dark ? 'bg-[#004D4A]/20' : 'bg-[#D4AF37]/10'} mix-blend-overlay`} />
                 </div>
 
                 {/* 3 Key Feature Badges */}
@@ -221,7 +221,7 @@ export function Pathways() {
 
               {/* Bottom Action Button */}
               <Link 
-                href={`/programs#${prog.id}`}
+                href={`/programs/${prog.id}`}
                 className={`w-full py-3 px-6 rounded-full text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 shadow-sm ${prog.btnClass}`}
               >
                 <span>Learn More</span>
@@ -229,6 +229,28 @@ export function Pathways() {
               </Link>
             </motion.div>
           ))}
+        </div>
+
+        <div id="enrichment" className="mt-16">
+          <div className="max-w-3xl mb-8">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#D4AF37] mb-2">Extra-curricular</p>
+            <h3 className="text-3xl font-headers font-bold text-[#004D4A] mb-3">Circles beside the core programmes</h3>
+            <p className="text-sm text-[#5A6E6C] leading-relaxed">These are optional study circles, not separate priced courses. Your teacher confirms the outline when you enrol. Fees are not listed until the institute publishes them.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              ['Weekend Halaqah', 'Revision, questions, and supervised practice on the weekend.'],
+              ["Qur'an Review Circle", 'Extra recitation time beside Tajweed or Hifz.'],
+              ['Adab & Character', 'Manners and how knowledge is lived at home.'],
+              ['Family Learning Circle', 'Parents and children learning in one sitting.'],
+              ["Children's Weekend Club", 'Stories, Arabic sounds, and short activities for younger learners.'],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-2xl border border-[#E2E9E7] bg-white p-5">
+                <h4 className="font-headers font-bold text-[#004D4A] mb-2">{title}</h4>
+                <p className="text-sm text-[#5A6E6C]">{text}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom Feature Strip matching courses and program.jpeg */}

@@ -181,6 +181,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FAF9F6]">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" />
       {announcementText && (
         <div className="w-full bg-[#0F3D38] text-white py-2.5 px-4 text-center text-sm font-bold tracking-wide relative overflow-hidden shrink-0 flex items-center justify-center gap-3 border-b border-[#D4AF37]/30">
           <div className="absolute inset-0 bg-[#004D4A]/20 animate-pulse pointer-events-none"></div>

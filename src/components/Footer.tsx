@@ -151,32 +151,32 @@ export function Footer() {
             </h4>
             <ul className="flex flex-col gap-3 text-sm">
               <li>
-                <Link href="/programs#quran-tajweed" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
+                <Link href="/programs/quran-tajweed" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
                   Qur'an & Tajweed
                 </Link>
               </li>
               <li>
-                <Link href="/programs#islamic-studies" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
+                <Link href="/programs/islamic-studies" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
                   Islamic Studies
                 </Link>
               </li>
               <li>
-                <Link href="/programs#hifz" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
+                <Link href="/programs/hifz" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
                   Hifz & Memorization
                 </Link>
               </li>
               <li>
-                <Link href="/programs#arabic" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
+                <Link href="/programs/arabic" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
                   Arabic Language
                 </Link>
               </li>
               <li>
-                <Link href="/programs#children" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
+                <Link href="/programs/children" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
                   Children's Education
                 </Link>
               </li>
               <li>
-                <Link href="/programs#advanced" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
+                <Link href="/programs/advanced" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
                   Advanced Islamic Studies
                 </Link>
               </li>
@@ -218,6 +218,11 @@ export function Footer() {
               <li>
                 <Link href="/blog" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
                   Academy Journal
+                </Link>
+              </li>
+              <li>
+                <Link href="/community" className="text-[#FAF9F6]/80 hover:text-[#D4AF37] transition-colors">
+                  Community
                 </Link>
               </li>
             </ul>

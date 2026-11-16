@@ -91,11 +91,11 @@ export default function FeedbackPage() {
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
         {/* Instructor Feedback */}
-        <div className="bg-white rounded-[32px] p-8 shadow-sm border border-slate-100 flex flex-col relative overflow-hidden group hover:shadow-xl hover:shadow-[#F59A23]/5 transition-all duration-300">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#F59A23]/5 rounded-bl-full pointer-events-none" />
+        <div className="bg-white rounded-[32px] p-8 shadow-sm border border-slate-100 flex flex-col relative overflow-hidden group hover:shadow-xl hover:shadow-[#004D4A]/5 transition-all duration-300">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#004D4A]/5 rounded-bl-full pointer-events-none" />
 
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-[#F59A23] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-[#004D4A] flex items-center justify-center">
               <UserCheck className="w-6 h-6" />
             </div>
             <div>
@@ -111,7 +111,7 @@ export default function FeedbackPage() {
                 <select
                   value={instructor}
                   onChange={(e) => setInstructor(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#F59A23] focus:ring-2 focus:ring-[#F59A23]/20 transition-all text-slate-700"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#004D4A] focus:ring-2 focus:ring-[#004D4A]/20 transition-all text-slate-700"
                 >
                   {instructorOptions.map((name) => (
                     <option key={name} value={name}>{name}</option>
@@ -136,7 +136,7 @@ export default function FeedbackPage() {
                     onClick={() => setInstructorRating(star)}
                     className="p-1 transition-transform hover:scale-110"
                   >
-                    <Star className={`w-8 h-8 ${(hoverInstructorRating || instructorRating) >= star ? 'fill-[#F59A23] text-[#F59A23]' : 'text-slate-200'}`} />
+                    <Star className={`w-8 h-8 ${(hoverInstructorRating || instructorRating) >= star ? 'fill-[#004D4A] text-[#004D4A]' : 'text-slate-200'}`} />
                   </button>
                 ))}
               </div>
@@ -149,7 +149,7 @@ export default function FeedbackPage() {
                 onChange={(e) => setInstructorComments(e.target.value)}
                 placeholder="Share your experience..."
                 rows={4}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#F59A23] focus:ring-2 focus:ring-[#F59A23]/20 transition-all text-slate-700 resize-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#004D4A] focus:ring-2 focus:ring-[#004D4A]/20 transition-all text-slate-700 resize-none"
               />
             </div>
           </div>

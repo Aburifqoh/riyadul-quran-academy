@@ -36,7 +36,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'A title is required.' }, { status: 400 });
     }
 
-    const site = process.env.NEXT_PUBLIC_SITE_URL || 'https://ilmversinstitute.com';
+    const site = process.env.NEXT_PUBLIC_SITE_URL || 'https://ilmvers.com';
     const result = await broadcastPublishedUpdate({
       title,
       excerpt,

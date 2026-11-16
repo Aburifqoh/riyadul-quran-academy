@@ -81,11 +81,11 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 
 export async function getSiteMetrics() {
   return {
-    hoursTaught: 8900,
-    countriesReached: 20,
-    numStudents: 200,
-    numInstructors: 20,
-    qiraaatStudents: 20,
-    yearsOperation: 5,
+    hoursTaught: 0,
+    countriesReached: 0,
+    numStudents: 0,
+    numInstructors: 0,
+    qiraaatStudents: 0,
+    yearsOperation: 0,
   };
 }

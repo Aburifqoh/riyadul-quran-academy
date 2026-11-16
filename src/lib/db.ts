@@ -41,7 +41,7 @@ export async function submitCommunityPost(post: {
   status: 'pending_approval' | 'published';
   category?: string;
   coverImageUrl?: string;
-}): Promise<{ success: boolean; error?: string }> {
+}): Promise<{ success: boolean; error?: string; id?: string }> {
   const { data, error } = await insertWithColumnFallback(supabase, 'community_posts', {
     title: post.title,
     content: post.content,
@@ -55,7 +55,7 @@ export async function submitCommunityPost(post: {
     coverImageUrl: post.coverImageUrl || null,
   });
   if (error || !data) return { success: false, error: error || 'Failed to save post' };
-  return { success: true };
+  return { success: true, id: data.id ? String(data.id) : undefined };
 }
 
 
@@ -114,16 +114,16 @@ export async function getSiteMetrics() {
     const teachers = allUsers.filter(u => u.role === 'teacher').length;
 
     return { 
-      hoursTaught: 8900, 
-      countriesReached: 20, 
-      numStudents: students || 200, 
-      numInstructors: teachers || 20, 
-      qiraaatStudents: 20, 
-      yearsOperation: 5 
+      hoursTaught: 0, 
+      countriesReached: 0, 
+      numStudents: students, 
+      numInstructors: teachers, 
+      qiraaatStudents: 0, 
+      yearsOperation: 0 
     };
   } catch(e) {
     console.warn("getSiteMetrics fallback:", e);
-    return { hoursTaught: 8900, countriesReached: 20, numStudents: 200, numInstructors: 20, qiraaatStudents: 20, yearsOperation: 5 };
+    return { hoursTaught: 0, countriesReached: 0, numStudents: 0, numInstructors: 0, qiraaatStudents: 0, yearsOperation: 0 };
   }
 }
 
@@ -945,7 +945,7 @@ export async function adminAssignStudentToTeacher(studentId: string, teacherId: 
         return true;
       });
     };
-    const preferred = getPreferredSchedule(parsedStudent.preferredSchedule);
+    const preferred = getPreferredSchedule(parsedStudent.preferredSchedule as ScheduleSlot[] | string | undefined);
     const remainingPreferred = planFilled ? [] : dropMatched(preferred);
     const requestSlots = currentReq?.slots?.length ? currentReq.slots : preferred;
     const remainingRequest = planFilled ? [] : dropMatched(requestSlots);

@@ -184,7 +184,7 @@ export default function TeacherAvailability() {
     <div className="max-w-4xl mx-auto space-y-10">
       <div className="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-gray-100 pb-8">
         <div>
-          <h2 className="text-3xl font-headers font-bold text-amber-500 m-0">Availability Schedule</h2>
+          <h2 className="text-3xl font-headers font-bold text-[#004D4A] m-0">Availability Schedule</h2>
           <p className="text-gray-500 m-0">Set your recurring weekly working hours.</p>
         </div>
         {locked && (
@@ -269,7 +269,7 @@ export default function TeacherAvailability() {
         <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 pt-6">
           <button 
              onClick={addRow}
-             className="px-6 py-3 bg-amber-500/10 text-amber-500 rounded-2xl font-bold text-sm hover:bg-amber-500 hover:text-white transition-all"
+             className="px-6 py-3 bg-[#004D4A]/10 text-[#004D4A] rounded-2xl font-bold text-sm hover:bg-[#004D4A] hover:text-white transition-all"
           >
              + Add Day
           </button>
@@ -279,7 +279,7 @@ export default function TeacherAvailability() {
                <button 
                   onClick={handleSave}
                   disabled={isSaving}
-                  className="px-8 py-3 bg-amber-500 text-white rounded-2xl font-bold text-sm shadow-lg shadow-amber-500/20"
+                  className="px-8 py-3 bg-[#004D4A] text-white rounded-2xl font-bold text-sm shadow-lg shadow-[#004D4A]/20"
                >
                   {isSaving ? 'Saving...' : 'Save Schedule'}
                </button>
@@ -299,14 +299,14 @@ export default function TeacherAvailability() {
               <>
                 <p className="text-sm text-red-600 m-0 font-bold">Your last availability change was not approved.</p>
                 <p className="text-sm text-gray-600 m-0">{userData?.pendingAvailabilityUpdate?.rejectionNote || 'Please adjust your request and resubmit.'}</p>
-                <button onClick={handleRequestChange} disabled={isSaving} className="px-6 py-2 bg-amber-500 text-white rounded-full text-xs font-bold">
+                <button onClick={handleRequestChange} disabled={isSaving} className="px-6 py-2 bg-[#004D4A] text-white rounded-full text-xs font-bold">
                   {isSaving ? 'Submitting...' : 'Resubmit Change Request'}
                 </button>
               </>
             ) : (
               <>
                 <p className="text-sm text-gray-500 m-0">Your schedule is locked. Submit a change request for admin approval, or contact support.</p>
-                <button onClick={handleRequestChange} disabled={isSaving} className="px-6 py-2 bg-amber-500 text-white rounded-full text-xs font-bold">
+                <button onClick={handleRequestChange} disabled={isSaving} className="px-6 py-2 bg-[#004D4A] text-white rounded-full text-xs font-bold">
                   {isSaving ? 'Submitting...' : 'Request Schedule Change'}
                 </button>
                 <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="inline-block px-6 py-2 bg-white border border-gray-200 rounded-full text-xs font-bold text-gray-700 hover:bg-gray-50 no-underline transition-all ml-2">WhatsApp Support</a>

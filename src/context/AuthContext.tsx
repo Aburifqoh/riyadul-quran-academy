@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useState, useRef, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import { getUserData } from '@/lib/auth';
 
@@ -7,15 +7,29 @@ interface AuthContextType {
   user: any | null;
   userData: any | null;
   loading: boolean;
+  refreshUserData: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType>({ user: null, userData: null, loading: true });
+const AuthContext = createContext<AuthContextType>({ user: null, userData: null, loading: true, refreshUserData: async () => {} });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any | null>(null);
   const [userData, setUserData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const lastActivityRef = useRef(Date.now());
+
+  // Re-fetch the signed-in user's profile row. Used after a student picks a
+  // schedule, a teacher edits availability, etc., so the UI shows fresh data
+  // without a full reload.
+  const refreshUserData = useCallback(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) {
+      setUserData(null);
+      return;
+    }
+    const data = await getUserData(session.user.id);
+    setUserData(data);
+  }, []);
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
@@ -95,7 +109,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, [user, userData]);
 
   return (
-    <AuthContext.Provider value={{ user, userData, loading }}>
+    <AuthContext.Provider value={{ user, userData, loading, refreshUserData }}>
       {children}
     </AuthContext.Provider>
   );

@@ -44,15 +44,15 @@ export default function VerifyPage() {
     <main className="py-16 w-full max-w-[1200px] mx-auto px-8 flex items-center justify-center flex-1 items-start mt-[5vh]">
       <div className="bg-white rounded-2xl p-8 shadow-md border border-white/80 relative overflow-hidden transition-all duration-300 w-full max-w-[600px]">
         <div className="text-center mb-4">
-          <div className="w-[50px] h-[50px] bg-[#FDE7C5] text-[#F59A23] rounded-lg flex items-center justify-center text-2xl mb-4 m-[0 auto 16px] [background:#F59A23]">📜</div>
-          <h2 className="text-[#5D2E17]">Certificate Verification</h2>
-          <p className="text-[#5C5148] mt-2">Enter a valid Ilmvers Student Certificate ID to verify its authenticity.</p>
+          <div className="w-[50px] h-[50px] bg-[#E6F3F2] text-[#004D4A] rounded-lg flex items-center justify-center text-2xl mb-4 m-[0 auto 16px] [background:#004D4A]">📜</div>
+          <h2 className="text-[#004D4A]">Certificate Verification</h2>
+          <p className="text-[#5A6E6C] mt-2">Enter a valid Ilmvers Student Certificate ID to verify its authenticity.</p>
         </div>
 
         <div className="mb-4 mb-8">
           <input 
             type="text" 
-            className="w-full px-4 py-3 border border-[#ebdcd3] rounded-lg text-[#5C5148] focus:outline-none focus:border-[#F59A23] focus:ring-2 focus:ring-[#F59A23]/20 transition-all bg-white font-inherit text-base text-center text-[1.2rem] font-semibold tracking-[1px] uppercase" 
+            className="w-full px-4 py-3 border border-[#E2E9E7] rounded-lg text-[#5A6E6C] focus:outline-none focus:border-[#004D4A] focus:ring-2 focus:ring-[#004D4A]/20 transition-all bg-white font-inherit text-base text-center text-[1.2rem] font-semibold tracking-[1px] uppercase" 
             placeholder="e.g. ALM-2026-X" 
              
             value={certId}
@@ -61,7 +61,7 @@ export default function VerifyPage() {
         </div>
         <button 
           onClick={handleVerify} 
-          className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-white bg-gradient-to-br from-white to-slate-100-to-br from-[#F59A23] to-[#ffb44d] shadow-[0_4px_15px_rgba(245,154,35,0.3)] hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_15px_30px_rgba(245,154,35,0.4)] transition-all duration-300 cursor-pointer border-0 w-full mb-8"
+          className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-white bg-gradient-to-br from-white to-slate-100-to-br from-[#004D4A] to-[#166B67] shadow-[0_4px_15px_rgba(0,77,74,0.3)] hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_15px_30px_rgba(0,77,74,0.4)] transition-all duration-300 cursor-pointer border-0 w-full mb-8"
           disabled={loading}
         >
           {loading ? 'Authenticating...' : 'Verify Credential'}
@@ -100,7 +100,7 @@ export default function VerifyPage() {
         )}
 
         {error && (
-          <div className="p-4 rounded-lg mb-4 flex items-center gap-3 bg-[#FDE7C5] text-[#5D2E17] border-l-4 border-[#F59A23] text-center">
+          <div className="p-4 rounded-lg mb-4 flex items-center gap-3 bg-[#E6F3F2] text-[#004D4A] border-l-4 border-[#004D4A] text-center">
             {error}
           </div>
         )}

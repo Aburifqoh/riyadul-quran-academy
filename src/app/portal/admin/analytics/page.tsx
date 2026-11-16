@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 import { Users, DollarSign, Activity, GraduationCap, TrendingUp, Book } from 'lucide-react';
 import PortalSkeleton from '@/components/ui/PortalSkeleton';
 
-function BarChart({ data, color = "#F59A23" }: { data: { label: string, value: number }[], color?: string }) {
+function BarChart({ data, color = "#004D4A" }: { data: { label: string, value: number }[], color?: string }) {
   const max = Math.max(...data.map(d => d.value), 1);
   return (
     <div className="w-full h-[200px] flex items-end justify-between gap-2 pt-6">
@@ -38,7 +38,7 @@ function BarChart({ data, color = "#F59A23" }: { data: { label: string, value: n
   );
 }
 
-function HorizontalBarChart({ data, color = "#F59A23" }: { data: { label: string, value: number }[], color?: string }) {
+function HorizontalBarChart({ data, color = "#004D4A" }: { data: { label: string, value: number }[], color?: string }) {
   const max = Math.max(...data.map(d => d.value), 1);
   return (
     <div className="w-full space-y-4">
@@ -63,7 +63,7 @@ function HorizontalBarChart({ data, color = "#F59A23" }: { data: { label: string
   );
 }
 
-function LineChart({ data, color = "#F59A23" }: { data: { label: string, value: number }[], color?: string }) {
+function LineChart({ data, color = "#004D4A" }: { data: { label: string, value: number }[], color?: string }) {
   const max = Math.max(...data.map(d => d.value), 1);
   const width = 400;
   const height = 150;
@@ -96,7 +96,7 @@ function LineChart({ data, color = "#F59A23" }: { data: { label: string, value: 
 
 function DonutChart({ data }: { data: { label: string, value: number }[] }) {
   const total = data.reduce((sum, d) => sum + d.value, 0);
-  const colors = ['#F59A23', '#10b981', '#3b82f6', '#8b5cf6', '#ef4444', '#64748b'];
+  const colors = ['#004D4A', '#10b981', '#3b82f6', '#8b5cf6', '#ef4444', '#64748b'];
   
   const segments = data.reduce<Array<{
     d: { label: string; value: number };
@@ -318,7 +318,7 @@ export default function AdminAnalyticsPage() {
       
       <div>
         <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Platform Analytics</h1>
-        <p className="text-slate-500 mt-1">Real-time data and insights for Al-Muqri Institute.</p>
+        <p className="text-slate-500 mt-1">Real-time data and insights for Ilmvers Institute.</p>
       </div>
 
       {/* KPI Row */}
@@ -359,7 +359,7 @@ export default function AdminAnalyticsPage() {
         {/* Chart 3 */}
         <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
           <h3 className="font-bold text-slate-900 mb-6">Top Practiced Surahs</h3>
-          <HorizontalBarChart data={charts.topSurahs} color="#F59A23" />
+          <HorizontalBarChart data={charts.topSurahs} color="#004D4A" />
         </div>
 
         {/* Chart 4 */}

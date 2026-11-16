@@ -150,8 +150,8 @@ export default function SettingsPage() {
               className={cn(
                  "px-6 py-4 text-sm font-bold rounded-2xl whitespace-nowrap transition-all flex items-center gap-3 w-full text-left",
                  activeTab === 'billing' 
-                    ? "bg-amber-500 text-white shadow-md shadow-amber-500/20 scale-[1.02]" 
-                    : "text-gray-500 hover:text-amber-600 hover:bg-amber-50 hover:scale-[1.02]"
+                    ? "bg-[#004D4A] text-white shadow-md shadow-[#004D4A]/20 scale-[1.02]" 
+                    : "text-gray-500 hover:text-[#004D4A] hover:bg-[#E6F3F2] hover:scale-[1.02]"
               )}
             >
               <CreditCard className="w-5 h-5" /> 
@@ -395,12 +395,12 @@ export default function SettingsPage() {
               >
                 {/* Active Plan Card */}
                 <div className="bg-slate-900 rounded-[32px] p-8 md:p-10 shadow-xl relative overflow-hidden group border border-slate-800">
-                  <div className="absolute top-[-30px] right-[-30px] w-64 h-64 bg-amber-500/20 blur-[60px] rounded-full pointer-events-none transition-transform group-hover:scale-125 duration-1000" />
+                  <div className="absolute top-[-30px] right-[-30px] w-64 h-64 bg-[#D4AF37]/20 blur-[60px] rounded-full pointer-events-none transition-transform group-hover:scale-125 duration-1000" />
                   
                   <div className="flex flex-col md:flex-row md:items-start justify-between relative z-10 mb-8 gap-6">
                     <div>
                       <div className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
-                         <RefreshCw className="w-4 h-4 text-amber-500" /> Automatic Recurring Plan
+                         <RefreshCw className="w-4 h-4 text-[#004D4A]" /> Automatic Recurring Plan
                       </div>
                       <h3 className="text-3xl md:text-4xl font-bold font-headers text-white capitalize mb-4">{displayPlanName}</h3>
                       <div className="flex items-center gap-3 flex-wrap">
@@ -418,7 +418,7 @@ export default function SettingsPage() {
                     
                     <button 
                        onClick={handleManagePlan}
-                       className="w-full md:w-auto bg-amber-500 hover:bg-amber-600 text-white py-3 px-6 rounded-full font-bold shadow-[0_4px_20px_rgba(245,154,35,0.3)] transition-colors text-sm flex items-center justify-center gap-2 hover:-translate-y-1"
+                       className="w-full md:w-auto bg-[#004D4A] hover:bg-[#0F3D38] text-white py-3 px-6 rounded-full font-bold shadow-[0_4px_20px_rgba(0,77,74,0.3)] transition-colors text-sm flex items-center justify-center gap-2 hover:-translate-y-1"
                     >
                       Manage Plan <ExternalLink className="w-4 h-4" />
                     </button>

@@ -56,6 +56,8 @@ export default function TeacherDashboard() {
 
   const loading = isTeacher ? !studentsLoaded : false;
 
+  const todayName = weekdayInTimezone(userData?.timezone);
+
   const classesToday = students.flatMap((s) =>
     getSchedule(s.schedule)
       .filter((slot: ScheduleSlot) =>
@@ -113,7 +115,7 @@ export default function TeacherDashboard() {
               <div className="w-full md:w-auto flex flex-col gap-3">
                 <Link
                   href={classroomSessionHref({ role: 'teacher', room: teacherClassroomRoom(userData?.email) })}
-                  className="w-full bg-primary hover:bg-primary-hover text-white rounded-full px-8 py-4 font-bold text-lg shadow-[0_10px_30px_rgba(245,154,35,0.4)] hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(245,154,35,0.6)] transition-all flex items-center justify-center gap-3 border-2 border-primary/50 relative overflow-hidden group/btn"
+                  className="w-full bg-primary hover:bg-primary-hover text-white rounded-full px-8 py-4 font-bold text-lg shadow-[0_10px_30px_rgba(0,77,74,0.4)] hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,77,74,0.6)] transition-all flex items-center justify-center gap-3 border-2 border-primary/50 relative overflow-hidden group/btn"
                 >
                   <div className="absolute inset-0 -translate-x-full group-hover/btn:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent z-10 pointer-events-none" />
                   <Video className="w-5 h-5" /> Enter Classroom

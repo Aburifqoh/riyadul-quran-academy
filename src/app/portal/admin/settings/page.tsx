@@ -131,13 +131,13 @@ export default function AdminSettings() {
                 <div className="flex items-start justify-between mb-6">
                   <div>
                     <h5 className="font-bold text-lg text-secondary flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-amber-500" /> Base Hourly Rates
+                      <Sparkles className="w-5 h-5 text-[#D4AF37]" /> Base Hourly Rates
                     </h5>
                     <p className="text-sm text-gray-500 mt-1 max-w-md">
                       Set the base hourly rate (in USD) for each plan. The monthly prices on the public pricing page will automatically recalculate.
                     </p>
                   </div>
-                  {isUpdatingPricing && <Loader2 className="w-5 h-5 animate-spin text-amber-500" />}
+                  {isUpdatingPricing && <Loader2 className="w-5 h-5 animate-spin text-[#D4AF37]" />}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -149,7 +149,7 @@ export default function AdminSettings() {
                         type="number" 
                         value={pricingRates.group}
                         onChange={e => setPricingRates(prev => ({ ...prev, group: Number(e.target.value) }))}
-                        className="w-full pl-8 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
+                        className="w-full pl-8 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#004D4A] outline-none transition-all"
                         min="1" step="0.5" required
                       />
                     </div>
@@ -162,7 +162,7 @@ export default function AdminSettings() {
                         type="number" 
                         value={pricingRates.oneToOne}
                         onChange={e => setPricingRates(prev => ({ ...prev, oneToOne: Number(e.target.value) }))}
-                        className="w-full pl-8 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
+                        className="w-full pl-8 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#004D4A] outline-none transition-all"
                         min="1" step="0.5" required
                       />
                     </div>
@@ -175,7 +175,7 @@ export default function AdminSettings() {
                         type="number" 
                         value={pricingRates.ijazah}
                         onChange={e => setPricingRates(prev => ({ ...prev, ijazah: Number(e.target.value) }))}
-                        className="w-full pl-8 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
+                        className="w-full pl-8 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#004D4A] outline-none transition-all"
                         min="1" step="0.5" required
                       />
                     </div>

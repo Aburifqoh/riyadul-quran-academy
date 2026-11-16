@@ -18,6 +18,7 @@ import { authFetch } from '@/lib/authFetch';
 import PortalSkeleton from '@/components/ui/PortalSkeleton';
 import { isSandboxAccount } from '@/lib/billing';
 import { TestSeatBadge } from '@/components/admin/TestSeatBadge';
+import { FacultyShowcaseManager } from '@/components/admin/FacultyShowcaseManager';
 
 export default function FacultyManager() {
   const { userData, loading: authLoading } = useAuth();
@@ -182,6 +183,8 @@ export default function FacultyManager() {
           </button>
         )}
       </div>
+
+      <FacultyShowcaseManager />
 
       {loading ? (
         <div className="flex items-center justify-center py-20">

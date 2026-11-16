@@ -147,6 +147,19 @@ function previewAnalysis(transcript: string, roomName: string): TranscriptAnalys
   };
 }
 
+export async function replyAsStudyAssistant(history: Array<{ role: string; content: string }>): Promise<string | null> {
+  const messages = [
+    {
+      role: 'system',
+      content: `You are the Ilmvers Institute study assistant. Help with Qur'an recitation practice, Tajweed terms, Arabic practice, and how to use the Ilmvers student portal.
+You support study. You are not a mufti. Do not give a fatwa, medical advice, or financial advice. If someone asks for a ruling, tell them to ask a qualified scholar at the institute.
+Keep replies under 180 words. When the person greets you, begin with Assalamu Alaikum.`,
+    },
+    ...history,
+  ];
+  return (await runViaBinding(messages)) || (await runViaRest(messages));
+}
+
 export async function analyzeClassTranscript(transcript: string, roomName: string): Promise<TranscriptAnalysis> {
   const messages = [
     { role: 'system', content: SYSTEM_PROMPT },

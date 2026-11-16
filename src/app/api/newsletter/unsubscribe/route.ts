@@ -5,7 +5,7 @@ import { unsubscribeTokenMatches } from '@/lib/newsletterBroadcast';
 function page(message: string) {
   const safe = message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   return new NextResponse(
-    `<!doctype html><html><head><meta charset="utf-8"><title>Ilmvers newsletter</title></head><body style="font-family:sans-serif;max-width:520px;margin:48px auto;padding:0 16px;color:#333;"><h1 style="color:#0F3D38;">Ilmvers Institute</h1><p>${safe}</p><p><a href="https://ilmversinstitute.com">Back to the site</a></p></body></html>`,
+    `<!doctype html><html><head><meta charset="utf-8"><title>Ilmvers newsletter</title></head><body style="font-family:sans-serif;max-width:520px;margin:48px auto;padding:0 16px;color:#333;"><h1 style="color:#0F3D38;">Ilmvers Institute</h1><p>${safe}</p><p><a href="https://ilmvers.com">Back to the site</a></p></body></html>`,
     { headers: { 'Content-Type': 'text/html; charset=utf-8' } }
   );
 }

@@ -48,7 +48,7 @@ async function sendPaymentReceiptEmail(email: string, amount: string) {
         <h2>Payment Received</h2>
         <p>We received your payment of <strong>$${amount}</strong>. Your subscription is now active.</p>
         <br/>
-        <a href="https://ilmversinstitute.com/portal" style="background:#F59A23;color:white;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold;">Go to Dashboard</a>
+        <a href="https://ilmvers.com/portal" style="background:#004D4A;color:white;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold;">Go to Dashboard</a>
       </div>`,
     }),
   });

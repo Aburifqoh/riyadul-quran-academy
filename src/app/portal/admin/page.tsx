@@ -407,7 +407,7 @@ export default function AdminOverview() {
                 {tab.id === 'library' && resources.some(r => r.status === 'pending') && (
                   <span className={cn(
                     'text-[10px] font-black px-1.5 py-0.5 rounded-full',
-                    activeTab === tab.id ? 'bg-white text-amber-700' : 'bg-amber-500 text-white'
+                    activeTab === tab.id ? 'bg-white text-[#004D4A]' : 'bg-[#004D4A] text-white'
                   )}>
                     {resources.filter(r => r.status === 'pending').length}
                   </span>
@@ -446,7 +446,7 @@ export default function AdminOverview() {
                  <div className="flex items-center gap-3">
                    <div className="relative flex h-3 w-3">
                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                     <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+                     <span className="relative inline-flex rounded-full h-3 w-3 bg-[#004D4A]"></span>
                    </div>
                    <p className="text-amber-800 font-bold m-0 text-sm">
                      You have {unreadMessages} unread message{unreadMessages > 1 ? 's' : ''}. Check the Comms center.
@@ -467,7 +467,7 @@ export default function AdminOverview() {
                     {resources.filter(r => r.status === 'pending').length} teacher material{resources.filter(r => r.status === 'pending').length > 1 ? 's' : ''} waiting for approval.
                   </p>
                 </div>
-                <span className="bg-amber-500 text-white text-xs font-black px-3 py-1 rounded-full">Review</span>
+                <span className="bg-[#004D4A] text-white text-xs font-black px-3 py-1 rounded-full">Review</span>
               </div>
             )}
 
@@ -791,7 +791,7 @@ export default function AdminOverview() {
             {/* Upload Form */}
             <div className="bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm">
               <h3 className="text-2xl font-bold font-headers text-secondary mb-6 flex items-center gap-3">
-                <Upload className="w-6 h-6 text-amber-500" /> Add New Resource
+                <Upload className="w-6 h-6 text-[#D4AF37]" /> Add New Resource
               </h3>
               <form onSubmit={handleResourceUpload} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -826,7 +826,7 @@ export default function AdminOverview() {
                   {uploadFile && <p className="text-xs text-emerald-600 font-bold mt-1">✓ {uploadFile.name} selected — will override URL field</p>}
                 </div>
                 <div className="md:col-span-2">
-                  <button type="submit" disabled={isUploadingResource} className="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-full transition-all disabled:opacity-50 flex items-center gap-2">
+                  <button type="submit" disabled={isUploadingResource} className="px-8 py-3 bg-[#004D4A] hover:bg-[#0F3D38] text-white font-bold rounded-full transition-all disabled:opacity-50 flex items-center gap-2">
                     <Upload className="w-4 h-4" />{isUploadingResource ? 'Uploading...' : 'Add Resource'}
                   </button>
                 </div>
@@ -844,7 +844,7 @@ export default function AdminOverview() {
                       <div>
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="font-bold text-secondary">{displayValue(r.title)}</span>
-                          <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700">{displayValue(r.type)}</span>
+                          <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-[#004D4A]">{displayValue(r.type)}</span>
                         </div>
                         <p className="text-sm text-gray-500 m-0 mt-1">
                           Submitted by {displayValue(r.submitted_by_name || r.uploaded_by || 'Teacher')}
@@ -866,7 +866,7 @@ export default function AdminOverview() {
             {/* Resource List with Student Assignment */}
             <div className="bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm">
               <h3 className="text-2xl font-bold font-headers text-secondary mb-6 flex items-center gap-3">
-                <BookOpen className="w-6 h-6 text-amber-500" /> All Resources ({resources.filter(r => r.status !== 'pending' && r.status !== 'rejected').length})
+                <BookOpen className="w-6 h-6 text-[#D4AF37]" /> All Resources ({resources.filter(r => r.status !== 'pending' && r.status !== 'rejected').length})
               </h3>
               <div className="space-y-3">
                 {resources.filter(r => r.status !== 'pending' && r.status !== 'rejected').length === 0 ? (
@@ -1004,7 +1004,7 @@ export default function AdminOverview() {
           <motion.div key="feedback" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
             <div className="bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm">
               <h3 className="text-2xl font-bold font-headers text-secondary mb-6 flex items-center gap-3">
-                <Star className="w-6 h-6 text-amber-500" /> Student Feedback ({feedbackList.length})
+                <Star className="w-6 h-6 text-[#D4AF37]" /> Student Feedback ({feedbackList.length})
               </h3>
               {feedbackList.length === 0 ? (
                 <div className="text-center py-12 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">

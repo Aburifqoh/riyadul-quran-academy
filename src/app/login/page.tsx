@@ -112,7 +112,7 @@ function LoginContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="font-ar text-5xl text-accent mb-6 block opacity-90">رياض القرآن</span>
+            <span className="text-4xl font-headers font-bold text-accent mb-6 block tracking-wide">Ilmvers</span>
             <h1 className="text-4xl lg:text-5xl font-headers font-bold text-white leading-tight mb-6">
               Welcome Back to Your <span className="text-accent">Learning Journey</span>.
             </h1>

@@ -6,17 +6,45 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ChevronDown } from 'lucide-react';
 import { IlmversLogo } from '@/components/ui/IlmversLogo';
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+}
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [installEvent, setInstallEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const pathname = usePathname();
+  const hideMarketingNav =
+    pathname.startsWith('/portal') ||
+    pathname.startsWith('/parent') ||
+    pathname.startsWith('/login') ||
+    pathname.startsWith('/teacher-login') ||
+    pathname.startsWith('/admin-login') ||
+    pathname.startsWith('/forgot-password') ||
+    pathname.startsWith('/register') ||
+    pathname.startsWith('/reset-password');
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onInstall = (event: Event) => {
+      event.preventDefault();
+      setInstallEvent(event as BeforeInstallPromptEvent);
+    };
+    window.addEventListener('beforeinstallprompt', onInstall);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('beforeinstallprompt', onInstall);
+    };
   }, []);
+
+  const installApp = async () => {
+    if (!installEvent) return;
+    await installEvent.prompt();
+    setInstallEvent(null);
+  };
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -24,12 +52,15 @@ export function Navbar() {
     { name: 'Our Scholars', href: '/teachers' },
     { name: 'About Us', href: '/about' },
     { name: 'Blog', href: '/blog' },
+    { name: 'Community', href: '/community' },
     { name: 'Contact', href: '/contact' },
   ];
 
+  if (hideMarketingNav) return null;
+
   return (
     <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`sticky top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-[#FAF9F6]/95 backdrop-blur-md shadow-sm border-b border-[#E2E9E7] py-3' 
           : 'bg-[#FAF9F6]/80 backdrop-blur-sm py-4 md:py-5 border-b border-transparent'
@@ -61,22 +92,22 @@ export function Navbar() {
                   {link.hasDropdown && (
                     <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-[#E2E9E7] p-3 hidden group-hover:block transition-all z-50">
                       <div className="space-y-1">
-                        <Link href="/programs#quran-tajweed" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
+                        <Link href="/programs/quran-tajweed" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
                           Qur'an & Tajweed
                         </Link>
-                        <Link href="/programs#islamic-studies" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
+                        <Link href="/programs/islamic-studies" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
                           Islamic Studies
                         </Link>
-                        <Link href="/programs#hifz" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
+                        <Link href="/programs/hifz" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
                           Hifz & Qur'an Memorization
                         </Link>
-                        <Link href="/programs#arabic" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
+                        <Link href="/programs/arabic" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
                           Arabic Language
                         </Link>
-                        <Link href="/programs#children" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
+                        <Link href="/programs/children" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
                           Children's Education
                         </Link>
-                        <Link href="/programs#advanced" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
+                        <Link href="/programs/advanced" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
                           Advanced Islamic Studies
                         </Link>
                       </div>
@@ -98,6 +129,15 @@ export function Navbar() {
             </button>
 
             {/* Login Link */}
+            {installEvent && (
+              <button
+                type="button"
+                onClick={installApp}
+                className="text-[#004D4A] hover:text-[#0F3D38] font-semibold text-sm"
+              >
+                Install app
+              </button>
+            )}
             <Link 
               href="/login" 
               className="text-[#2E2E2E] hover:text-[#004D4A] font-medium text-sm transition-colors tracking-wide"
@@ -159,6 +199,24 @@ export function Navbar() {
               ))}
 
               <div className="flex flex-col gap-3 pt-3">
+                {installEvent && (
+                  <button
+                    type="button"
+                    onClick={() => { setMobileMenuOpen(false); void installApp(); }}
+                    className="w-full text-center border-2 border-[#D4AF37] text-[#0F3D38] py-2.5 rounded-full font-semibold"
+                  >
+                    Install app
+                  </button>
+                )}
+                {installEvent && (
+                  <button
+                    type="button"
+                    onClick={() => { setMobileMenuOpen(false); void installApp(); }}
+                    className="w-full text-center border-2 border-[#D4AF37] text-[#004D4A] py-2.5 rounded-full font-semibold"
+                  >
+                    Install app
+                  </button>
+                )}
                 <Link 
                   href="/admissions" 
                   className="w-full text-center bg-[#004D4A] hover:bg-[#0F3D38] text-white py-3 rounded-full font-semibold shadow-md"
