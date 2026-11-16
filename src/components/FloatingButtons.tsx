@@ -2,6 +2,7 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import { WHATSAPP_NUMBER } from '@/lib/utils';
+import FloatingIlmversAI from './FloatingIlmversAI';
 
 export const FloatingButtons = () => {
   const pathname = usePathname();
@@ -11,6 +12,9 @@ export const FloatingButtons = () => {
 
   return (
     <>
+      {/* Ilmvers AI — stacked above WhatsApp */}
+      <FloatingIlmversAI className="fixed bottom-[75px] right-[15px] md:bottom-[85px] md:right-[20px]" />
+
       {/* WhatsApp Support */}
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ilmvers%20Support!%20I%20have%20a%20question.`}
