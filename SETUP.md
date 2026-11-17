@@ -18,6 +18,7 @@ Copy `.env.example` to `.env.local` and fill every value you are ready to use. E
 
 - No `RESEND_API_KEY`: accounts and messages still save; mail is skipped.
 - No Turnstile keys: localhost passes; production should have both the site key and the secret.
+- Turnstile widget hostnames must include every public host you serve (for Ilmvers: `ilmvers.com` and `www.ilmvers.com`). In the Cloudflare dashboard → Turnstile → your widget → Hostnames. A missing hostname shows error `110200` and the checkbox never completes. Set `TURNSTILE_SECRET_KEY` with `wrangler secret put TURNSTILE_SECRET_KEY` on the Worker.
 - No `NEXT_PUBLIC_CALENDLY_URL`: the assessment page says scheduling is not configured and the visitor can skip it.
 - No `NEXT_PUBLIC_JAAS_APP_ID` or `NEXT_PUBLIC_CLASSROOM_TOKEN_URL`: live class shows that it is not configured.
 - No `OPENAI_API_KEY`: the study assistant route answers that it is not configured.

@@ -112,6 +112,8 @@ export default function RootLayout({
       className={cn("h-full", "scroll-pt-28", "antialiased", playfair.variable, montserrat.variable, "font-sans")}
     >
       <head>
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
+        <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
         <GoogleAnalytics />
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
           <noscript>

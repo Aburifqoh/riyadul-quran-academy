@@ -85,7 +85,7 @@ function RegisterContent() {
   const handleAdultSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!turnstileToken) {
-      alert('Tick the security box below, then try again. If the box never appears, turn off your ad blocker and refresh.');
+      alert('Wait for the security check below to finish (or tap Retry / Continue without box), then try again.');
       return;
     }
     if (adultForm.password !== adultForm.confirmPassword) {
@@ -123,7 +123,7 @@ function RegisterContent() {
   const handleParentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!turnstileToken) {
-      alert('Tick the security box below, then try again. If the box never appears, turn off your ad blocker and refresh.');
+      alert('Wait for the security check below to finish (or tap Retry / Continue without box), then try again.');
       return;
     }
     if (parentForm.password !== parentForm.confirmPassword) {
