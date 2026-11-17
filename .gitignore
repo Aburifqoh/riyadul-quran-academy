@@ -48,3 +48,8 @@ next-env.d.ts
 .wrangler
 .dev.vars*
 !.dev.vars.example
+
+# Office lock / temp files
+~$*
+*.tmp
+Thumbs.db
