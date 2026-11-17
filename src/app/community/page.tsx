@@ -126,7 +126,7 @@ export default function CommunityPage() {
             >
               {posts.map(post => {
                 const author = post.author || "Ilmvers Admin";
-                const coverImageUrl = post.coverImageUrl || post.coverImage || '/assets/images/logo.jpeg';
+                const coverImageUrl = post.coverImageUrl || post.coverImage || '/assets/images/opt/logo-160.webp';
                 const rawHtml = post.body || post.content || '';
                 const plainText = rawHtml.replace(/<[^>]*>?/gm, '');
                 const snippet = plainText.length > 120 ? plainText.substring(0, 120) + '...' : plainText;

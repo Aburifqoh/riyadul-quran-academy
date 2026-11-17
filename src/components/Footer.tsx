@@ -40,7 +40,7 @@ function NewsletterSignup() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="Email address"
-          className="flex-1 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm text-white placeholder:text-white/40 outline-none"
+          className="min-w-0 flex-1 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm text-white placeholder:text-white/40 outline-none"
         />
         <button type="submit" className="rounded-full bg-[#D4AF37] text-[#0F3D38] px-4 py-2 text-sm font-semibold">
           Join
@@ -66,7 +66,7 @@ export function Footer() {
             <IlmversLogo variant="dark" size="lg" />
             
             <p className="text-[#A7B7B5] mt-2 leading-relaxed text-sm max-w-md">
-              Authentic Islamic education, delivered by qualified scholars, with modern learning tools — anytime, anywhere in the world.
+              Live Islamic classes, with modern learning tools, for students anywhere in the world.
             </p>
 
             <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm max-w-md">

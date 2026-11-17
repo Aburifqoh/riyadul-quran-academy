@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { 
   GraduationCap, 
   BookOpen, 
@@ -39,17 +38,14 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Brand Typography & CTAs (7 cols on lg) */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <div
             className="lg:col-span-7 flex flex-col"
           >
             {/* Small Gold Tag matching homepage.jpeg */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#D4AF37]"></span>
-              <span className="text-[#D4AF37] text-xs font-bold tracking-[0.25em] uppercase">
-                GLOBAL ONLINE ISLAMIC EDUCATION
+            <div className="flex items-center gap-3 mb-4 max-w-full">
+              <span className="w-8 h-[2px] bg-[#D4AF37] shrink-0"></span>
+              <span className="min-w-0 text-[#D4AF37] text-[10px] sm:text-xs font-bold tracking-[0.12em] sm:tracking-[0.25em] uppercase">
+                Global online Islamic education
               </span>
             </div>
 
@@ -61,7 +57,7 @@ export function HeroSection() {
 
             {/* Subheading: Montserrat Regular */}
             <p className="text-[#5A6E6C] text-base md:text-lg leading-relaxed mb-8 max-w-xl font-sans">
-              Authentic Islamic education, delivered by qualified scholars, with modern learning tools — anytime, anywhere in the world.
+              Live Islamic classes, with modern learning tools, for students anywhere in the world.
             </p>
 
             {/* Action Buttons matching homepage.jpeg */}
@@ -108,12 +104,9 @@ export function HeroSection() {
                 })}
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
+          <div
             className="lg:col-span-5"
           >
             <div className="relative w-full max-w-[460px] mx-auto aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border border-[#E2E9E7] bg-[#004D4A]">
@@ -127,9 +120,9 @@ export function HeroSection() {
               />
             </div>
             <p className="mt-4 text-sm text-[#5A6E6C] text-center max-w-[460px] mx-auto">
-              Live classes with qualified scholars, from the first lesson to steady revision.
+              Live classes, from the first lesson to steady revision.
             </p>
-          </motion.div>
+          </div>
 
         </div>
       </div>

@@ -1,19 +1,27 @@
 import { MetadataRoute } from 'next';
 import { getCommunityPosts } from '@/lib/db';
 
-export const revalidate = 3600; // revalidate every hour
+export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://ilmvers.com';
   const lastModified = new Date();
-  
-  const posts = await getCommunityPosts();
-  const postEntries: MetadataRoute.Sitemap = posts.map((post: any) => ({
-    url: `${baseUrl}/community/${post.id}`,
-    lastModified: post.date ? new Date(post.date) : lastModified,
-    changeFrequency: 'yearly',
-    priority: 0.6,
-  }));
+
+  let posts: Awaited<ReturnType<typeof getCommunityPosts>> = [];
+  try {
+    posts = await getCommunityPosts();
+  } catch {
+    posts = [];
+  }
+
+  const postEntries: MetadataRoute.Sitemap = posts
+    .filter((post) => post && post.id)
+    .map((post) => ({
+      url: `${baseUrl}/community/${post.id}`,
+      lastModified: post.date ? new Date(post.date) : lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    }));
 
   return [
     // Core — Highest priority

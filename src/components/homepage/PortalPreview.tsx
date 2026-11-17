@@ -103,7 +103,7 @@ export function PortalPreview() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full"
         >
-          <div className="bg-white/20 backdrop-blur-xl border border-white/30 shadow-[0_30px_60px_rgba(0,0,0,0.4)] w-full h-[450px] bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7)),url('/assets/images/student%20dashboard.jpeg')] bg-cover bg-center rounded-2xl flex items-center justify-center p-5 relative overflow-hidden">
+          <div className="bg-[#0F3D38] border border-white/30 shadow-[0_30px_60px_rgba(0,0,0,0.4)] w-full h-[450px] rounded-2xl flex items-center justify-center p-5 relative overflow-hidden">
             
             {/* View 1: Schedule */}
             <TabsContent value="schedule" className="w-full h-full m-0 data-[state=inactive]:hidden">

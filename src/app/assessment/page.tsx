@@ -225,9 +225,9 @@ export default function AssessmentPage() {
   };
 
   const slideVariants = {
-    initial: { opacity: 0, x: 50 },
-    enter: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-    exit: { opacity: 0, x: -50, transition: { duration: 0.4 } }
+    initial: { opacity: 0, y: 12 },
+    enter: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+    exit: { opacity: 0, y: -12, transition: { duration: 0.4 } }
   };
 
   const InputClass = "w-full px-5 py-3.5 border-2 border-border-subtle rounded-xl text-text-body focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all bg-zinc-50 hover:bg-white text-base shadow-sm";
@@ -286,7 +286,7 @@ export default function AssessmentPage() {
               initial="initial"
               animate="enter"
               exit="exit"
-              className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-white/80 max-w-[600px] w-full relative overflow-hidden"
+              className="bg-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-xl border border-white/80 max-w-[600px] w-full relative overflow-hidden"
             >
               <div className="text-center mb-10 mt-6">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
@@ -394,7 +394,7 @@ export default function AssessmentPage() {
               initial="initial"
               animate="enter"
               exit="exit"
-              className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-white/80 max-w-[600px] w-full relative overflow-hidden text-center"
+              className="bg-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-xl border border-white/80 max-w-[600px] w-full relative overflow-hidden text-center"
             >
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
                 <Calendar className="w-8 h-8" />
@@ -443,7 +443,7 @@ export default function AssessmentPage() {
               initial="initial"
               animate="enter"
               exit="exit"
-              className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-white/80 max-w-[600px] w-full relative overflow-hidden"
+              className="bg-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-xl border border-white/80 max-w-[600px] w-full relative overflow-hidden"
             >
               <div className="text-center mb-10 mt-6">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">

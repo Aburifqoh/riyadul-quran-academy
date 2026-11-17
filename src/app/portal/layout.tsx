@@ -250,7 +250,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
            <div className="flex items-center justify-between">
              <Link href="/" className="flex items-center gap-3">
                <div className="w-10 h-10 rounded-xl overflow-hidden relative border border-[#D4AF37]/40 shadow-sm shrink-0">
-                 <img src="/assets/images/logo dark.jpeg" alt="Ilmvers Logo" className="w-full h-full object-cover" />
+                 <img src="/assets/images/opt/logo-dark-96.webp" alt="Ilmvers Logo" width={96} height={96} className="w-full h-full object-cover" />
                </div>
                <div>
                  <div className="text-white font-black tracking-widest text-lg font-headers leading-none">

@@ -6,7 +6,7 @@ export function HowItWorks() {
     {
       number: "01",
       title: "Book Assessment",
-      description: "Schedule a free evaluation with one of our certified instructors to determine your current level and goals."
+      description: "Book a free assessment. Your level is confirmed with you, then a teacher is matched to that level."
     },
     {
       number: "02",

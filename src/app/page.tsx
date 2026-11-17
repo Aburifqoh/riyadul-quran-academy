@@ -8,7 +8,6 @@ import { Pathways } from '@/components/homepage/Pathways';
 import { HowItWorks } from '@/components/homepage/HowItWorks';
 import { PortalPreview } from '@/components/homepage/PortalPreview';
 import { WhyChooseUs } from '@/components/homepage/WhyChooseUs';
-import { StudyAssistant } from '@/components/StudyAssistant';
 import { motion } from 'framer-motion';
 import { buttonVariants } from '@/components/ui/button';
 
@@ -49,11 +48,6 @@ export default function HomePage() {
       </section>
       <HowItWorks />
       <PortalPreview />
-      <section className="py-16 bg-[#FAF9F6]" id="study-assistant">
-        <div className="max-w-3xl mx-auto px-6">
-          <StudyAssistant />
-        </div>
-      </section>
 
       {posts.length > 0 && (
       <section className="py-20 bg-muted/30">
@@ -86,7 +80,7 @@ export default function HomePage() {
                     <Link href={`/blog?post=${post.id}`} className="block bg-card rounded-2xl shadow-sm border border-border overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 h-full flex flex-col">
                       <div className="h-48 overflow-hidden bg-muted relative">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={post.coverImageUrl || post.coverImage || '/assets/images/logo.jpeg'} alt={post.title} className="w-full h-full object-cover" />
+                        <img src={post.coverImageUrl || post.coverImage || '/assets/images/opt/logo-160.webp'} alt={post.title} width={160} height={160} className="w-full h-full object-cover" />
                       </div>
                       <div className="p-6 flex-1 flex flex-col">
                         <div className="text-xs text-primary font-bold uppercase mb-2">{post.category || 'Institutional'}</div>
@@ -121,7 +115,7 @@ export default function HomePage() {
         >
           <h2 className="mb-4 text-4xl sm:text-5xl font-bold font-headers">Begin Your Journey With Ilmvers Institute</h2>
           <p className="mb-10 text-lg opacity-90 max-w-2xl mx-auto font-sans">
-            Join a premier global academy dedicated to authentic knowledge, structured learning, and spiritual excellence.
+            Start with a free assessment. Your level, teacher, and fee are confirmed with you before any payment.
           </p>
           <div className="flex gap-4 justify-center max-sm:flex-col">
             <Link href="/admissions" className={buttonVariants({ size: "lg", className: "rounded-full shadow-lg px-8 py-6 text-md bg-accent text-secondary hover:bg-accent/90 border-0 font-semibold" })}>

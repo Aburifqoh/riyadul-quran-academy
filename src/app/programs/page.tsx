@@ -35,9 +35,9 @@ const programs = [
       "Mastery of theoretical and practical Tajweed rules",
       "Articulation points (Makharij) and phonetics perfection",
       "Melodic fluency and independent reading confidence",
-      "Direct guidance from qualified, certified scholars"
+      "Direct guidance from your teacher in live classes"
     ],
-    badges: ["Proper Pronunciation", "Tajweed Rules", "Qualified Instructors"],
+    badges: ["Proper Pronunciation", "Tajweed Rules", "Live instruction"],
     theme: "ivory"
   },
   {
@@ -218,10 +218,12 @@ export default function ProgramsPage() {
                 {/* Arch preview frame on the right */}
                 <div className="lg:col-span-5 flex justify-center">
                   <div className="relative w-full max-w-[360px] aspect-[4/5] rounded-3xl overflow-hidden border border-[#E2E9E7] shadow-md">
-                    <img 
-                      src="/assets/images/hero-student.jpg" 
+                    <img
+                      src="/assets/images/opt/hero-student.webp"
                       alt={program.title}
-                      className="w-full h-full object-cover" 
+                      width={410}
+                      height={500}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>

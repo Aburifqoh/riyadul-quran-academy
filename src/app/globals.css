@@ -3,7 +3,7 @@
 @theme {
   --font-sans: var(--font-montserrat), system-ui, sans-serif;
   --font-headers: var(--font-playfair), Georgia, serif;
-  --font-ar: var(--font-amiri), serif;
+  --font-ar: Georgia, "Times New Roman", serif;
 
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
@@ -80,7 +80,7 @@
     font-family: var(--font-montserrat), system-ui, sans-serif;
   }
   .font-ar {
-    font-family: var(--font-amiri), serif;
+    font-family: Georgia, "Times New Roman", serif;
   }
   
   /* Brand Gradients (from brand colour.jpeg) */

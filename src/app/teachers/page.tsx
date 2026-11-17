@@ -13,8 +13,8 @@ import type { FacultyCard } from '@/lib/facultyCards';
 import { FacultyShowcaseCard } from '@/components/faculty/FacultyShowcaseCard';
 
 const trustBadges = [
-  { label: "Qualified Scholars", icon: GraduationCap },
-  { label: "Years of Experience", icon: Award },
+  { label: "Profiles when confirmed", icon: GraduationCap },
+  { label: "Live classes", icon: Award },
   { label: "Global Perspective", icon: Globe2 },
   { label: "Safe & Supportive Learning Environment", icon: ShieldCheck },
 ];
@@ -57,7 +57,7 @@ export default function TeachersPage() {
               Scholars & Instructors
             </h1>
             <p className="text-base md:text-lg font-semibold text-[#0F3D38] mb-3">
-              Qualified. Experienced. Passionate.
+              Published when the institute confirms them.
             </p>
             <p className="text-sm md:text-base text-[#5A6E6C] leading-relaxed">
               The cards below are sample profiles the academy can edit. They are not the confirmed faculty until Ilmvers publishes those names.

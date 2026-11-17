@@ -69,13 +69,13 @@ export function StudyAssistant() {
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           placeholder="Ask a study question"
-          className="flex-1 rounded-full border border-[#E2E9E7] px-4 py-3 text-sm outline-none focus:border-[#004D4A]"
+          className="min-w-0 flex-1 rounded-full border border-[#E2E9E7] px-4 py-3 text-sm outline-none focus:border-[#004D4A]"
           maxLength={800}
         />
         <button
           type="submit"
           disabled={busy}
-          className="rounded-full bg-[#004D4A] text-white px-5 py-3 text-sm font-semibold disabled:opacity-60"
+          className="shrink-0 rounded-full bg-[#004D4A] text-white px-4 py-3 text-sm font-semibold disabled:opacity-60"
         >
           Send
         </button>

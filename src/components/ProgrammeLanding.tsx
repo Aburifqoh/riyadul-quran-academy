@@ -37,7 +37,7 @@ export function ProgrammeLanding({ programme }: { programme: Programme }) {
     <main className="bg-[#FAF9F6] text-[#2E2E2E] px-6 pt-12 pb-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="max-w-3xl mx-auto">
-        <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#D4AF37] mb-3">{programme.tagline}</p>
+        <p className="text-xs font-bold tracking-[0.08em] sm:tracking-[0.22em] uppercase text-[#D4AF37] mb-3 break-words">{programme.tagline}</p>
         <h1 className="font-headers text-4xl md:text-5xl font-bold text-[#004D4A] leading-tight mb-5">{programme.title}</h1>
         <p className="text-lg text-[#5A6E6C] leading-relaxed mb-8">{programme.description}</p>
 

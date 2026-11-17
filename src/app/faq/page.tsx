@@ -67,7 +67,7 @@ export default function FaqPage() {
     <>
       {/* HERO SECTION */}
       <header className="py-20 bg-[#004D4A] text-center">
-        <div className="w-full max-w-[1200px] mx-auto px-8">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-8">
           <h1 className="mb-4 text-white text-5xl">Frequently Asked Questions</h1>
           <p className="text-xl text-white/90">Everything you need to know about learning with Ilmvers.</p>
         </div>
@@ -75,7 +75,7 @@ export default function FaqPage() {
 
       {/* EXTENSIVE FAQ ACCORDION */}
       <section className="py-16 bg-bg-neutral py-20">
-        <div className="w-full max-w-[1200px] mx-auto px-8 max-w-3xl">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-8 max-w-3xl">
           {faqData.map((section, sIdx) => (
             <React.Fragment key={sIdx}>
               <h3 className={`text-2xl font-bold text-[#004D4A] mb-6 border-b border-gray-200 pb-4 ${sIdx === 0 ? 'mt-8' : 'mt-16'}`}>
@@ -120,10 +120,10 @@ export default function FaqPage() {
 
       {/* CTA */}
       <section className="py-16 text-center py-24 bg-white">
-        <div className="w-full max-w-[1200px] mx-auto px-8">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-8">
           <h2 className="mb-6 text-4xl font-bold">Still have questions?</h2>
           <p className="mb-10 text-lg text-[#5A6E6C]">Our team is ready to assist you on your journey.</p>
-          <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-[#004D4A] border-2 border-[#004D4A] hover:bg-[#004D4A] hover:text-white hover:-translate-y-1 transition-all duration-300 cursor-pointer bg-transparent py-4 px-10 rounded-full font-bold text-lg transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 inline-block">
+          <Link href="/contact" className="inline-flex items-center justify-center px-4 sm:px-8 py-3.5 rounded-full font-semibold text-[#004D4A] border-2 border-[#004D4A] hover:bg-[#004D4A] hover:text-white hover:-translate-y-1 transition-all duration-300 cursor-pointer bg-transparent py-4 px-10 rounded-full font-bold text-lg transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 inline-block">
             Contact Support
           </Link>
         </div>

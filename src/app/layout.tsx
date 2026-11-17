@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import type { Metadata, Viewport } from "next";
-import { Amiri, Playfair_Display, Montserrat } from "next/font/google";
+import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { PwaRegister } from "@/components/PwaRegister";
@@ -24,13 +24,6 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
-const amiri = Amiri({
-  weight: ['400', '700'],
-  subsets: ['arabic', 'latin'],
-  variable: '--font-amiri',
-  display: 'swap',
-});
-
 const BASE_URL = 'https://ilmvers.com';
 
 export const metadata: Metadata = {
@@ -39,12 +32,12 @@ export const metadata: Metadata = {
     default: "ILMVERS INSTITUTE | Knowledge. Faith. Excellence.",
     template: "%s | ILMVERS INSTITUTE",
   },
-  description: "Authentic Islamic education delivered by qualified scholars with modern learning tools. Study Qur'an & Tajweed, Islamic Studies, Hifz, Arabic Language, and Children's Education anytime, anywhere.",
+  description: "Live Islamic classes in Qur'an and Tajweed, Islamic Studies, Hifz, Arabic, and Children's Education.",
   keywords: [
     "Ilmvers Institute", "Ilmvers Academy", "ilmversinstitute.com", "online Islamic academy",
     "learn Quran online", "Tajweed classes online", "Hifz program online",
     "Islamic studies online", "Arabic language online", "Quran memorisation",
-    "qualified scholars", "live Islamic classes", "certified Islamic education",
+    "live Islamic classes", "Ilmvers online classes",
     "Islamic school online", "Quran for children", "adult Islamic classes"
   ],
   authors: [{ name: "Ilmvers Institute", url: BASE_URL }],
@@ -116,7 +109,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "scroll-pt-28", "antialiased", playfair.variable, montserrat.variable, amiri.variable, "font-sans")}
+      className={cn("h-full", "scroll-pt-28", "antialiased", playfair.variable, montserrat.variable, "font-sans")}
     >
       <head>
         <GoogleAnalytics />
@@ -141,7 +134,7 @@ export default function RootLayout({
               "alternateName": ["Ilmvers Institute", "Ilmvers Academy"],
               "url": "https://ilmvers.com",
               "logo": "https://ilmvers.com/assets/images/logo.jpeg",
-              "description": "Ilmvers Institute is a premier online Islamic institution offering structured learning in Qur'an & Tajweed, Islamic Studies, Hifz, Arabic Language, and Children's Education delivered by qualified scholars.",
+              "description": "Ilmvers Institute teaches Qur'an and Tajweed, Islamic Studies, Hifz, Arabic, and Children's Education in live classes.",
               "sameAs": [
                 "https://instagram.com/ilmversinstitute",
                 "https://youtube.com/@ilmversinstitute"

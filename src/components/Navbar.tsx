@@ -10,10 +10,32 @@ interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
 }
 
+const siteSearch = [
+  { title: 'Home', href: '/', text: 'Islamic education live classes' },
+  { title: 'Programmes', href: '/programs', text: "Qur'an Tajweed Hifz Arabic children advanced" },
+  { title: "Qur'an and Tajweed", href: '/programs/quran-tajweed', text: 'reading pronunciation' },
+  { title: 'Islamic Studies', href: '/programs/islamic-studies', text: 'creed fiqh seerah' },
+  { title: 'Hifz', href: '/programs/hifz', text: "memorization Qur'an" },
+  { title: 'Arabic', href: '/programs/arabic', text: 'language grammar' },
+  { title: "Children's Education", href: '/programs/children', text: 'children parents' },
+  { title: 'Advanced Studies', href: '/programs/advanced', text: 'tafsir hadith' },
+  { title: 'Our Scholars', href: '/teachers', text: 'instructors faculty' },
+  { title: 'About', href: '/about', text: 'institute mission' },
+  { title: 'How learning works', href: '/methodology', text: 'assessment classes' },
+  { title: 'Admissions', href: '/admissions', text: 'enrol assessment' },
+  { title: 'Tuition', href: '/pricing', text: 'fees price' },
+  { title: 'Journal', href: '/blog', text: 'writing blog' },
+  { title: 'Community', href: '/community', text: 'circles gallery' },
+  { title: 'Questions', href: '/faq', text: 'faq answers' },
+  { title: 'Contact', href: '/contact', text: 'whatsapp email' },
+  { title: 'Free assessment', href: '/assessment', text: 'placement' },
+];
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState('');
   const [installEvent, setInstallEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const pathname = usePathname();
   const hideMarketingNav =
@@ -40,6 +62,20 @@ export function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    setSearchOpen(false);
+    setQuery('');
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!searchOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSearchOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [searchOpen]);
+
   const installApp = async () => {
     if (!installEvent) return;
     await installEvent.prompt();
@@ -55,6 +91,17 @@ export function Navbar() {
     { name: 'Community', href: '/community' },
     { name: 'Contact', href: '/contact' },
   ];
+
+  const needle = query.trim().toLowerCase();
+  const searchResults = (needle
+    ? siteSearch.filter((item) => `${item.title} ${item.text}`.toLowerCase().includes(needle))
+    : siteSearch
+  ).slice(0, 8);
+
+  const toggleSearch = () => {
+    setMobileMenuOpen(false);
+    setSearchOpen((open) => !open);
+  };
 
   if (hideMarketingNav) return null;
 
@@ -121,9 +168,10 @@ export function Navbar() {
           <div className="flex items-center gap-5 pl-2">
             {/* Search icon trigger */}
             <button 
-              onClick={() => setSearchOpen(!searchOpen)} 
-              className="p-2 text-[#2E2E2E] hover:text-[#004D4A] hover:bg-[#004D4A]/5 rounded-full transition-colors"
+              onClick={toggleSearch} 
+              className={`p-2 rounded-full transition-colors ${searchOpen ? 'text-[#004D4A] bg-[#004D4A]/10' : 'text-[#2E2E2E] hover:text-[#004D4A] hover:bg-[#004D4A]/5'}`}
               aria-label="Search"
+              aria-expanded={searchOpen}
             >
               <Search className="w-4 h-4" />
             </button>
@@ -156,7 +204,16 @@ export function Navbar() {
         </nav>
 
         {/* Mobile menu and search toggles */}
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            type="button"
+            onClick={toggleSearch}
+            className={`p-2 rounded-full ${searchOpen ? 'text-[#004D4A] bg-[#004D4A]/10' : 'text-[#004D4A]'}`}
+            aria-label="Search"
+            aria-expanded={searchOpen}
+          >
+            <Search className="w-4 h-4" />
+          </button>
           <Link 
             href="/login" 
             className="text-xs font-semibold text-[#004D4A] px-3 py-1.5 rounded-full bg-[#004D4A]/10"
@@ -203,15 +260,6 @@ export function Navbar() {
                   <button
                     type="button"
                     onClick={() => { setMobileMenuOpen(false); void installApp(); }}
-                    className="w-full text-center border-2 border-[#D4AF37] text-[#0F3D38] py-2.5 rounded-full font-semibold"
-                  >
-                    Install app
-                  </button>
-                )}
-                {installEvent && (
-                  <button
-                    type="button"
-                    onClick={() => { setMobileMenuOpen(false); void installApp(); }}
                     className="w-full text-center border-2 border-[#D4AF37] text-[#004D4A] py-2.5 rounded-full font-semibold"
                   >
                     Install app
@@ -231,6 +279,43 @@ export function Navbar() {
                 >
                   Student Login
                 </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {searchOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="absolute top-full left-0 w-full bg-white border-b border-[#E2E9E7] shadow-xl z-50"
+            >
+              <div className="max-w-3xl mx-auto px-4 py-4">
+                <label htmlFor="site-search" className="sr-only">Search the site</label>
+                <input
+                  id="site-search"
+                  autoFocus
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search programmes, admissions, contact"
+                  className="w-full rounded-full border border-[#E2E9E7] px-4 py-3 text-sm text-[#2E2E2E] outline-none focus:border-[#004D4A]"
+                />
+                <ul className="mt-3 max-h-80 overflow-y-auto">
+                  {searchResults.length === 0 ? (
+                    <li className="px-3 py-2 text-sm text-[#5A6E6C]">No matching pages.</li>
+                  ) : searchResults.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="block rounded-xl px-3 py-2 text-sm font-semibold text-[#004D4A] hover:bg-[#FAF9F6]"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
           )}

@@ -40,13 +40,14 @@ export function IlmversLogo({
           alt="ILMVERS Institute Logo"
           fill
           className="object-cover"
-          priority
+          sizes={`${dimensions.img}px`}
+          priority={size === 'md' && !isDark}
         />
       </div>
 
       {/* Brand Typographic Identity */}
       <div className="flex flex-col justify-center">
-        <div className="flex items-baseline tracking-[0.12em] font-extrabold uppercase font-headers leading-none">
+        <div className="flex items-baseline tracking-[0.06em] sm:tracking-[0.12em] font-extrabold uppercase font-headers leading-none">
           <span className={isDark ? 'text-white' : 'text-[#004D4A]'}>ILM</span>
           <span className="text-[#D4AF37]">V</span>
           <span className={isDark ? 'text-[#D4AF37]' : 'text-[#004D4A]'}>ERS</span>
@@ -57,7 +58,7 @@ export function IlmversLogo({
           <span className="h-[1px] w-2 bg-[#D4AF37]"></span>
         </div>
         {showTagline && (
-          <span className={`tracking-wider font-medium mt-0.5 ${dimensions.tag} ${isDark ? 'text-[#A7B7B5]' : 'text-[#5A6E6C]'}`}>
+          <span className={`hidden sm:block tracking-wider font-medium mt-0.5 ${dimensions.tag} ${isDark ? 'text-[#A7B7B5]' : 'text-[#5A6E6C]'}`}>
             Knowledge. Faith. Excellence.
           </span>
         )}

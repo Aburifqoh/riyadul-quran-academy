@@ -36,7 +36,7 @@ export function Pathways() {
       badges: [
         { label: "Proper Pronunciation", icon: Volume2 },
         { label: "Tajweed Rules", icon: BookOpen },
-        { label: "Qualified Instructors", icon: UserCheck }
+        { label: "Live instruction", icon: UserCheck }
       ],
       image: "/assets/images/courses and program.jpeg",
       // Crop or fallback visual

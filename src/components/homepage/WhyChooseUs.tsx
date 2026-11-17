@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export function WhyChooseUs() {
   const reasons = [
     {
-      title: "Qualified instructors",
+      title: "A teacher for your level",
       description: "You are matched with an instructor for your level. Confirmed profiles are published on Our Scholars."
     },
     {
@@ -28,24 +28,24 @@ export function WhyChooseUs() {
           
           {/* Left: Editorial Graphic */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-[600px] rounded-[2.5rem] overflow-hidden bg-primary/5 border border-primary/10 flex items-center justify-center group"
+            className="relative h-[280px] sm:h-[420px] lg:h-[600px] max-w-full rounded-[2.5rem] overflow-hidden bg-primary/5 border border-primary/10 flex items-center justify-center group"
           >
             {/* Background elements */}
             <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/20 rounded-full blur-[80px] group-hover:bg-accent/30 transition-colors duration-700" />
             <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/20 rounded-full blur-[80px] group-hover:bg-primary/30 transition-colors duration-700" />
             
             {/* Elegant center piece */}
-            <div className="relative z-10 w-3/4 h-3/4 border border-primary/20 rounded-[2rem] flex flex-col items-center justify-center p-8 backdrop-blur-sm bg-background/40 shadow-2xl">
-              <div className="w-20 h-20 rounded-full border border-accent/40 flex items-center justify-center mb-8">
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center text-3xl">
+            <div className="relative z-10 w-[88%] sm:w-3/4 h-auto max-h-[90%] border border-primary/20 rounded-[2rem] flex flex-col items-center justify-center p-4 sm:p-8 backdrop-blur-sm bg-background/40 shadow-2xl">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-accent/40 flex items-center justify-center mb-4 sm:mb-8">
+                <div className="w-11 h-11 sm:w-16 sm:h-16 rounded-full bg-accent/10 flex items-center justify-center text-2xl sm:text-3xl">
                   ✨
                 </div>
               </div>
-              <h3 className="text-3xl font-headers font-bold text-center mb-4">Excellence in<br />Traditional Learning</h3>
+              <h3 className="text-2xl sm:text-3xl font-headers font-bold text-center mb-3 sm:mb-4">Excellence in<br />Traditional Learning</h3>
               <p className="text-center text-muted-foreground max-w-sm">
                 Bridging classical scholarship with modern pedagogical approaches.
               </p>

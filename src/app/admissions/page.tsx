@@ -37,14 +37,14 @@ function MagneticButton({ children, className, href, variant = "default" }: { ch
   const isOutline = variant === "outline";
   const baseClasses = cn(
     buttonVariants({ variant: isOutline ? "outline" : "default", size: "lg" }),
-    "rounded-full px-8 py-6 text-md transition-all duration-300 relative overflow-hidden group",
+    "rounded-full px-5 sm:px-8 py-4 sm:py-6 text-md whitespace-normal! h-auto max-w-full text-center transition-all duration-300 relative overflow-hidden group",
     !isOutline && "shadow-lg hover:shadow-xl",
     isOutline && "border-2 border-secondary text-secondary hover:bg-secondary hover:text-white",
     className
   );
 
   return (
-    <motion.div animate={{ x: position.x, y: position.y }} transition={{ type: "spring" as const, stiffness: 150, damping: 15, mass: 0.1 }}>
+    <motion.div animate={{ x: position.x, y: position.y }} transition={{ type: "spring" as const, stiffness: 150, damping: 15, mass: 0.1 }} className="max-w-full">
       <Link 
         href={href}
         ref={ref}
@@ -163,7 +163,7 @@ export default function AdmissionsPage() {
                 <h3 className="text-xl font-bold text-secondary mb-3 flex items-center gap-3">
                   <ShieldCheck className="w-6 h-6 text-primary group-hover:animate-pulse" /> Instructor Matchmaking
                 </h3>
-                <p className="text-text-body leading-relaxed text-lg">Based on your assessment and goals, we pair you with a certified instructor whose expertise and schedule align perfectly with your local time zone.</p>
+                <p className="text-text-body leading-relaxed text-lg">After the assessment, you are matched with a teacher for your level. The timetable is agreed with you.</p>
               </div>
             </motion.div>
 
@@ -203,7 +203,7 @@ export default function AdmissionsPage() {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 gap-6"
           >
-            <motion.div variants={FADE_UP} className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/15 hover:shadow-2xl hover:-translate-y-1 transition-all group">
+            <motion.div variants={FADE_UP} className="bg-white/10 backdrop-blur-md rounded-3xl p-5 sm:p-8 border border-white/20 hover:bg-white/15 hover:shadow-2xl hover:-translate-y-1 transition-all group">
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all">
                   <Clock className="w-6 h-6 text-primary" />
@@ -213,7 +213,7 @@ export default function AdmissionsPage() {
               <p className="text-white/80 leading-relaxed text-lg">Students are expected to attend all scheduled classes on time. Unexcused absence without 24-hours prior notice via the portal will result in a forfeited lesson to respect the teacher's time.</p>
             </motion.div>
             
-            <motion.div variants={FADE_UP} className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/15 hover:shadow-2xl hover:-translate-y-1 transition-all group">
+            <motion.div variants={FADE_UP} className="bg-white/10 backdrop-blur-md rounded-3xl p-5 sm:p-8 border border-white/20 hover:bg-white/15 hover:shadow-2xl hover:-translate-y-1 transition-all group">
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all">
                   <RefreshCcw className="w-6 h-6 text-primary" />
@@ -223,7 +223,7 @@ export default function AdmissionsPage() {
               <p className="text-white/80 leading-relaxed text-lg">If an emergency arises, lessons may be rescheduled directly through your Student Portal provided you give a minimum of 4 hours notice. Make-up classes depend on teacher availability.</p>
             </motion.div>
             
-            <motion.div variants={FADE_UP} className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/15 hover:shadow-2xl hover:-translate-y-1 transition-all group">
+            <motion.div variants={FADE_UP} className="bg-white/10 backdrop-blur-md rounded-3xl p-5 sm:p-8 border border-white/20 hover:bg-white/15 hover:shadow-2xl hover:-translate-y-1 transition-all group">
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all">
                   <UserPlus className="w-6 h-6 text-primary" />
@@ -233,7 +233,7 @@ export default function AdmissionsPage() {
               <p className="text-white/80 leading-relaxed text-lg">Consistency matters. You are permanently assigned to your tutor. However, if there is a scheduling conflict or learning mismatch, Admissions will facilitate a re-assignment transparently.</p>
             </motion.div>
             
-            <motion.div variants={FADE_UP} className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/15 hover:shadow-2xl hover:-translate-y-1 transition-all group">
+            <motion.div variants={FADE_UP} className="bg-white/10 backdrop-blur-md rounded-3xl p-5 sm:p-8 border border-white/20 hover:bg-white/15 hover:shadow-2xl hover:-translate-y-1 transition-all group">
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all">
                   <CreditCard className="w-6 h-6 text-primary" />
@@ -297,7 +297,7 @@ export default function AdmissionsPage() {
           
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={FADE_UP}
-            className="text-center bg-white rounded-3xl p-12 border border-border-subtle shadow-xl hover:shadow-2xl transition-shadow"
+            className="text-center bg-white rounded-3xl p-6 sm:p-12 border border-border-subtle shadow-xl hover:shadow-2xl transition-shadow"
           >
             <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <MailQuestion className="w-10 h-10 text-primary" />

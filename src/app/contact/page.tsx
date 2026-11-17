@@ -68,10 +68,10 @@ export default function ContactPage() {
           <div>
             <h2 className="text-2xl font-headers font-bold text-[#004D4A] mb-3">Direct contact</h2>
             <p className="text-[#5A6E6C] mb-6">If you would rather speak to someone now, use WhatsApp or email.</p>
-            <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer" className="block text-xl font-bold text-[#004D4A] hover:text-[#0F3D38]">
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer" className="block text-xl font-bold text-[#004D4A] hover:text-[#0F3D38] break-words">
               WhatsApp +234 810 969 0304
             </a>
-            <a href="mailto:info@ilmversinstitute.com" className="block mt-3 text-lg font-semibold text-[#004D4A] hover:underline">
+            <a href="mailto:info@ilmversinstitute.com" className="block mt-3 text-base sm:text-lg font-semibold text-[#004D4A] hover:underline break-all">
               info@ilmversinstitute.com
             </a>
           </div>

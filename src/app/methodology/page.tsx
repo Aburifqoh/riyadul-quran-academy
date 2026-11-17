@@ -38,14 +38,14 @@ function MagneticButton({ children, className, href, variant = "default" }: { ch
   const isWhite = variant === "white";
   const baseClasses = cn(
     buttonVariants({ variant: isOutline ? "outline" : "default", size: "lg" }),
-    "rounded-full px-10 py-7 text-lg font-bold transition-all duration-300 relative overflow-hidden group shadow-xl",
+    "rounded-full px-5 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-bold whitespace-normal! h-auto max-w-full text-center transition-all duration-300 relative overflow-hidden group shadow-xl",
     isWhite && "bg-white text-secondary hover:bg-bg-neutral",
     !isWhite && !isOutline && "hover:shadow-2xl hover:-translate-y-1",
     className
   );
 
   return (
-    <motion.div animate={{ x: position.x, y: position.y }} transition={{ type: "spring" as const, stiffness: 150, damping: 15, mass: 0.1 }}>
+    <motion.div animate={{ x: position.x, y: position.y }} transition={{ type: "spring" as const, stiffness: 150, damping: 15, mass: 0.1 }} className="max-w-full">
       <Link 
         href={href}
         ref={ref}
