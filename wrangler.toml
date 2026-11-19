@@ -1,0 +1,58 @@
+name = "ilmvers-institute"
+account_id = "eae4cb41726e4c445429ea97e52044f2"
+workers_dev = true
+main = "custom-worker.ts"
+compatibility_date = "2026-06-27"
+compatibility_flags = ["nodejs_compat"]
+
+routes = [
+  { pattern = "ilmvers.com", custom_domain = true },
+  { pattern = "www.ilmvers.com", custom_domain = true },
+  { pattern = "admin.ilmvers.com", custom_domain = true }
+]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+[observability]
+enabled = true
+
+[ai]
+binding = "AI"
+
+# Public values only. Secrets go in with `wrangler secret put` and are listed in .env.example.
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://ilmvers.com"
+NEXT_PUBLIC_HIFZ_LAB_ENABLED = "false"
+EMAIL_FROM = "Ilmvers Institute <noreply@ilmversinstitute.com>"
+ADMIN_ALERT_EMAIL = "info@ilmversinstitute.com"
+# Public client keys (also baked in at build time; kept here for server-side runtime reads).
+NEXT_PUBLIC_SUPABASE_URL = "https://xwqwilzxkopgtxcyxglm.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh3cXdpbHp4a29wZ3R4Y3l4Z2xtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM0NTg5MDIsImV4cCI6MjEwOTAzNDkwMn0.Hqs7woXatMx9xhS9TtI6XcFqX4UmngFEEJg_N140kU0"
+NEXT_PUBLIC_TURNSTILE_SITE_KEY = "0x4AAAAAAFzLm0nRMybD2rA4"
+NEXT_PUBLIC_PAYSTACK_KEY = "pk_live_a3bc4c680be2c95cbad0f3d0b24485306936f05a"
+NEXT_PUBLIC_FLUTTERWAVE_KEY = "FLWPUBK-a1756e3ec07987472526a04759550595-X"
+NEXT_PUBLIC_META_PIXEL_ID = "1563476852043592"
+NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-HKC0X9FC67"
+
+# UTC. Mapped in custom-worker.ts.
+#   0 * * * * and 30 * * * *  class reminders
+#   0 23 * * *                 daily billing (midnight WAT)
+#   0 4 * * SUN                messaging assignment sync
+#   0 5 1 * *                  message purge
+[triggers]
+crons = ["0 * * * *", "30 * * * *", "0 23 * * *", "0 4 * * SUN", "0 5 1 * *"]
+
+# Create these R2 buckets, then uncomment. Do not reuse another project's buckets.
+# [[r2_buckets]]
+# binding = "BUCKET"
+# bucket_name = "ilmvers-assets"
+#
+# [[r2_buckets]]
+# binding = "HOMEWORK_AUDIO"
+# bucket_name = "ilmvers-audio"
+#
+# [[r2_buckets]]
+# binding = "ILMVERS_VAULT"
+# bucket_name = "ilmvers-vault"

@@ -1,0 +1,25 @@
+{
+  "name": "Ilmvers Institute",
+  "short_name": "Ilmvers",
+  "id": "/",
+  "description": "Ilmvers Institute online Islamic classes.",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-ilmvers-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-ilmvers.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#004D4A",
+  "background_color": "#FAF9F6",
+  "display": "standalone"
+}
