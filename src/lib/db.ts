@@ -170,6 +170,9 @@ export async function teacherUpdateStudent(
   return { success: true };
 }
 
+/** Minutes in class before automatic attendance marks Present (children may leave before a full 40). */
+export const ATTENDANCE_PRESENT_MINUTES = 30;
+
 export async function updateAttendance(studentId: string, status: string, subject?: string, isTick?: boolean) {
   try {
     const { data: user } = await supabase.from('users').select('attendanceLog').eq('id', studentId).single();
@@ -186,7 +189,7 @@ export async function updateAttendance(studentId: string, status: string, subjec
       logs[existingIndex] = {
         ...logs[existingIndex],
         durationMinutes: newDuration,
-        status: isTick ? (newDuration >= 40 ? 'Present' : 'Absent') : status,
+        status: isTick ? (newDuration >= ATTENDANCE_PRESENT_MINUTES ? 'Present' : 'Absent') : status,
         date: new Date().toISOString(),
       };
     } else {

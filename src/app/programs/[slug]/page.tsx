@@ -1,19 +1,21 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProgramme, programmes } from '@/lib/programmes';
+import { DEFAULT_PROGRAMMES, loadPublicProgrammes } from '@/lib/programmes';
 
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return programmes.map((programme) => ({ slug: programme.slug }));
+  return DEFAULT_PROGRAMMES.map((programme) => ({ slug: programme.slug }));
 }
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const programme = getProgramme(slug);
+  const list = await loadPublicProgrammes({ includeUnpublished: true });
+  const programme = list.find((p) => p.slug === slug) || DEFAULT_PROGRAMMES.find((p) => p.slug === slug);
   if (!programme) return {};
   return {
     title: { absolute: `${programme.seoTitle} | ILMVERS INSTITUTE` },
@@ -30,10 +32,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProgrammePage({ params }: Props) {
   const { slug } = await params;
-  const programme = getProgramme(slug);
-  if (!programme) notFound();
+  const list = await loadPublicProgrammes();
+  const programme = list.find((p) => p.slug === slug) || DEFAULT_PROGRAMMES.find((p) => p.slug === slug);
+  if (!programme || programme.published === false) notFound();
 
-  const others = programmes.filter((item) => item.slug !== programme.slug);
+  const others = list.filter((item) => item.slug !== programme.slug);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Course',

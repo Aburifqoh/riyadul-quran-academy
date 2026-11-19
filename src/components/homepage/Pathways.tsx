@@ -1,124 +1,49 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { 
-  Volume2, 
-  BookOpen, 
-  UserCheck, 
-  Scroll, 
-  Compass, 
-  Calendar, 
-  LineChart, 
-  HeartHandshake, 
-  MessageSquare, 
-  PenTool, 
-  Globe2, 
-  Sparkles, 
-  ShieldCheck, 
-  GraduationCap, 
-  Scale, 
-  CheckCircle2,
+import {
+  BookOpen,
+  Globe2,
+  ShieldCheck,
+  GraduationCap,
   ArrowRight,
-  Award
+  Award,
 } from 'lucide-react';
+import { DEFAULT_PROGRAMMES, loadPublicProgrammes, type Programme } from '@/lib/programmes';
 
 export function Pathways() {
-  const programs = [
-    {
-      id: "quran-tajweed",
-      title: "Qur'an & Tajweed",
-      tagline: "Read · Understand · Live",
-      description: "Learn to read the Qur'an correctly with proper Tajweed and deepen your connection with Allah's words.",
-      dark: false,
-      badges: [
-        { label: "Proper Pronunciation", icon: Volume2 },
-        { label: "Tajweed Rules", icon: BookOpen },
-        { label: "Live instruction", icon: UserCheck }
-      ],
-      image: "/assets/images/courses and program.jpeg",
-      // Crop or fallback visual
-      imageAlt: "Holy Quran with Tajweed rules",
-      btnClass: "bg-[#004D4A] hover:bg-[#0F3D38] text-white"
-    },
-    {
-      id: "islamic-studies",
-      title: "Islamic Studies",
-      tagline: "Understand · Apply · Grow",
-      description: "Explore the life of the Prophet ﷺ, Qur'anic sciences, Fiqh, and the core principles of Islam.",
-      dark: true,
-      badges: [
-        { label: "Seerah & History", icon: Scroll },
-        { label: "Fiqh & Aqidah", icon: Compass },
-        { label: "Contemporary Issues", icon: Sparkles }
-      ],
-      image: "/assets/images/courses and program.jpeg",
-      imageAlt: "Prophet's Mosque Dome and minarets",
-      btnClass: "bg-[#D4AF37] hover:bg-[#F6D77A] text-[#0F3D38] font-bold"
-    },
-    {
-      id: "hifz",
-      title: "Hifz & Qur'an Memorization",
-      tagline: "Memorize · Understand · Be Closer",
-      description: "Build a lifelong relationship with the Qur'an through structured and personalized memorization programs.",
-      dark: false,
-      badges: [
-        { label: "Structured Plans", icon: Calendar },
-        { label: "Progress Tracking", icon: LineChart },
-        { label: "Personalized Support", icon: HeartHandshake }
-      ],
-      image: "/assets/images/courses and program.jpeg",
-      imageAlt: "Student memorizing the Quran",
-      btnClass: "bg-[#004D4A] hover:bg-[#0F3D38] text-white"
-    },
-    {
-      id: "arabic",
-      title: "Arabic Language",
-      tagline: "Speak · Read · Understand",
-      description: "Learn Arabic from the basics to advanced levels with practical and interactive lessons.",
-      dark: true,
-      badges: [
-        { label: "Speaking Skills", icon: MessageSquare },
-        { label: "Reading & Writing", icon: PenTool },
-        { label: "Native Instructors", icon: Globe2 }
-      ],
-      image: "/assets/images/courses and program.jpeg",
-      imageAlt: "Arabic Calligraphy calligraphy art",
-      btnClass: "bg-[#D4AF37] hover:bg-[#F6D77A] text-[#0F3D38] font-bold"
-    },
-    {
-      id: "children",
-      title: "Children's Education",
-      tagline: "Play · Learn · Build Character",
-      description: "Fun, engaging and age-appropriate Islamic education for a strong foundation in faith and values.",
-      dark: false,
-      badges: [
-        { label: "Interactive Lessons", icon: Sparkles },
-        { label: "Character Building", icon: HeartHandshake },
-        { label: "Safe & Supportive Environment", icon: ShieldCheck }
-      ],
-      image: "/assets/images/courses and program.jpeg",
-      imageAlt: "Children learning together in cheerful Islamic class",
-      btnClass: "bg-[#004D4A] hover:bg-[#0F3D38] text-white"
-    },
-    {
-      id: "advanced",
-      title: "Advanced Islamic Studies",
-      tagline: "Deeper Knowledge · Greater Impact",
-      description: "For serious learners seeking advanced knowledge in Islamic scholarship and leadership.",
-      dark: true,
-      badges: [
-        { label: "Tafsir & Hadith", icon: BookOpen },
-        { label: "Islamic Law (Fiqh)", icon: Scale },
-        { label: "Leadership & Da'wah", icon: GraduationCap }
-      ],
-      image: "/assets/images/courses and program.jpeg",
-      imageAlt: "Classical Islamic reference books and manuscripts",
-      btnClass: "bg-[#D4AF37] hover:bg-[#F6D77A] text-[#0F3D38] font-bold"
-    }
-  ];
+  const [programmes, setProgrammes] = useState<Programme[]>(DEFAULT_PROGRAMMES.filter((p) => p.published !== false));
+
+  useEffect(() => {
+    let cancelled = false;
+    loadPublicProgrammes().then((list) => {
+      if (!cancelled && list.length) setProgrammes(list);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const programs = programmes.map((p, idx) => {
+    const dark = idx % 2 === 1;
+    return {
+      id: p.slug,
+      title: p.title,
+      tagline: p.tagline,
+      description: p.shortDescription || p.description,
+      dark,
+      badges: (p.badges?.length ? p.badges : p.points.slice(0, 3)).map((label) => ({
+        label,
+        icon: BookOpen,
+      })),
+      btnClass: dark
+        ? 'bg-[#D4AF37] hover:bg-[#F6D77A] text-[#0F3D38] font-bold'
+        : 'bg-[#004D4A] hover:bg-[#0F3D38] text-white',
+    };
+  });
 
   const trustPoints = [
     { title: "100% Online & Flexible", icon: Globe2 },

@@ -964,7 +964,7 @@ export default function AdminOverview() {
                       }))
                     ).sort((a, b) => new Date(b.date ?? '').getTime() - new Date(a.date ?? '').getTime())
                      .map(log => {
-                       const isPresent = (log.durationMinutes ?? 0) >= 40 || log.status === 'Present';
+                       const isPresent = (log.durationMinutes ?? 0) >= 30 || String(log.status || '').toLowerCase() === 'present';
                        return (
                          <tr key={log.uniqueId} className="hover:bg-gray-50/50 transition-colors">
                            <td className="p-5">

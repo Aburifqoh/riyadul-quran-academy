@@ -111,7 +111,8 @@ function RegisterContent() {
         password: adultForm.password,
       });
       if (loginError) throw loginError;
-      router.push('/portal');
+      // Almuqri template: register → assessment (not straight to portal)
+      router.push('/assessment');
     } catch (error: unknown) {
       alert(getErrorMessage(error) || 'We could not complete your registration. Please try again.');
       setTurnstileToken('');
@@ -152,7 +153,8 @@ function RegisterContent() {
         password: parentForm.password,
       });
       if (loginError) throw loginError;
-      router.push('/portal');
+      // Almuqri template: register → assessment (not straight to portal)
+      router.push('/assessment');
     } catch (error: unknown) {
       alert(getErrorMessage(error) || 'We could not complete your registration. Please try again.');
       setTurnstileToken('');

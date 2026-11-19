@@ -10,6 +10,7 @@ import { hasPermission } from '@/lib/permissions';
 import { authFetch } from '@/lib/authFetch';
 import { GalleryUpload } from '@/components/admin/GalleryUpload';
 import { GalleryReviewQueue } from '@/components/admin/GalleryReviewQueue';
+import { ProgrammesEditor } from '@/components/admin/ProgrammesEditor';
 import CommunityPostComposer from '@/components/community/CommunityPostComposer';
 import type { HealthCheck, HealthLevel, HealthReport } from '@/lib/systemHealth';
 import { FileEditIcon, CheckIcon, XIcon, Eye, RefreshCw } from 'lucide-react';
@@ -177,6 +178,10 @@ export default function AdminCMS() {
         <h2 className="text-3xl font-headers font-bold text-gray-900 m-0">Content Management</h2>
         <p className="text-gray-500 m-0">Control institutional messaging and public-facing content.</p>
       </div>
+
+      <section className="bg-white p-8 md:p-10 rounded-[40px] border border-gray-100 shadow-sm">
+        <ProgrammesEditor />
+      </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
          <section className="bg-white p-10 rounded-[40px] border border-gray-100 shadow-sm space-y-6">

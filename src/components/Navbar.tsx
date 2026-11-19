@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ChevronDown } from 'lucide-react';
 import { IlmversLogo } from '@/components/ui/IlmversLogo';
+import { DEFAULT_PROGRAMMES, loadPublicProgrammes, type Programme } from '@/lib/programmes';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -37,6 +38,9 @@ export function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [installEvent, setInstallEvent] = useState<BeforeInstallPromptEvent | null>(null);
+  const [navProgrammes, setNavProgrammes] = useState<Programme[]>(
+    DEFAULT_PROGRAMMES.filter((p) => p.published !== false)
+  );
   const pathname = usePathname();
   const hideMarketingNav =
     pathname.startsWith('/portal') ||
@@ -47,6 +51,16 @@ export function Navbar() {
     pathname.startsWith('/forgot-password') ||
     pathname.startsWith('/register') ||
     pathname.startsWith('/reset-password');
+
+  useEffect(() => {
+    let cancelled = false;
+    loadPublicProgrammes().then((list) => {
+      if (!cancelled && list.length) setNavProgrammes(list);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -139,24 +153,15 @@ export function Navbar() {
                   {link.hasDropdown && (
                     <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-[#E2E9E7] p-3 hidden group-hover:block transition-all z-50">
                       <div className="space-y-1">
-                        <Link href="/programs/quran-tajweed" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
-                          Qur'an & Tajweed
-                        </Link>
-                        <Link href="/programs/islamic-studies" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
-                          Islamic Studies
-                        </Link>
-                        <Link href="/programs/hifz" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
-                          Hifz & Qur'an Memorization
-                        </Link>
-                        <Link href="/programs/arabic" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
-                          Arabic Language
-                        </Link>
-                        <Link href="/programs/children" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
-                          Children's Education
-                        </Link>
-                        <Link href="/programs/advanced" className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]">
-                          Advanced Islamic Studies
-                        </Link>
+                        {navProgrammes.map((programme) => (
+                          <Link
+                            key={programme.slug}
+                            href={`/programs/${programme.slug}`}
+                            className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#2E2E2E] hover:bg-[#FAF9F6] hover:text-[#004D4A]"
+                          >
+                            {programme.title}
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   )}
