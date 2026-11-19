@@ -143,8 +143,8 @@ export default function AssessmentPage() {
 
       setStep(2);
     } catch (error) {
-      console.error("Error submitting lead:", error);
-      setStep(2);
+      console.error('Error submitting lead:', error);
+      alert(getErrorMessage(error) || 'Could not save your assessment details. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

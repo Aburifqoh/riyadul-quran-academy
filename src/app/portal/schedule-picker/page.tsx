@@ -44,12 +44,12 @@ export default function SchedulePickerPage() {
     if (!user) return;
 
     setIsSubmitting(true);
-    const success = await submitStudentPreferences(user.id, selectedSlots);
-    if (success) {
+    const result = await submitStudentPreferences(user.id, selectedSlots);
+    if (result?.success) {
       // Force reload to bypass layouts checking `scheduleSelected`
       window.location.href = '/portal';
     } else {
-      alert("Failed to submit preferences. Please try again.");
+      alert(result?.error || 'Failed to submit preferences. Please try again.');
       setIsSubmitting(false);
     }
   };

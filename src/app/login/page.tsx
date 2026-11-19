@@ -56,7 +56,7 @@ function LoginContent() {
       else if (safeNext) router.push(safeNext);
       else if (data?.role === 'admin' || data?.role === 'super_admin') router.push('/admin');
       else if (data?.role === 'teacher') router.push('/portal/teacher');
-      else if (data?.accountType === 'parent') router.push('/parent');
+      else if (data?.role === 'parent' || data?.accountType === 'parent') router.push('/parent');
       else router.push('/portal');
     } catch (err: any) {
       const errMsg = err?.message || String(err) || '';

@@ -412,6 +412,9 @@ export async function activateUserPlan(uid: string, plan: string, amountPaid: nu
     if (days) {
       updateData.planDays = days;
     }
+    if (amountPaid > 0) {
+      updateData.base_usd_price = amountPaid;
+    }
 
     await supabase.from('users').update(updateData).eq('id', uid);
 

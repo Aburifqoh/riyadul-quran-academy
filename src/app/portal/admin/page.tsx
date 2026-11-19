@@ -23,7 +23,22 @@ import {
   recordedTuitionAmount,
   revokePaidAccess,
 } from '@/lib/billing';
-import { approveTeacherProfile, rejectTeacherProfile, toggleTeacherLiveStatus, getResources, addResource, deleteResource, assignResourceToStudent, unassignResourceFromStudent, updateAssessmentStatus, getPendingAssessments, getAllFeedback, setResourceStatus, assignResourceToTeacherStudents } from '@/lib/db';
+import {
+  ATTENDANCE_PRESENT_MINUTES,
+  approveTeacherProfile,
+  rejectTeacherProfile,
+  toggleTeacherLiveStatus,
+  getResources,
+  addResource,
+  deleteResource,
+  assignResourceToStudent,
+  unassignResourceFromStudent,
+  updateAssessmentStatus,
+  getPendingAssessments,
+  getAllFeedback,
+  setResourceStatus,
+  assignResourceToTeacherStudents,
+} from '@/lib/db';
 import { uploadMedia } from '@/lib/uploadMedia';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, Banknote, Briefcase, FileSignature, CheckCircle, LayoutDashboard, CreditCard, Library, BookOpen, Upload, Trash2, X, UserPlus, UserMinus, Star, MessageSquare, Calendar, ChevronLeft, ChevronRight, Pencil } from 'lucide-react';
@@ -938,7 +953,7 @@ export default function AdminOverview() {
               <div className="flex justify-between items-center mb-6">
                  <div>
                    <h3 className="text-2xl font-bold font-headers text-secondary">Automated Attendance Logs</h3>
-                   <p className="text-gray-500 m-0">Review auto-tracked class durations. Red indicates absence or incomplete duration (&lt; 40m).</p>
+                   <p className="text-gray-500 m-0">Review auto-tracked class durations. Red indicates absence or incomplete duration (&lt; {ATTENDANCE_PRESENT_MINUTES}m).</p>
                  </div>
               </div>
               
@@ -964,7 +979,7 @@ export default function AdminOverview() {
                       }))
                     ).sort((a, b) => new Date(b.date ?? '').getTime() - new Date(a.date ?? '').getTime())
                      .map(log => {
-                       const isPresent = (log.durationMinutes ?? 0) >= 30 || String(log.status || '').toLowerCase() === 'present';
+                       const isPresent = (log.durationMinutes ?? 0) >= ATTENDANCE_PRESENT_MINUTES || String(log.status || '').toLowerCase() === 'present';
                        return (
                          <tr key={log.uniqueId} className="hover:bg-gray-50/50 transition-colors">
                            <td className="p-5">
