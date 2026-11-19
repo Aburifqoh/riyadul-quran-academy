@@ -10,6 +10,7 @@ import {
   isSubscriptionActive,
   monthlyTuitionAmount,
   parseHourlyRates,
+  paymentCheckoutHref,
   subscriptionExpiryIso,
 } from '@/lib/billing';
 
@@ -150,7 +151,7 @@ export default function ParentBillingPage() {
 
                     {!isActive && (
                       <Link
-                        href={`/payment?studentId=${child.id}&plan=${child.tuitionPlan}`}
+                        href={paymentCheckoutHref(child, { studentId: child.id, amount: price })}
                         className="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition-all hover:scale-[1.01] shadow-md shadow-emerald-500/20"
                       >
                         Pay Now — ${price}

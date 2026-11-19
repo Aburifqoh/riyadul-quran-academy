@@ -123,7 +123,7 @@ export async function sendAssessmentApproval(email: string, name: string, notes:
         <br/>
         <p>You can now proceed to select your plan and finalize your enrollment.</p>
         <br/>
-        <a href="https://ilmvers.com/payment" style="background-color: #004D4A; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Complete Enrollment</a>
+        <a href="https://ilmvers.com/login?next=/payment" style="background-color: #004D4A; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Complete Enrollment</a>
       </div>`
     );
   } catch (error) {

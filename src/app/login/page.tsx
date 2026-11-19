@@ -27,6 +27,9 @@ function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const intent = searchParams.get('intent');
+  const nextPath = searchParams.get('next');
+  const safeNext =
+    nextPath && nextPath.startsWith('/') && !nextPath.startsWith('//') ? nextPath : null;
   const { user, userData } = useAuth();
   
   const [email, setEmail] = useState('');
@@ -50,6 +53,7 @@ function LoginContent() {
       const data = await getUserData(cred.user.id);
       
       if (intent === 'assessment') router.push('/assessment');
+      else if (safeNext) router.push(safeNext);
       else if (data?.role === 'admin' || data?.role === 'super_admin') router.push('/admin');
       else if (data?.role === 'teacher') router.push('/portal/teacher');
       else if (data?.accountType === 'parent') router.push('/parent');

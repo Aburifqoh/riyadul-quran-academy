@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/lib/supabase';
-import { isSubscriptionActive } from '@/lib/billing';
+import { isSubscriptionActive, paymentCheckoutHref } from '@/lib/billing';
 import { hasPermission } from '@/lib/permissions';
 import { getUserRole } from '@/lib/userDataHelpers';
 
@@ -349,7 +349,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <strong>📌 Action Required:</strong> Your account is pending activation. Complete your payment to unlock your full dashboard and confirm your schedule.
             </div>
             <div className="flex items-center gap-3">
-               <Link href="/payment" className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-primary/10 text-primary border border-primary/20 no-underline">Pay Now →</Link>
+               <Link href={userData ? paymentCheckoutHref(userData) : '/payment'} className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-primary/10 text-primary border border-primary/20 no-underline">Pay Now →</Link>
                <Link href="/contact" className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-muted text-muted-foreground no-underline">I need help</Link>
             </div>
           </div>
@@ -369,7 +369,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     <p className="text-gray-600 mb-8 font-medium leading-relaxed">
                       You are previewing a locked feature. Complete your enrollment to unlock the full Ilmvers experience!
                     </p>
-                    <Link href="/payment" className="inline-block w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-full shadow-[0_8px_30px_rgb(5,150,105,0.3)] hover:shadow-[0_8px_30px_rgb(5,150,105,0.5)] transition-all hover:-translate-y-1 text-lg">
+                    <Link href={userData ? paymentCheckoutHref(userData) : '/payment'} className="inline-block w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-full shadow-[0_8px_30px_rgb(5,150,105,0.3)] hover:shadow-[0_8px_30px_rgb(5,150,105,0.5)] transition-all hover:-translate-y-1 text-lg">
                       Unlock Full Access
                     </Link>
                  </div>

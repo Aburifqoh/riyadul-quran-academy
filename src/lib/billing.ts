@@ -198,6 +198,27 @@ export function recordedTuitionAmount(user: Pick<UserData, 'base_usd_price'>): n
   return Number.isFinite(stored) && stored > 0 ? Math.round(stored) : 0;
 }
 
+/**
+ * Portal / email “Pay Now” links. Include amount when known so /payment opens
+ * checkout instead of the admissions → assessment booking gate.
+ */
+export function paymentCheckoutHref(
+  user: Pick<UserData, 'base_usd_price' | 'tuitionPlan' | 'planDays'>,
+  opts?: { studentId?: string; amount?: number }
+): string {
+  const params = new URLSearchParams();
+  const amount = opts?.amount && opts.amount > 0
+    ? Math.round(opts.amount)
+    : recordedTuitionAmount(user);
+  if (amount > 0) params.set('amount', String(amount));
+  if (user.tuitionPlan) params.set('plan', String(user.tuitionPlan));
+  const days = Number(user.planDays);
+  if (Number.isFinite(days) && days > 0) params.set('days', String(days));
+  if (opts?.studentId) params.set('studentId', opts.studentId);
+  const q = params.toString();
+  return q ? `/payment?${q}` : '/payment';
+}
+
 /** Stored payment amount, or rate-card estimate for quoting a new grant. Not live revenue. */
 export function monthlyTuitionAmount(
   user: Pick<UserData, 'base_usd_price' | 'tuitionPlan' | 'planDays'>,

@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Settings, User, CreditCard, Lock, Calendar, CheckCircle, AlertCircle, RefreshCw, ExternalLink, Save, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { submitStudentProfileUpdate, requestScheduleChange } from '@/lib/db';
+import { paymentCheckoutHref } from '@/lib/billing';
 import Link from 'next/link';
 import { ChangePassword } from '@/components/auth/ChangePassword';
 
@@ -55,7 +56,7 @@ export default function SettingsPage() {
   }
 
   const handleManagePlan = () => {
-    router.push('/payment');
+    router.push(userData ? paymentCheckoutHref(userData) : '/payment');
   };
 
   const handleProfileSubmit = async (e: React.FormEvent) => {

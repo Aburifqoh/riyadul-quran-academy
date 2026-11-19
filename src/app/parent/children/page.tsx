@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabase';
 import { formatDayAtTime } from '@/lib/timeFormat';
 import { convertSlotToTimezone, readBrowserTimezone } from '@/lib/timezoneUtils';
 import { getSchedule } from '@/lib/userDataHelpers';
+import { paymentCheckoutHref, recordedTuitionAmount } from '@/lib/billing';
 import type { ScheduleSlot } from '@/types/content';
 import type { UserData } from '@/types/user';
 
@@ -128,7 +129,10 @@ export default function ParentChildrenPage() {
                 {!isActive && (
                   <div className="px-6 pb-6">
                     <Link
-                      href={`/payment?studentId=${child.id}&plan=${child.tuitionPlan}`}
+                      href={paymentCheckoutHref(child, {
+                        studentId: child.id,
+                        amount: recordedTuitionAmount(child) || undefined,
+                      })}
                       className="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition-all hover:scale-[1.01] shadow-md shadow-emerald-500/20"
                     >
                       Complete Enrolment Payment
